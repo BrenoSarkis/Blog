@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Blog.Fronteiras.Executores;
+using Blog.Fronteiras.Executores.ObterCitacao;
+using Blog.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,21 +13,21 @@ namespace Blog.Web.Controllers
     {
         public ActionResult Index()
         {
+            var apresentador = new ObterCitacaoApresentador();
+            var executor = new ObterCitacaoExecutor(new CitacaoRepositorio(), apresentador);
+            executor.Executar();
+            ViewBag.Citacao = apresentador.Citacao;
             return View();
         }
+    }
 
-        public ActionResult About()
+    public class ObterCitacaoApresentador : IApresentador<ObterCitacaoResultado>
+    {
+        public string Citacao { get; private set; }
+
+        public void ApresentarResultado(ObterCitacaoResultado resultado)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            Citacao = String.Format(@"""{0}"" - {1}", resultado.Texto, resultado.Autor);
         }
     }
 }

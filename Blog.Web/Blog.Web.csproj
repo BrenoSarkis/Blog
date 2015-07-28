@@ -1543,6 +1543,20 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Fronteiras\Blog.Fronteiras.csproj">
+      <Project>{40fbf56b-887c-4256-a993-829bd29bdf72}</Project>
+      <Name>Blog.Fronteiras</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Repositorios\Blog.Repositorios.csproj">
+      <Project>{d2b53211-0630-45a6-bdbd-b0ecb4bc938f}</Project>
+      <Name>Blog.Repositorios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog\Blog.csproj">
+      <Project>{6ef5001d-1a89-44b6-afd0-f9ce4b2644fb}</Project>
+      <Name>Blog</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

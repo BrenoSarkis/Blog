@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6EF5001D-1A89-44B6-AFD0-F9CE4B2644FB}</ProjectGuid>
+    <ProjectGuid>{16F12535-699F-4F51-AB07-91110EF4ADD5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Blog</RootNamespace>
-    <AssemblyName>Blog</AssemblyName>
+    <RootNamespace>Blog.Utilidades</RootNamespace>
+    <AssemblyName>Blog.Utilidades</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,18 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObterCitacaoExecutor.cs" />
+    <Compile Include="StringsDeConexao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">
-      <Project>{0931a3fc-589b-4045-be7f-ace7a5a5f192}</Project>
-      <Name>Blog.Entidades</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blog.Fronteiras\Blog.Fronteiras.csproj">
-      <Project>{40fbf56b-887c-4256-a993-829bd29bdf72}</Project>
-      <Name>Blog.Fronteiras</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

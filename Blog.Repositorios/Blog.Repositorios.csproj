@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +44,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitacaoRepositorio.cs" />
+    <Compile Include="Entidades\CitacaoBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">
+      <Project>{0931a3fc-589b-4045-be7f-ace7a5a5f192}</Project>
+      <Name>Blog.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Fronteiras\Blog.Fronteiras.csproj">
+      <Project>{40fbf56b-887c-4256-a993-829bd29bdf72}</Project>
+      <Name>Blog.Fronteiras</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Utilidades\Blog.Utilidades.csproj">
+      <Project>{16f12535-699f-4f51-ab07-91110ef4add5}</Project>
+      <Name>Blog.Utilidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

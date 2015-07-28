@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog
+namespace Blog.Fronteiras.Executores.ObterCitacao
 {
-    public class Class1
+    interface IObterCitacaoApresentador
     {
     }
 }
