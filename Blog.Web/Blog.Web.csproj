@@ -1503,6 +1503,7 @@
     <Content Include="assets\plugins\vector-map\README.md" />
     <Content Include="assets\plugins\wow-animations\LICENSE-MIT" />
     <Content Include="assets\plugins\wow-animations\README.md" />
+    <None Include="Properties\PublishProfiles\BrenoSarkis.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

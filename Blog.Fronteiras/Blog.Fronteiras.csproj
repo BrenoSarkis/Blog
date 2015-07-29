@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Executores\CriarTag\CriarTagRequisicao.cs" />
+    <Compile Include="Executores\CriarTag\CriarTagResultado.cs" />
+    <Compile Include="Executores\CriarTag\ICriarTagApresentador.cs" />
+    <Compile Include="Executores\CriarTag\ICriarTagExecutor.cs" />
     <Compile Include="Executores\IApresentador.cs" />
     <Compile Include="Executores\IExecutor.cs" />
     <Compile Include="Executores\ObterCitacao\IObterCitacaoApresentador.cs" />
@@ -49,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ICitacaoRepositorio.cs" />
     <Compile Include="Repositorios\IPostRepositorio.cs" />
+    <Compile Include="Repositorios\ITagRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">

@@ -25,7 +25,7 @@ namespace Blog.Web.Controllers
     {
         public string Citacao { get; private set; }
 
-        public void ApresentarResultado(ObterCitacaoResultado resultado)
+        public void Apresentar(ObterCitacaoResultado resultado)
         {
             Citacao = String.Format(@"""{0}"" - {1}", resultado.Texto, resultado.Autor);
         }

@@ -8,6 +8,6 @@ namespace Blog.Fronteiras.Executores
 {
     public interface IApresentador<TResultado> where TResultado : class
     {
-        void ApresentarResultado(TResultado resultado);
+        void Apresentar(TResultado resultado);
     }
 }
