@@ -29,6 +29,7 @@
     <!-- CSS Customization -->
     <link rel="stylesheet" href="~/assets/css/custom.css">
     <link href="~/assets/css/theme-colors/dark-blue.css" rel="stylesheet" />
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="header-v8 header-sticky">
@@ -226,19 +227,21 @@
     </div>
 
     <!-- JS Global Compulsory -->
-    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/jquery/jquery-migrate.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/jquery/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <!-- JS Implementing Plugins -->
-    <script type="text/javascript" src="assets/plugins/back-to-top.js"></script>
-    <script type="text/javascript" src="assets/plugins/smoothScroll.js"></script>
-    <script type="text/javascript" src="assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/back-to-top.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/smoothScroll.js"></script>
+    <script type="text/javascript" src="~/assets/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
     <!-- JS Customization -->
-    <script type="text/javascript" src="assets/js/custom.js"></script>
+    <script type="text/javascript" src="~/assets/js/custom.js"></script>
     <!-- JS Page Level -->
-    <script type="text/javascript" src="assets/js/app.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/fancy-box.js"></script>
+    <script type="text/javascript" src="~/assets/js/app.js"></script>
+    <script type="text/javascript" src="~/assets/js/plugins/fancy-box.js"></script>
     <script type="text/javascript">
+
     jQuery(document).ready(function() {
       	App.init();
         FancyBox.initFancybox();

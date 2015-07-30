@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,13 @@ namespace Blog.Web.Controllers
     {
         public ActionResult NovoPost()
         {
-            return View();
+            return View(new NovoPostViewModel());
+        }
+
+        public ActionResult AdicionarTagAoPost(NovoPostViewModel post)
+        {
+            post.Tags.Add(post.Tag);
+            return View("NovoPost", post);
         }
     }
 }
