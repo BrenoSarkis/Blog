@@ -1,4 +1,4 @@
-﻿using Blog.Repositorios;
+﻿using Blog.Web.App_Start;
 using Blog.Web.Controllers;
 using System;
 using System.Collections.Generic;

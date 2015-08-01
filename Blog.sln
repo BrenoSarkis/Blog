@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Entidades", "Blog.Enti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Utilidades", "Blog.Utilidades\Blog.Utilidades.csproj", "{16F12535-699F-4F51-AB07-91110EF4ADD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.InversaoDeControle", "Blog.InversaoDeControle\Blog.InversaoDeControle.csproj", "{16EA49D5-00F5-4199-A4A5-1843CA97A033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{16F12535-699F-4F51-AB07-91110EF4ADD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16F12535-699F-4F51-AB07-91110EF4ADD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16F12535-699F-4F51-AB07-91110EF4ADD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16EA49D5-00F5-4199-A4A5-1843CA97A033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16EA49D5-00F5-4199-A4A5-1843CA97A033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16EA49D5-00F5-4199-A4A5-1843CA97A033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16EA49D5-00F5-4199-A4A5-1843CA97A033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

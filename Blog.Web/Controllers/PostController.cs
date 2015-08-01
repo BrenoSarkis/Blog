@@ -1,6 +1,5 @@
 ﻿using Blog.Fronteiras.Executores.ListarPosts;
 using Blog.Fronteiras.Executores.SalvarPost;
-using Blog.Repositorios;
 using Blog.Web.Apresentadores;
 using Blog.Web.Models;
 using System;
@@ -14,6 +13,15 @@ namespace Blog.Web.Controllers
 {
     public class PostController : Controller
     {
+        private readonly IListarPostsApresentador listarPostsApresentador;
+        private readonly IListarPostsExecutor listarPostsExecutor;
+
+        public PostController(IListarPostsApresentador listarPostsApresentador, IListarPostsExecutor listarPostsExecutor)
+        {
+            this.listarPostsApresentador = listarPostsApresentador;
+            this.listarPostsExecutor = listarPostsExecutor;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -34,7 +42,7 @@ namespace Blog.Web.Controllers
                 Tags = novoPost.Tags
             };
 
-            new SalvarPostExecutor(new PostRepositorio()).Executar(requisicao);
+            //new SalvarPostExecutor(new PostRepositorio()).Executar(requisicao);
         }
 
 

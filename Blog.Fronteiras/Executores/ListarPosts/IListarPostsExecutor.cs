@@ -8,5 +8,6 @@ namespace Blog.Fronteiras.Executores.ListarPosts
 {
     public interface IListarPostsExecutor : IExecutor<ListarPostsRequisicao>
     {
+        IListarPostsApresentador Apresentador { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Blog.Fronteiras.Executores;
 using Blog.Fronteiras.Executores.ObterCitacao;
-using Blog.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +12,10 @@ namespace Blog.Web.Controllers
     {
         public ActionResult Index()
         {
-            var apresentador = new ObterCitacaoApresentador();
-            var executor = new ObterCitacaoExecutor(new CitacaoRepositorio(), apresentador);
-            executor.Executar();
-            ViewBag.Citacao = apresentador.Citacao;
+            //var apresentador = new ObterCitacaoApresentador();
+            //var executor = new ObterCitacaoExecutor(new CitacaoRepositorio(), apresentador);
+            //executor.Executar();
+            //ViewBag.Citacao = apresentador.Citacao;
             return View();
         }
     }

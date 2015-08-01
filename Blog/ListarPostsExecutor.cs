@@ -10,14 +10,15 @@ namespace Blog
 {
     public class ListarPostsExecutor : IListarPostsExecutor
     {
-        private readonly IListarPostsApresentador apresentador;
+
         private readonly IPostRepositorio postRepositorio;
 
-        public ListarPostsExecutor(IListarPostsApresentador apresentador, IPostRepositorio postRepositorio)
+        public ListarPostsExecutor(IPostRepositorio postRepositorio)
         {
-            this.apresentador = apresentador;
             this.postRepositorio = postRepositorio;
         }
+
+        public IListarPostsApresentador Apresentador { get; set; }
 
         public void Executar(ListarPostsRequisicao requisicao)
         {
@@ -34,7 +35,7 @@ namespace Blog
                                   Data = p.Data
                               };
 
-            this.apresentador.Apresentar(resultado);
+            Apresentador.Apresentar(resultado);
         }
     }
 }
