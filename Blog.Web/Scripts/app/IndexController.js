@@ -1,14 +1,15 @@
 ﻿angular.module('IndexApp', [])
-    .controller('IndexController', function ($scope, $http) {
+    .controller('IndexController', function ($scope, $http, $sce) {
         $scope.posts = [];
-
         $scope.listarPosts = function () {
             $http({
                 method: 'GET',
-                url: '/Post/Index'
+                url: 'api/ListarPosts/'
             }).success(function (data, status, headers, config) {
-                debugger;
                 $scope.posts = data;
+                angular.forEach($scope.posts, function (value, key) {
+                    value.Conteudo = $sce.trustAsHtml(value.Conteudo);
+                });
             }).error(function (data, status, headers, config) {
 
             });

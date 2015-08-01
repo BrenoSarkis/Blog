@@ -21,6 +21,7 @@ namespace Blog.Fronteiras.Executores.ListarPosts
             public string Titulo { get; set; }
             public string CaminhoDaImagemDaCapa { get; set; }
             public int ContagemDeComentarios { get; set; }
+            public DateTime Data { get; set; }
             public string[] Tags { get; set; }
         }
     }

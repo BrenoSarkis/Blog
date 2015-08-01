@@ -30,7 +30,8 @@ namespace Blog
                                   CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
                                   Conteudo = p.Conteudo,
                                   Tags = p.Tags,
-                                  Titulo = p.Titulo
+                                  Titulo = p.Titulo,
+                                  Data = p.Data
                               };
 
             this.apresentador.Apresentar(resultado);

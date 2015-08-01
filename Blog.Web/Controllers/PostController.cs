@@ -8,27 +8,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace Blog.Web.Controllers
 {
-    public class PostController : ApiController
+    public class PostController : Controller
     {
-        [HttpGet]
-        [Route("api/ListarPosts")]
-        public IEnumerable<PostResumidoViewModel> ListarPosts()
+        public ActionResult Index()
         {
-            var postRepositorio = new PostRepositorio();
-            var apresentador = new ListarPostsApresentador();
-            var executor = new ListarPostsExecutor(apresentador, postRepositorio);
-            executor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10 });
-            return apresentador.PostsResumidos;
+            return View();
         }
 
-        //public ActionResult Novo()
-        //{
-        //    //return View(new NovoPostViewModel());
-        //    return null;
-        //}
+        public ActionResult Novo()
+        {
+            return View(new NovoPostViewModel());
+        }
 
         public void Salvar(NovoPostViewModel novoPost)
         {
