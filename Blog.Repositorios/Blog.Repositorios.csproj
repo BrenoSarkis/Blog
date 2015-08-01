@@ -46,7 +46,9 @@
   <ItemGroup>
     <Compile Include="CitacaoRepositorio.cs" />
     <Compile Include="Entidades\CitacaoBD.cs" />
+    <Compile Include="Entidades\PostBD.cs" />
     <Compile Include="Entidades\TagBD.cs" />
+    <Compile Include="PostRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagRepositorio.cs" />
   </ItemGroup>

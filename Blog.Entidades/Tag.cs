@@ -10,5 +10,6 @@ namespace Blog.Entidades
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }
+        public int CodigoDoPost { get; set; }
     }
 }

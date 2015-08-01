@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Fronteiras.Repositorios
+namespace Blog.Repositorios.Entidades
 {
-    public interface IPostRepositorio
+    public class PostBD : Post
     {
-        void Salvar(Post post);
     }
 }

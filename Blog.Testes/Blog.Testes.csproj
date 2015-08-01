@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\PostTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validadores\PostValidadorTestes.cs" />
   </ItemGroup>
@@ -53,11 +54,16 @@
   <ItemGroup>
     <Folder Include="Dublês\Apresentadores\" />
     <Folder Include="Dublês\Repositorios\" />
-    <Folder Include="Entidades\" />
     <Folder Include="Executores\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">
+      <Project>{0931a3fc-589b-4045-be7f-ace7a5a5f192}</Project>
+      <Name>Blog.Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
