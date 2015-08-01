@@ -9,5 +9,6 @@ namespace Blog.Repositorios.Entidades
 {
     public class PostBD : Post
     {
+        public int Codigo { get; set; }
     }
 }

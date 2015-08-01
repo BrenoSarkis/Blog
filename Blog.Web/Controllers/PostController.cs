@@ -1,25 +1,34 @@
-﻿using Blog.Fronteiras.Executores.SalvarPost;
+﻿using Blog.Fronteiras.Executores.ListarPosts;
+using Blog.Fronteiras.Executores.SalvarPost;
 using Blog.Repositorios;
+using Blog.Web.Apresentadores;
 using Blog.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace Blog.Web.Controllers
 {
-    public class PostController : Controller
+    public class PostController : ApiController
     {
-        public ActionResult Index()
+        [HttpGet]
+        [Route("api/ListarPosts")]
+        public IEnumerable<PostResumidoViewModel> ListarPosts()
         {
-            return View();
+            var postRepositorio = new PostRepositorio();
+            var apresentador = new ListarPostsApresentador();
+            var executor = new ListarPostsExecutor(apresentador, postRepositorio);
+            executor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10 });
+            return apresentador.PostsResumidos;
         }
 
-        public ActionResult Novo()
-        {
-            return View(new NovoPostViewModel());
-        }
+        //public ActionResult Novo()
+        //{
+        //    //return View(new NovoPostViewModel());
+        //    return null;
+        //}
 
         public void Salvar(NovoPostViewModel novoPost)
         {

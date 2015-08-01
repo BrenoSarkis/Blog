@@ -10,5 +10,6 @@ namespace Blog.Fronteiras.Repositorios
     public interface IPostRepositorio
     {
         void Salvar(Post post);
+        IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts);
     }
 }

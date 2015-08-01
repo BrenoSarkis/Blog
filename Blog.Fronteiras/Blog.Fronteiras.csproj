@@ -55,7 +55,7 @@
     <Compile Include="Executores\ObterCitacao\ObterCitacaoResultado.cs" />
     <Compile Include="Executores\SalvarPost\ISalvarPostExecutor.cs" />
     <Compile Include="Executores\SalvarPost\SalvarPostRequisicao.cs" />
-    <Compile Include="IMapeador.cs" />
+    <Compile Include="IMapeadorDeObjetos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ICitacaoRepositorio.cs" />
     <Compile Include="Repositorios\IPostRepositorio.cs" />
