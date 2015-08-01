@@ -1,11 +1,10 @@
 ﻿@model Blog.Web.Models.NovoPostViewModel
 
-<div ng-app="PostApp" ng-controller="PostController">
+<div ng-app="NovoPostApp" ng-controller="NovoPostController">
     <form id="formularioNovoPost" data-ng-submit="salvar()" action="#" class="sky-form">
         <header>Novo Post</header>
         <fieldset>
-            <div class="row">
-                <section class="col col-8">
+                <section class="col col-8" style="padding:0px;">
                     <label class="label">Título</label>
                     <label class="input">
                         <input type="text" name="textBoxTitulo" ng-model="post.Titulo">
@@ -23,16 +22,26 @@
                         <input id="botaoDeAdicionarTag" type="button" value="Adicionar" class="btn-u btn-u-blue" ng-click="adicionarTag()" />
                     </div>
                 </section>
-            </div>
             <section>
-               <table>
-                   <tr>
-                       <td ng-repeat="tag in post.Tags track by $index" style="padding-right:15px;"><a class="glyphicon glyphicon-tag" ng-click="removerTag($index)" style="text-decoration:none;"></a> {{ tag }}</td>
-                   </tr>
-               </table>
+                <table>
+                    <tr>
+                        <td ng-repeat="tag in post.Tags track by $index" style="padding-right:15px;"><a class="glyphicon glyphicon-tag" ng-click="removerTag($index)" style="text-decoration:none;"></a> {{ tag }}</td>
+                    </tr>
+                </table>
             </section>
-            <textarea id="textAreaConteudoPost" ck-editor ng-model="post.Conteudo"></textarea>
+            <section class="col-8">
+                <label class="label">Imagem da capa</label>
+                <label class="input">
+                    <input type="text" name="textBoxImagemDaCapa" ng-model="post.CaminhoDaImagemDaCapa">
+                </label>
+            </section>
+            <div class="row">
+                <section>
+                    <textarea id="textAreaConteudoPost" ck-editor ng-model="post.Conteudo"></textarea>
+                </section>
+            </div>
         </fieldset>
+
         <footer>
             <button type="submit" class="btn-u">Salvar</button>
             <button type="button" class="btn-u btn-u-default" onclick="window.history.back();">Voltar</button>

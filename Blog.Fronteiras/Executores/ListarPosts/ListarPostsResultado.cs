@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blog.Fronteiras.Executores.SalvarPost
+namespace Blog.Fronteiras.Executores.ListarPosts
 {
-    public class SalvarPostRequisicao
+    public class ListarPostsResultado
     {
-        public string Titulo { get; set; }
         public string Conteudo { get; set; }
+        public string Titulo { get; set; }
         public string CaminhoDaImagemDaCapa { get; set; }
+        public int ContagemDeComentarios { get; set; }
         public string[] Tags { get; set; }
     }
 }

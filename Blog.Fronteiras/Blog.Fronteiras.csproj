@@ -46,6 +46,10 @@
     <Compile Include="Executores\CriarTag\ICriarTagExecutor.cs" />
     <Compile Include="Executores\IApresentador.cs" />
     <Compile Include="Executores\IExecutor.cs" />
+    <Compile Include="Executores\ListarPosts\IListarPostsApresentador.cs" />
+    <Compile Include="Executores\ListarPosts\IListarPostsExecutor.cs" />
+    <Compile Include="Executores\ListarPosts\ListarPostsRequisicao.cs" />
+    <Compile Include="Executores\ListarPosts\ListarPostsResultado.cs" />
     <Compile Include="Executores\ObterCitacao\IObterCitacaoApresentador.cs" />
     <Compile Include="Executores\ObterCitacao\IObterCitacaoExecutor.cs" />
     <Compile Include="Executores\ObterCitacao\ObterCitacaoResultado.cs" />

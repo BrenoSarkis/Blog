@@ -11,7 +11,12 @@ namespace Blog.Web.Controllers
 {
     public class PostController : Controller
     {
-        public ActionResult NovoPost()
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Novo()
         {
             return View(new NovoPostViewModel());
         }
@@ -22,10 +27,13 @@ namespace Blog.Web.Controllers
             {
                 Titulo = novoPost.Titulo,
                 Conteudo = novoPost.Conteudo,
+                CaminhoDaImagemDaCapa = novoPost.CaminhoDaImagemDaCapa,
                 Tags = novoPost.Tags
             };
 
             new SalvarPostExecutor(new PostRepositorio()).Executar(requisicao);
         }
+
+
     }
 }
