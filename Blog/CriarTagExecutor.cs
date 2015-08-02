@@ -14,6 +14,7 @@ namespace Blog
         private readonly ITagRepositorio tagRepositorio;
         private readonly ICriarTagApresentador apresentador;
 
+
         public CriarTagExecutor(ITagRepositorio tagRepositorio, ICriarTagApresentador apresentador)
         {
             this.tagRepositorio = tagRepositorio;
