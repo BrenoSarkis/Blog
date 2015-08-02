@@ -19,7 +19,7 @@ namespace Blog.Repositorios
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
                 var posts = conexao.Query<PostBD>(String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
-                                                                SELECT Titulo, Conteudo, Link, Data, CaminhoDaImagemDaCapa
+                                                                SELECT Codigo, Titulo, Conteudo, Link, Data, CaminhoDaImagemDaCapa
                                                                 FROM Post
                                                                 ORDER BY Codigo
                                                                 OFFSET(@Pagina - 1) * @QuantidadeDePosts ROWS
