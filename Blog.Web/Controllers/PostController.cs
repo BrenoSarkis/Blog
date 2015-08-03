@@ -13,18 +13,22 @@ namespace Blog.Web.Controllers
 {
     public class PostController : Controller
     {
-        private readonly IListarPostsApresentador listarPostsApresentador;
         private readonly IListarPostsExecutor listarPostsExecutor;
+        private readonly ISalvarPostExecutor salvarPostExecutor;
 
-        public PostController(IListarPostsApresentador listarPostsApresentador, IListarPostsExecutor listarPostsExecutor)
+        public PostController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor)
         {
-            this.listarPostsApresentador = listarPostsApresentador;
             this.listarPostsExecutor = listarPostsExecutor;
+            this.salvarPostExecutor = salvarPostExecutor;
         }
 
         public ActionResult Index()
         {
-            return View();
+            var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10 };
+            var apresentador = new ListarPostsApresentador();
+            listarPostsExecutor.Apresentador = apresentador;
+            listarPostsExecutor.Executar(requisicao);
+            return View(apresentador.PostsResumidos);
         }
 
         public ActionResult Novo()
@@ -42,7 +46,7 @@ namespace Blog.Web.Controllers
                 Tags = novoPost.Tags
             };
 
-            //new SalvarPostExecutor(new PostRepositorio()).Executar(requisicao);
+            salvarPostExecutor.Executar(requisicao);
         }
 
 

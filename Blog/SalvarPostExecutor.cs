@@ -25,6 +25,7 @@ namespace Blog
             post.Conteudo = requisicao.Conteudo;
             post.Tags = requisicao.Tags;
             post.Data = DateTime.Now;
+            post.CaminhoDaImagemDaCapa = requisicao.CaminhoDaImagemDaCapa;
 
             this.postRepositorio.Salvar(post);
         }

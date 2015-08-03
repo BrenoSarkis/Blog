@@ -38,8 +38,8 @@ namespace Blog.Repositorios
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
-                int codigo = conexao.Query<int>(@"INSERT INTO [Post] (Titulo, Conteudo, Data, Link) values (@Titulo, @Conteudo, @Data, @Link);
-                                                  SELECT CAST(SCOPE_IDENTITY() as int)", new { post.Titulo, post.Conteudo, post.Data, post.Link }).Single();
+                int codigo = conexao.Query<int>(@"INSERT INTO [Post] (Titulo, Conteudo, Data, Link, CaminhoDaImagemDaCapa) values (@Titulo, @Conteudo, @Data, @Link, @CaminhoDaImagemDaCapa);
+                                                  SELECT CAST(SCOPE_IDENTITY() as int)", new { post.Titulo, post.Conteudo, post.Data, post.Link, post.CaminhoDaImagemDaCapa }).Single();
 
                 foreach (var tag in post.Tags)
                 {
