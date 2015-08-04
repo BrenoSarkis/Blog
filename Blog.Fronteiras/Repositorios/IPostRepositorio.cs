@@ -11,5 +11,6 @@ namespace Blog.Fronteiras.Repositorios
     {
         void Salvar(Post post);
         IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts);
+        IEnumerable<string> ListarTodasAsTagsUnicas();
     }
 }

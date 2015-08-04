@@ -34,6 +34,14 @@ namespace Blog.Repositorios
             }
         }
 
+        public IEnumerable<string> ListarTodasAsTagsUnicas()
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                return conexao.Query<string>("SELECT DISTINCT TAG FROM TagsDoPost");
+            }
+        }
+
         public void Salvar(Post post)
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))

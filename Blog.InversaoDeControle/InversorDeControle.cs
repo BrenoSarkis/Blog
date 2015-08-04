@@ -11,6 +11,7 @@ using Blog.Fronteiras.Repositorios;
 using Blog.Repositorios;
 using Blog.Fronteiras.Executores.SalvarPost;
 using Blog.Fronteiras.Executores.ListarPosts;
+using Blog.Fronteiras.Executores.ListarTags;
 
 namespace Blog.InversaoDeControle
 {
@@ -26,6 +27,7 @@ namespace Blog.InversaoDeControle
             kernel.Bind<IPostRepositorio>().To<PostRepositorio>();
             kernel.Bind<ISalvarPostExecutor>().To<SalvarPostExecutor>();
             kernel.Bind<IListarPostsExecutor>().To<ListarPostsExecutor>();
+            kernel.Bind<IListarTagsExecutor>().To<ListarTagsExecutor>();
         }
     }
 }
