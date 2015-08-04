@@ -16,9 +16,9 @@ namespace Blog.Web.Apresentadores
                              select new PostResumidoViewModel
                              {
                                  CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
-                                 Conteudo = p.Conteudo.Substring(0, Math.Min(150, p.Conteudo.Length)) + "...",
+                                 Conteudo = p.Conteudo.Substring(0, Math.Min(580, p.Conteudo.Length)) + "...",
                                  Tags = String.Join(",", p.Tags),
-                                 DataPorExtenso = p.Data.ToString("MMM dd, yyyy", CultureInfo.InvariantCulture),
+                                 DataPorExtenso = p.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
                                  Titulo = p.Titulo
                              };
         }
