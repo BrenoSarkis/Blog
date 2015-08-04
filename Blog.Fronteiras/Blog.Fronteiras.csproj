@@ -56,6 +56,10 @@
     <Compile Include="Executores\ObterCitacao\IObterCitacaoApresentador.cs" />
     <Compile Include="Executores\ObterCitacao\IObterCitacaoExecutor.cs" />
     <Compile Include="Executores\ObterCitacao\ObterCitacaoResultado.cs" />
+    <Compile Include="Executores\ObterPost\IObterPostApresentador.cs" />
+    <Compile Include="Executores\ObterPost\IObterPostExecutor.cs" />
+    <Compile Include="Executores\ObterPost\ObterPostRequisicao.cs" />
+    <Compile Include="Executores\ObterPost\ObterPostResultado.cs" />
     <Compile Include="Executores\SalvarPost\ISalvarPostExecutor.cs" />
     <Compile Include="Executores\SalvarPost\SalvarPostRequisicao.cs" />
     <Compile Include="IMapeadorDeObjetos.cs" />

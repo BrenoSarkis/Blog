@@ -154,11 +154,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Apresentadores\ListarPostsApresentador.cs" />
     <Compile Include="Apresentadores\ListarTagsApresentador.cs" />
+    <Compile Include="Apresentadores\ObterPostApresentador.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PostDetalhadoViewModel.cs" />
     <Compile Include="Models\PostResumidoViewModel.cs" />
     <Compile Include="Models\NovoPostViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

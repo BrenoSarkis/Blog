@@ -1,4 +1,5 @@
 ﻿using Blog.Fronteiras.Executores.ListarPosts;
+using Blog.Fronteiras.Executores.ObterPost;
 using Blog.Fronteiras.Executores.SalvarPost;
 using Blog.Web.Apresentadores;
 using Blog.Web.Models;
@@ -15,11 +16,13 @@ namespace Blog.Web.Controllers
     {
         private readonly IListarPostsExecutor listarPostsExecutor;
         private readonly ISalvarPostExecutor salvarPostExecutor;
+        private readonly IObterPostExecutor obterPostExecutor;
 
-        public PostController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor)
+        public PostController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor, IObterPostExecutor obterPostExecutor)
         {
             this.listarPostsExecutor = listarPostsExecutor;
             this.salvarPostExecutor = salvarPostExecutor;
+            this.obterPostExecutor = obterPostExecutor;
         }
 
         public ActionResult Index()
@@ -49,6 +52,14 @@ namespace Blog.Web.Controllers
             salvarPostExecutor.Executar(requisicao);
         }
 
+        public void Obter(int ano, int mes, int dia, string titulo)
+        {
+            var requisicao = new ObterPostRequisicao();
+            requisicao.Url = String.Format("{0}/{1}/{2}/{3}", ano, mes.ToString().PadLeft(2, '0'), dia.ToString().PadLeft(2, '0'), titulo);
+            var apresentador = new ObterPostApresentador();
+            this.obterPostExecutor.Apresentador = apresentador;
+            this.obterPostExecutor.Executar(requisicao);
+        }
 
     }
 }

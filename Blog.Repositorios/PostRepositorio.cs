@@ -42,6 +42,21 @@ namespace Blog.Repositorios
             }
         }
 
+        public Post ObterPorUrl(string url)
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                var post = conexao.Query<PostBD>(@"SELECT Codigo, Titulo, Conteudo, Link, Data, CaminhoDaImagemDaCapa
+                                                             FROM Post
+                                                             WHERE Link = @Url", new { url }).FirstOrDefault();
+                if (post == null) return null;
+
+                post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+
+                return post;
+            }
+        }
+
         public void Salvar(Post post)
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))

@@ -18,6 +18,22 @@ namespace Blog.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //        name: "PostDetalhado",
+            //        url: "{yyyy}/{mm}/{dd}/{titulo}",
+            //        defaults: new { controller = "Post", action = "Obter" } 
+            //        //constraints: new { yyyy = @"(19|20)\d\d.", mm = @"\d\d", dd = @"\d\d" }
+            //    );
+
+            routes.MapRoute(
+                    "PostDetalhado",
+                    "{ano}/{mes}/{dia}/{titulo}",
+                    new
+                    {
+                        controller = "Post",
+                        action = "Obter"
+                    });
         }
     }
 }
