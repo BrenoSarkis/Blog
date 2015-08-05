@@ -30,7 +30,7 @@ namespace Blog
             resultado.Data = post.Data;
             resultado.Tags = post.Tags;
             resultado.Titulo = post.Titulo;
-            resultado.Url = post.Link;
+            resultado.Url = post.Url;
 
             Apresentador.Apresentar(resultado);
         }

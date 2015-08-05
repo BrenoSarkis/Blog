@@ -12,27 +12,27 @@ namespace Blog.Testes.Entidades
     public class PostTestes
     {
         [Test]
-        public void Link_QuandoTodasAsInformacoesEstaoPreenchidas_MontaOLinkCorretamente()
+        public void Url_QuandoTodasAsInformacoesEstaoPreenchidas_MontaAUrlCorretamente()
         {
             var post = new Post();
             post.Data = new DateTime(2015, 01, 01);
             post.Titulo = "Um titulo de teste";
 
-            string linkEsperado = "2015/01/01/Um-titulo-de-teste/";
+            string urlEsperada = "2015/01/01/Um-titulo-de-teste/";
 
-            Assert.AreEqual(linkEsperado, post.Link);
+            Assert.AreEqual(urlEsperada, post.Url);
         }
 
         [Test]
-        public void Link_QuandoOTituloContemAcento_MontaOLinkSemAcento()
+        public void Url_QuandoOTituloContemAcento_MontaAUrlSemAcento()
         {
             var post = new Post();
             post.Data = new DateTime(2015, 01, 01);
             post.Titulo = "í á ê";
 
-            string linkEsperado = "2015/01/01/i-a-e/";
+            string urlEsperada = "2015/01/01/i-a-e/";
 
-            Assert.AreEqual(linkEsperado, post.Link);
+            Assert.AreEqual(urlEsperada, post.Url);
         }
     }
 }

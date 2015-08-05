@@ -52,14 +52,14 @@ namespace Blog.Web.Controllers
             salvarPostExecutor.Executar(requisicao);
         }
 
-        public void Obter(int ano, int mes, int dia, string titulo)
+        public ActionResult Detalhar(int ano, int mes, int dia, string titulo)
         {
             var requisicao = new ObterPostRequisicao();
             requisicao.Url = String.Format("{0}/{1}/{2}/{3}", ano, mes.ToString().PadLeft(2, '0'), dia.ToString().PadLeft(2, '0'), titulo);
             var apresentador = new ObterPostApresentador();
             this.obterPostExecutor.Apresentador = apresentador;
             this.obterPostExecutor.Executar(requisicao);
+            return View("PostDetalhado", apresentador.Post);
         }
-
     }
 }

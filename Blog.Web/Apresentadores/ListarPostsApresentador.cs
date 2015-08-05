@@ -19,7 +19,8 @@ namespace Blog.Web.Apresentadores
                                  Conteudo = p.Conteudo.Substring(0, Math.Min(580, p.Conteudo.Length)) + "...",
                                  Tags = String.Join(",", p.Tags),
                                  DataPorExtenso = p.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
-                                 Titulo = p.Titulo
+                                 Titulo = p.Titulo,
+                                 Url = p.Url
                              };
         }
 

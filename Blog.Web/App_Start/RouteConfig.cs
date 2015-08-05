@@ -28,11 +28,11 @@ namespace Blog.Web
 
             routes.MapRoute(
                     "PostDetalhado",
-                    "{ano}/{mes}/{dia}/{titulo}",
+                    "{controller}/{action}/{ano}/{mes}/{dia}/{titulo}",
                     new
                     {
                         controller = "Post",
-                        action = "Obter"
+                        action = "Detalhar"
                     });
         }
     }

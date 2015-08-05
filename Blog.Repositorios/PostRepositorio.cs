@@ -19,7 +19,7 @@ namespace Blog.Repositorios
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
                 var posts = conexao.Query<PostBD>(String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
-                                                                SELECT Codigo, Titulo, Conteudo, Link, Data, CaminhoDaImagemDaCapa
+                                                                SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
                                                                 FROM Post
                                                                 ORDER BY Codigo
                                                                 OFFSET(@Pagina - 1) * @QuantidadeDePosts ROWS
@@ -46,9 +46,9 @@ namespace Blog.Repositorios
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
-                var post = conexao.Query<PostBD>(@"SELECT Codigo, Titulo, Conteudo, Link, Data, CaminhoDaImagemDaCapa
+                var post = conexao.Query<PostBD>(@"SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
                                                              FROM Post
-                                                             WHERE Link = @Url", new { url }).FirstOrDefault();
+                                                             WHERE Url = @Url", new { url }).FirstOrDefault();
                 if (post == null) return null;
 
                 post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
@@ -61,8 +61,8 @@ namespace Blog.Repositorios
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
-                int codigo = conexao.Query<int>(@"INSERT INTO [Post] (Titulo, Conteudo, Data, Link, CaminhoDaImagemDaCapa) values (@Titulo, @Conteudo, @Data, @Link, @CaminhoDaImagemDaCapa);
-                                                  SELECT CAST(SCOPE_IDENTITY() as int)", new { post.Titulo, post.Conteudo, post.Data, post.Link, post.CaminhoDaImagemDaCapa }).Single();
+                int codigo = conexao.Query<int>(@"INSERT INTO [Post] (Titulo, Conteudo, Data, Url, CaminhoDaImagemDaCapa) values (@Titulo, @Conteudo, @Data, @Url, @CaminhoDaImagemDaCapa);
+                                                  SELECT CAST(SCOPE_IDENTITY() as int)", new { post.Titulo, post.Conteudo, post.Data, post.Url, post.CaminhoDaImagemDaCapa }).Single();
 
                 foreach (var tag in post.Tags)
                 {

@@ -23,6 +23,7 @@ namespace Blog.Fronteiras.Executores.ListarPosts
             public int ContagemDeComentarios { get; set; }
             public DateTime Data { get; set; }
             public string[] Tags { get; set; }
+            public string Url { get; set; }
         }
     }
 }

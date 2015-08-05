@@ -15,5 +15,6 @@ namespace Blog.Web.Models
         public int ContagemDeComentarios { get; set; }
         public string DataPorExtenso { get; set; }
         public string Tags { get; set; }
+        public string Url { get; set; }
     }
 }

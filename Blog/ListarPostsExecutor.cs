@@ -32,7 +32,8 @@ namespace Blog
                                   Conteudo = p.Conteudo,
                                   Tags = p.Tags,
                                   Titulo = p.Titulo,
-                                  Data = p.Data
+                                  Data = p.Data,
+                                  Url = p.Url
                               };
 
             Apresentador.Apresentar(resultado);
