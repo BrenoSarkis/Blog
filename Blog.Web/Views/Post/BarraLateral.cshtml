@@ -1,6 +1,22 @@
 ﻿@model Blog.Web.Models.FerramentasDoBlogViewModel
 
-<div class="col-md-3">
+<ul>
+    @foreach (var postAgrupadoPorMesAno in Model.ArvoreDePosts.PostsAgrupadosPorMesEAno)
+    {
+        <li><a href="@postAgrupadoPorMesAno.UrlParaDetalhar">@postAgrupadoPorMesAno.MesEAnoFormato</a></li>
+        <li>
+            <ul>
+                @foreach (var post in postAgrupadoPorMesAno.Posts)
+                {
+                    <li><a href="@post.UrlParaDetalhar">@post.Titulo</a></li>
+                }
+            </ul>
+        </li>
+    }
+</ul>
+
+
+@*<div class="col-md-3">
     <div class="headline-v2"><h2>Trending</h2></div>
     <!-- Trending -->
     <ul class="list-unstyled blog-trending margin-bottom-50">
@@ -130,4 +146,4 @@
         </div>
     </div>
     <!-- End Blog Newsletter -->
-</div>
+</div>*@

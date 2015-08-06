@@ -7,5 +7,6 @@ namespace Blog.Web.Models
 {
     public class FerramentasDoBlogViewModel
     {
+        public ArvoreDePosts ArvoreDePosts { get; set; }
     }
 }

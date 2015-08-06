@@ -10,7 +10,6 @@ namespace Blog
 {
     public class ListarPostsExecutor : IListarPostsExecutor
     {
-
         private readonly IPostRepositorio postRepositorio;
 
         public ListarPostsExecutor(IPostRepositorio postRepositorio)

@@ -152,6 +152,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Apresentadores\ArvoreDePostsApresentador.cs" />
     <Compile Include="Apresentadores\ListarPostsApresentador.cs" />
     <Compile Include="Apresentadores\ListarTagsApresentador.cs" />
     <Compile Include="Apresentadores\ListarUltimosCincoPostsApresentador.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArvoreDePosts.cs" />
     <Compile Include="Models\FerramentasDoBlogViewModel.cs" />
     <Compile Include="Models\PostDetalhadoViewModel.cs" />
     <Compile Include="Models\PostResumidoViewModel.cs" />

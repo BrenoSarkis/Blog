@@ -61,5 +61,23 @@ namespace Blog.Web.Controllers
             this.obterPostExecutor.Executar(requisicao);
             return View("PostDetalhado", apresentador.Post);
         }
+
+        private void Arquivo()
+        {
+            var apresentador = new ArvoreDePostsApresentador();
+            this.listarPostsExecutor.Apresentador = apresentador;
+            this.listarPostsExecutor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 200 });
+            var x = apresentador.Arvore;
+        }
+
+        public ActionResult BarraLateral()
+        {
+            var viewModel = new FerramentasDoBlogViewModel();
+            var apresentador = new ArvoreDePostsApresentador();
+            this.listarPostsExecutor.Apresentador = apresentador;
+            this.listarPostsExecutor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 200 });
+            viewModel.ArvoreDePosts = apresentador.Arvore;
+            return View("BarraLateral", viewModel);
+        }
     }
 }
