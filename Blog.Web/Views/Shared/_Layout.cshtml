@@ -106,7 +106,7 @@
             <em class="pull-left">@ViewBag.Citacao</em>
         </div>
     </div>
-    <div class="container content-md">
+    <div class="content-sm @(Request.RawUrl.Contains("Detalhar") ? " bg-color-light": " container")">
         <div class="row">
             @RenderBody()
         </div>

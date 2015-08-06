@@ -2,6 +2,7 @@
 using Blog.Web.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -15,7 +16,8 @@ namespace Blog.Web.Apresentadores
             {
                 CaminhoDaImagemDaCapa = resultado.CaminhoDaImagemDaCapa,
                 Conteudo = resultado.Conteudo,
-                Titulo = resultado.Titulo
+                Titulo = resultado.Titulo,
+                DataPorExtenso = resultado.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
             };
         }
 
