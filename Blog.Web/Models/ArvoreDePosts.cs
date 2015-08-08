@@ -24,9 +24,9 @@ namespace Blog.Web.Models
 
         public int Mes { get; set; }
         public int Ano { get; set; }
-        public string MesEAnoFormato { get { return String.Format("{0}/{1}", Mes.ToString().PadLeft(2, '0'), Ano); } }
+        public string MesEAnoFormato { get { return new DateTime(Ano, Mes, 1).ToString("MMMM yyyy"); } }
         public int QuantidadeDePosts { get; set; }
-        public string UrlParaDetalhar { get { return MesEAnoFormato; } }
+        public string UrlParaDetalhar { get { return String.Format("{0}/{1}", Mes.ToString().PadLeft(2, '0'), Ano);  } }
         public IList<Post> Posts { get; set; }
     }
 
