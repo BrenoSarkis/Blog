@@ -73,10 +73,17 @@ namespace Blog.Web.Controllers
         public ActionResult BarraLateral()
         {
             var viewModel = new FerramentasDoBlogViewModel();
-            var apresentador = new ArvoreDePostsApresentador();
-            this.listarPostsExecutor.Apresentador = apresentador;
+
+            var arvoreDePostsApresentador = new ArvoreDePostsApresentador();
+            this.listarPostsExecutor.Apresentador = arvoreDePostsApresentador;
             this.listarPostsExecutor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 200 });
-            viewModel.ArvoreDePosts = apresentador.Arvore;
+            viewModel.ArvoreDePosts = arvoreDePostsApresentador.Arvore;
+
+            var listarUltimosCincoPostsApresentador = new ListarUltimosCincoPostsApresentador();
+            this.listarPostsExecutor.Apresentador = listarUltimosCincoPostsApresentador;
+            this.listarPostsExecutor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 200 });
+            viewModel.UltimosCincoPosts = listarUltimosCincoPostsApresentador.UltimosCincoPostsResumidos;
+
             return View("BarraLateral", viewModel);
         }
     }

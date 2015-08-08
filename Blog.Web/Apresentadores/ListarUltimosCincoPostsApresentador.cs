@@ -12,18 +12,18 @@ namespace Blog.Web.Apresentadores
     {
         public void Apresentar(ListarPostsResultado resultado)
         {
-            PostsResumidos = from p in resultado.Posts.Take(5)
-                             select new PostResumidoViewModel
-                             {
-                                 CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
-                                 Conteudo = p.Conteudo.Substring(0, Math.Min(150, p.Conteudo.Length)) + "...",
-                                 Tags = String.Join(",", p.Tags),
-                                 DataPorExtenso = p.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
-                                 Titulo = p.Titulo,
-                                 Url = p.Url
-                             };
+            UltimosCincoPostsResumidos = from p in resultado.Posts.OrderByDescending(p => p.Data).Take(5)
+                                         select new PostResumidoViewModel
+                                         {
+                                             CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
+                                             Conteudo = p.Conteudo.Substring(0, Math.Min(150, p.Conteudo.Length)) + "...",
+                                             Tags = String.Join(",", p.Tags),
+                                             DataPorExtenso = p.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
+                                             Titulo = p.Titulo,
+                                             Url = p.Url
+                                         };
         }
 
-        public IEnumerable<PostResumidoViewModel> PostsResumidos { get; set; }
+        public IEnumerable<PostResumidoViewModel> UltimosCincoPostsResumidos { get; set; }
     }
 }

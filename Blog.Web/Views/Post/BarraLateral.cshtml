@@ -16,6 +16,18 @@
 </ul>
 
 
+<ul class="list-unstyled blog-latest-posts margin-bottom-50">
+    @foreach (var post in Model.UltimosCincoPosts)
+    {
+        <li>
+            <h3><a href="@post.Url">@post.Titulo</a></h3>
+            <small>@post.DataPorExtenso/ @post.Tags</small>
+            <p>@Html.Raw(post.Conteudo)</p>
+        </li>
+    }
+</ul>
+
+
 @*<div class="col-md-3">
     <div class="headline-v2"><h2>Trending</h2></div>
     <!-- Trending -->

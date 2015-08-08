@@ -8,5 +8,6 @@ namespace Blog.Web.Models
     public class FerramentasDoBlogViewModel
     {
         public ArvoreDePosts ArvoreDePosts { get; set; }
+        public IEnumerable<PostResumidoViewModel> UltimosCincoPosts { get; set; }
     }
 }

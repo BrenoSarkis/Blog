@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Blog.Web.Models.PostResumidoViewModel>
+
+@*<div class="row" ng-app="IndexApp" ng-controller="IndexController" ng-init="init('@Html.Raw(Json.Encode(Model))')">*@
+<div class="row" ng-app="IndexApp" ng-controller="IndexController" ng-init="init()">
+    <!-- Blog All Posts -->
+    <div class="col-md-9">
+        <div ng-hide="posts.length == 0">
+            <div ng-repeat="post in posts track by $index">
+                <div ng-if="post.CaminhoDaImagemDaCapa != null">
+                    <div class="row blog blog-medium margin-bottom-40">
+                        <div class="col-md-5">
+                            <img class="img-responsive" src="{{post.CaminhoDaImagemDaCapa}}">
+                        </div>
+                        <div class="col-md-7">
+                            <h3><a href="~/Post/Detalhar/{{post.Url}}">{{post.Titulo}}</a></h3>
+                            <ul class="list-unstyled list-inline blog-info">
+                                <li><i class="fa fa-calendar"></i> {{post.DataPorExtenso}}</li>
+                                <li><i class="fa fa-comments"></i> <a href="#">{{post.ContagemDeComentarios}} Comentários</a></li>
+                                <li><i class="fa fa-tags"></i> {{post.Tags}}</li>
+                            </ul>
+                            <div ng-bind-html="post.Conteudo">
+                            </div>
+                            <p><a class="btn-u btn-u-sm" href="~/Post/Detalhar/{{post.Url}}">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+                        </div>
+                    </div>
+                    <div class="clearfix margin-bottom-20"><hr></div>
+                </div>
+                <div ng-if="post.CaminhoDaImagemDaCapa == null">
+                    <div class="row blog blog-medium margin-bottom-40">
+                        <div class="col-md-12">
+                            <h3><a href="#">{{post.Titulo}}</a></h3>
+                            <ul class="list-unstyled list-inline blog-info">
+                                <li><i class="fa fa-calendar"></i> {{post.DataPorExtenso}}</li>
+                                <li><i class="fa fa-comments"></i> <a href="#">{{post.ContagemDeComentarios}} Comentários</a></li>
+                                <li><i class="fa fa-tags"></i> {{post.Tags}}</li>
+                            </ul>
+                            <div ng-bind-html="post.Conteudo">
+                            </div>
+                            <p><a class="btn-u btn-u-sm" href="~/Post/Detalhar/{{post.Url}}">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+                        </div>
+
+                    </div>
+
+                    <div class="clearfix margin-bottom-20"><hr></div>
+                </div>
+            </div>
+        </div>
+        <!-- Pager v3 -->
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li class="active"><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+                <li><a href="#">7</a></li>
+                <li><a href="#">8</a></li>
+                <li><a href="#">»</a></li>
+            </ul>
+        </div>
+        <!-- End Pager v3 -->
+    </div>
+    <!-- End Blog All Posts -->
+    <!-- Blog Sidebar -->
+    <div class="col-md-3">
+        <div class="headline-v2 bg-color-light"><h2>Trending</h2></div>
+        <!-- Trending -->
+        <ul class="list-unstyled blog-trending margin-bottom-50">
+            <li>
+                <h3><a href="#">Proin dapibus ornare magna.</a></h3>
+                <small>19 Jan, 2015 / <a href="#">Hi-Tech,</a> <a href="#">Technology</a></small>
+            </li>
+            <li>
+                <h3><a href="#">Fusce at diam ante.</a></h3>
+                <small>17 Jan, 2015 / <a href="#">Artificial Intelligence</a></small>
+            </li>
+            <li>
+                <h3><a href="#">Donec quis consequat magna...</a></h3>
+                <small>5 Jan, 2015 / <a href="#">Web,</a> <a href="#">Webdesign</a></small>
+            </li>
+        </ul>
+        <!-- End Trending -->
+
+        <div class="headline-v2 bg-color-light"><h2>Latest Posts</h2></div>
+        <!-- Latest Links -->
+        <ul class="list-unstyled blog-latest-posts margin-bottom-50">
+            <li>
+                <h3><a href="#">The point of using Lorem Ipsum</a></h3>
+                <small>19 Jan, 2015 / <a href="#">Hi-Tech,</a> <a href="#">Technology</a></small>
+                <p>Phasellus ullamcorper pellentesque ex. Cras venenatis elit orci, vitae dictum elit egestas a. Nunc nec auctor mauris, semper scelerisque nibh.</p>
+            </li>
+            <li>
+                <h3><a href="#">Many desktop publishing packages...</a></h3>
+                <small>23 Jan, 2015 / <a href="#">Art,</a> <a href="#">Lifestyles</a></small>
+                <p>Integer vehicula sed justo ac dapibus. In sodales nunc non varius accumsan.</p>
+            </li>
+        </ul>
+        <!-- End Latest Links -->
+
+        <div class="headline-v2 bg-color-light"><h2>Tags</h2></div>
+        <!-- Tags v2 -->
+        <ul class="list-inline tags-v2 margin-bottom-50">           
+            <li ng-repeat="tag in tags track by $index"><a href="#">{{tag}}</a></li>
+        </ul>
+        <!-- End Tags v2 -->
+
+        <div class="headline-v2 bg-color-light"><h2>Photostream</h2></div>
+        <!-- Photostream -->
+        <ul class="list-inline blog-photostream margin-bottom-50">
+            <li>
+                <a href="assets/img/main/img22.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 1">
+                    <span><img class="img-responsive" src="assets/img/main/img22.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img23.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 2">
+                    <span><img class="img-responsive" src="assets/img/main/img23.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img4.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 3">
+                    <span><img class="img-responsive" src="assets/img/main/img4.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img9.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 4">
+                    <span><img class="img-responsive" src="assets/img/main/img9.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img25.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 5">
+                    <span><img class="img-responsive" src="assets/img/main/img25.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img6.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 6">
+                    <span><img class="img-responsive" src="assets/img/main/img6.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img20.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 7">
+                    <span><img class="img-responsive" src="assets/img/main/img20.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img3.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 8">
+                    <span><img class="img-responsive" src="assets/img/main/img3.jpg" alt=""></span>
+                </a>
+            </li>
+            <li>
+                <a href="assets/img/main/img7.jpg" rel="gallery" class="fancybox img-hover-v2" title="Image 9">
+                    <span><img class="img-responsive" src="assets/img/main/img7.jpg" alt=""></span>
+                </a>
+            </li>
+        </ul>
+        <!-- End Photostream -->
+    </div>
+    <!-- End Blog Sidebar -->
+</div>
+<script src="~/Scripts/app/IndexController.js"></script>
+@*<script type="text/javascript">
+           function IndexController($scope, $http) {
+            $scope.posts = @Html.Raw(Json.Encode(Model));
+           }
+</script>*@
