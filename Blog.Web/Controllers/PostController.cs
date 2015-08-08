@@ -1,4 +1,5 @@
 ﻿using Blog.Fronteiras.Executores.ListarPosts;
+using Blog.Fronteiras.Executores.ListarTags;
 using Blog.Fronteiras.Executores.ObterPost;
 using Blog.Fronteiras.Executores.SalvarPost;
 using Blog.Web.Apresentadores;
@@ -17,12 +18,15 @@ namespace Blog.Web.Controllers
         private readonly IListarPostsExecutor listarPostsExecutor;
         private readonly ISalvarPostExecutor salvarPostExecutor;
         private readonly IObterPostExecutor obterPostExecutor;
+        private readonly IListarTagsExecutor listarTagsExecutor;
 
-        public PostController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor, IObterPostExecutor obterPostExecutor)
+        public PostController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor, 
+                              IObterPostExecutor obterPostExecutor, IListarTagsExecutor listarTagsExecutor)
         {
             this.listarPostsExecutor = listarPostsExecutor;
             this.salvarPostExecutor = salvarPostExecutor;
             this.obterPostExecutor = obterPostExecutor;
+            this.listarTagsExecutor = listarTagsExecutor;
         }
 
         public ActionResult Index()
@@ -72,19 +76,24 @@ namespace Blog.Web.Controllers
 
         public ActionResult BarraLateral()
         {
-            var viewModel = new FerramentasDoBlogViewModel();
+            var ferramentasDoBlog = new FerramentasDoBlogViewModel();
 
             var arvoreDePostsApresentador = new ArvoreDePostsApresentador();
             this.listarPostsExecutor.Apresentador = arvoreDePostsApresentador;
             this.listarPostsExecutor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 200 });
-            viewModel.ArvoreDePosts = arvoreDePostsApresentador.Arvore;
+            ferramentasDoBlog.ArvoreDePosts = arvoreDePostsApresentador.Arvore;
 
             var listarUltimosCincoPostsApresentador = new ListarUltimosCincoPostsApresentador();
             this.listarPostsExecutor.Apresentador = listarUltimosCincoPostsApresentador;
             this.listarPostsExecutor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 200 });
-            viewModel.UltimosCincoPosts = listarUltimosCincoPostsApresentador.UltimosCincoPostsResumidos;
+            ferramentasDoBlog.UltimosCincoPosts = listarUltimosCincoPostsApresentador.UltimosCincoPostsResumidos;
 
-            return View("BarraLateral", viewModel);
+            var listarTagsApresentador = new ListarTagsApresentador();
+            this.listarTagsExecutor.Apresentador = listarTagsApresentador;
+            this.listarTagsExecutor.Executar();
+            ferramentasDoBlog.Tags =  listarTagsApresentador.Tags;
+
+            return View("BarraLateral", ferramentasDoBlog);
         }
     }
 }
