@@ -74,7 +74,8 @@ namespace Blog.Web.Controllers
             var x = apresentador.Arvore;
         }
 
-        public ActionResult BarraLateral()
+        [ChildActionOnly]
+        public PartialViewResult BarraLateral()
         {
             var ferramentasDoBlog = new FerramentasDoBlogViewModel();
 
@@ -93,7 +94,7 @@ namespace Blog.Web.Controllers
             this.listarTagsExecutor.Executar();
             ferramentasDoBlog.Tags =  listarTagsApresentador.Tags;
 
-            return View("BarraLateral", ferramentasDoBlog);
+            return PartialView("BarraLateral", ferramentasDoBlog);
         }
     }
 }

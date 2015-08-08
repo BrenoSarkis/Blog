@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="~/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css">
     <!-- CSS Customization -->
     <link rel="stylesheet" href="~/assets/css/custom.css">
+    <link rel="stylesheet" href="~/assets/css/pages/blog.css">
     <link href="~/assets/css/theme-colors/dark-blue.css" rel="stylesheet" />
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
@@ -106,7 +107,8 @@
             <em class="pull-left">@ViewBag.Citacao</em>
         </div>
     </div>
-    <div class="content-sm @(Request.RawUrl.Contains("Detalhar") ? " bg-color-light": " container")">
+    @*@(Request.RawUrl.Contains("Detalhar") ? " bg-color-light" : " container")"*@
+    <div class="content-md container">
         <div class="row">
             @RenderBody()
         </div>
