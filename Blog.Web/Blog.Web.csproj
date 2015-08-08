@@ -156,7 +156,9 @@
     <Compile Include="Apresentadores\ListarPostsApresentador.cs" />
     <Compile Include="Apresentadores\ListarTagsApresentador.cs" />
     <Compile Include="Apresentadores\ListarUltimosCincoPostsApresentador.cs" />
+    <Compile Include="Apresentadores\LoginApresentador.cs" />
     <Compile Include="Apresentadores\ObterPostApresentador.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -164,6 +166,7 @@
     </Compile>
     <Compile Include="Models\ArvoreDePosts.cs" />
     <Compile Include="Models\FerramentasDoBlogViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PostDetalhadoViewModel.cs" />
     <Compile Include="Models\PostResumidoViewModel.cs" />
     <Compile Include="Models\NovoPostViewModel.cs" />
@@ -2757,6 +2760,7 @@
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\PostDetalhado.cshtml" />
     <Content Include="Views\Post\BarraLateral.cshtml" />
+    <Content Include="Views\Administrador\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

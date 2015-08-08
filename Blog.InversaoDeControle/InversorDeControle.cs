@@ -13,6 +13,7 @@ using Blog.Fronteiras.Executores.SalvarPost;
 using Blog.Fronteiras.Executores.ListarPosts;
 using Blog.Fronteiras.Executores.ListarTags;
 using Blog.Fronteiras.Executores.ObterPost;
+using Blog.Fronteiras.Executores.Login;
 
 namespace Blog.InversaoDeControle
 {
@@ -30,6 +31,8 @@ namespace Blog.InversaoDeControle
             kernel.Bind<IListarPostsExecutor>().To<ListarPostsExecutor>();
             kernel.Bind<IListarTagsExecutor>().To<ListarTagsExecutor>();
             kernel.Bind<IObterPostExecutor>().To<ObterPostExecutor>();
+            kernel.Bind<IUsuarioRepositorio>().To<UsuarioRepositorio>();
+            kernel.Bind<ILoginExecutor>().To<LoginExecutor>();
         }
     }
 }

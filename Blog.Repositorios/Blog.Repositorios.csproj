@@ -51,6 +51,7 @@
     <Compile Include="PostRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagRepositorio.cs" />
+    <Compile Include="UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">

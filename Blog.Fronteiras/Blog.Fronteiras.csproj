@@ -53,6 +53,10 @@
     <Compile Include="Executores\ListarTags\IListarTagsApresentador.cs" />
     <Compile Include="Executores\ListarTags\IListarTagsExecutor.cs" />
     <Compile Include="Executores\ListarTags\ListarTagsResultado.cs" />
+    <Compile Include="Executores\Login\ILoginApresentador.cs" />
+    <Compile Include="Executores\Login\ILoginExecutor.cs" />
+    <Compile Include="Executores\Login\LoginRequisicao.cs" />
+    <Compile Include="Executores\Login\LoginResultado.cs" />
     <Compile Include="Executores\ObterCitacao\IObterCitacaoApresentador.cs" />
     <Compile Include="Executores\ObterCitacao\IObterCitacaoExecutor.cs" />
     <Compile Include="Executores\ObterCitacao\ObterCitacaoResultado.cs" />
@@ -67,6 +71,7 @@
     <Compile Include="Repositorios\ICitacaoRepositorio.cs" />
     <Compile Include="Repositorios\IPostRepositorio.cs" />
     <Compile Include="Repositorios\ITagRepositorio.cs" />
+    <Compile Include="Repositorios\IUsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">

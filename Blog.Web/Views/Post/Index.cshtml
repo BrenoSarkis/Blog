@@ -2,51 +2,52 @@
 
 @model IEnumerable<Blog.Web.Models.PostResumidoViewModel>
 
-@*<div class="row" ng-app="IndexApp" ng-controller="IndexController" ng-init="init('@Html.Raw(Json.Encode(Model))')">*@
-<div class="row" ng-app="IndexApp" ng-controller="IndexController" ng-init="init()">
+<div class="row">
     <!-- Blog All Posts -->
     <div class="col-md-9">
-        <div ng-hide="posts.length == 0">
-            <div ng-repeat="post in posts track by $index">
-                <div ng-if="post.CaminhoDaImagemDaCapa != null">
-                    <div class="row blog blog-medium margin-bottom-40">
-                        <div class="col-md-5">
-                            <img class="img-responsive" src="{{post.CaminhoDaImagemDaCapa}}">
-                        </div>
-                        <div class="col-md-7">
-                            <h3><a href="~/Post/Detalhar/{{post.Url}}">{{post.Titulo}}</a></h3>
-                            <ul class="list-unstyled list-inline blog-info">
-                                <li><i class="fa fa-calendar"></i> {{post.DataPorExtenso}}</li>
-                                <li><i class="fa fa-comments"></i> <a href="#">{{post.ContagemDeComentarios}} Comentários</a></li>
-                                <li><i class="fa fa-tags"></i> {{post.Tags}}</li>
-                            </ul>
-                            <div ng-bind-html="post.Conteudo">
-                            </div>
-                            <p><a class="btn-u btn-u-sm" href="~/Post/Detalhar/{{post.Url}}">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
-                        </div>
+        @foreach (var post in Model)
+            {
+                if (post.CaminhoDaImagemDaCapa != null)
+                {
+                <div class="row blog blog-medium margin-bottom-40">
+                    <div class="col-md-5">
+                        <img class="img-responsive" src="@post.CaminhoDaImagemDaCapa">
                     </div>
-                    <div class="clearfix margin-bottom-20"><hr></div>
-                </div>
-                <div ng-if="post.CaminhoDaImagemDaCapa == null">
-                    <div class="row blog blog-medium margin-bottom-40">
-                        <div class="col-md-12">
-                            <h3><a href="#">{{post.Titulo}}</a></h3>
-                            <ul class="list-unstyled list-inline blog-info">
-                                <li><i class="fa fa-calendar"></i> {{post.DataPorExtenso}}</li>
-                                <li><i class="fa fa-comments"></i> <a href="#">{{post.ContagemDeComentarios}} Comentários</a></li>
-                                <li><i class="fa fa-tags"></i> {{post.Tags}}</li>
-                            </ul>
-                            <div ng-bind-html="post.Conteudo">
-                            </div>
-                            <p><a class="btn-u btn-u-sm" href="~/Post/Detalhar/{{post.Url}}">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+                    <div class="col-md-7">
+                        <h3><a href="~/Post/Detalhar/@post.Url">@post.Titulo</a></h3>
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-calendar"></i> @post.DataPorExtenso</li>
+                            <li><i class="fa fa-comments"></i> <a href="#">@post.ContagemDeComentarios Comentários</a></li>
+                            <li><i class="fa fa-tags"></i> @post.Tags</li>
+                        </ul>
+                        <div>
+                            @Html.Raw(post.Conteudo)
                         </div>
-
+                        <p><a class="btn-u btn-u-sm" href="~/Post/Detalhar/@post.Url">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+                    </div>
+                </div>
+                <div class="clearfix margin-bottom-20"><hr></div>
+            }
+            else
+            {
+                <div class="row blog blog-medium margin-bottom-40">
+                    <div class="col-md-12">
+                        <h3><a href="#">@post.Titulo</a></h3>
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-calendar"></i> @post.DataPorExtenso</li>
+                            <li><i class="fa fa-comments"></i> <a href="#">@post.ContagemDeComentarios Comentários</a></li>
+                            <li><i class="fa fa-tags"></i> @post.Tags</li>
+                        </ul>
+                        <div>
+                            @Html.Raw(post.Conteudo)
+                        </div>
+                        <p><a class="btn-u btn-u-sm" href="~/Post/Detalhar/@post.Url">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
                     </div>
 
-                    <div class="clearfix margin-bottom-20"><hr></div>
                 </div>
-            </div>
-        </div>
+                <div class="clearfix margin-bottom-20"><hr></div>
+            }
+        }
         <!-- Pager v3 -->
         <div class="text-center">
             <ul class="pagination">
@@ -66,12 +67,6 @@
     </div>
     <!-- End Blog All Posts -->
     <!-- Blog Sidebar -->
-     @{ Html.RenderAction("BarraLateral"); }
+    @{ Html.RenderAction("BarraLateral"); }
     <!-- End Blog Sidebar -->
 </div>
-<script src="~/Scripts/app/IndexController.js"></script>
-@*<script type="text/javascript">
-           function IndexController($scope, $http) {
-            $scope.posts = @Html.Raw(Json.Encode(Model));
-           }
-</script>*@
