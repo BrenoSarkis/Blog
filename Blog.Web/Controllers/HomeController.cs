@@ -1,5 +1,6 @@
 ﻿using Blog.Fronteiras.Executores;
 using Blog.Fronteiras.Executores.ObterCitacao;
+using Blog.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,17 @@ namespace Blog.Web.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult Contato()
+        {
+            return View(new ContatoViewModel());
+        }
+
+        [HttpPost]
+        public JsonResult Contato(ContatoViewModel viewModel)
+        {
+            return null;
+        }
     }
 
     public class ObterCitacaoApresentador : IApresentador<ObterCitacaoResultado>

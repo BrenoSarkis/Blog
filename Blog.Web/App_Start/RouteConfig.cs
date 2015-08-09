@@ -24,6 +24,11 @@ namespace Blog.Web
                 new { controller = "Home", action = "Sobre" });
 
             routes.MapRoute(
+                "Contato",
+                "Contato",
+                new { controller = "Home", action = "Contato" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional });
