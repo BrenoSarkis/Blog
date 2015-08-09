@@ -2755,12 +2755,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Blog\Novo.cshtml" />
+    <Content Include="Views\Blog\NovoPost.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\PostDetalhado.cshtml" />
     <Content Include="Views\Blog\BarraLateral.cshtml" />
     <Content Include="Views\Administrador\Login.cshtml" />
+    <Content Include="Views\Home\Sobre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

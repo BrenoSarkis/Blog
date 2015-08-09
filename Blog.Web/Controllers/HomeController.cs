@@ -18,6 +18,12 @@ namespace Blog.Web.Controllers
             //ViewBag.Citacao = apresentador.Citacao;
             return View();
         }
+
+        public ActionResult Sobre()
+        {
+            return View();
+        }
+        
     }
 
     public class ObterCitacaoApresentador : IApresentador<ObterCitacaoResultado>

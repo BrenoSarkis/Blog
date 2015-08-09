@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 
 namespace Blog.Web.Controllers
@@ -38,11 +37,13 @@ namespace Blog.Web.Controllers
             return View(apresentador.PostsResumidos);
         }
 
-        public ActionResult Novo()
+        [Authorize]
+        public ActionResult NovoPost()
         {
             return View(new NovoPostViewModel());
         }
 
+        [Authorize]
         public void Salvar(NovoPostViewModel novoPost)
         {
             var requisicao = new SalvarPostRequisicao
