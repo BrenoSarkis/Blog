@@ -72,6 +72,7 @@
     <Compile Include="Repositorios\IPostRepositorio.cs" />
     <Compile Include="Repositorios\ITagRepositorio.cs" />
     <Compile Include="Repositorios\IUsuarioRepositorio.cs" />
+    <Compile Include="Seguranca\IGeradorDeHashComSalt.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">

@@ -59,15 +59,15 @@
                     </div>
                     <div class="col-sm-4 col-xs-4 clearfix">
                         <ul class="topbar-list topbar-log_reg pull-right visible-sm-block visible-md-block visible-lg-block">
-                            <li>
-                                @if (User.Identity.IsAuthenticated)
-                                {
-                                    @Html.ActionLink("Novo Post", "Novo", "Post")
-                                }
-                            </li>
                             <li class="cd-log_reg home">
                                 @Html.ActionLink("Login", "Login", "Administrador", null, new { @class = "cd-signin" })
                             </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    @Html.ActionLink("Novo Post", "Novo", "Post")
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div><!--/end row-->
