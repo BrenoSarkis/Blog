@@ -13,14 +13,14 @@ using System.Web.Mvc;
 
 namespace Blog.Web.Controllers
 {
-    public class PostController : Controller
+    public class BlogController : Controller
     {
         private readonly IListarPostsExecutor listarPostsExecutor;
         private readonly ISalvarPostExecutor salvarPostExecutor;
         private readonly IObterPostExecutor obterPostExecutor;
         private readonly IListarTagsExecutor listarTagsExecutor;
 
-        public PostController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor, 
+        public BlogController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor, 
                               IObterPostExecutor obterPostExecutor, IListarTagsExecutor listarTagsExecutor)
         {
             this.listarPostsExecutor = listarPostsExecutor;

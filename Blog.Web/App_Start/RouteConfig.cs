@@ -16,7 +16,7 @@ namespace Blog.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional }
             );
 
             //routes.MapRoute(
@@ -28,12 +28,8 @@ namespace Blog.Web
 
             routes.MapRoute(
                     "PostDetalhado",
-                    "{controller}/{action}/{ano}/{mes}/{dia}/{titulo}",
-                    new
-                    {
-                        controller = "Post",
-                        action = "Detalhar"
-                    });
+                    "Blog/Detalhar/{ano}/{mes}/{dia}/{titulo}",
+                    new { controller = "Blog", action="Detalhar" });
         }
     }
 }

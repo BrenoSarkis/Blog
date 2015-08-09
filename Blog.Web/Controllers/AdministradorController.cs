@@ -53,7 +53,7 @@ namespace Blog.Web.Controllers
                 //encrypt the ticket and add it to a cookie
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(authTicket));
                 Response.Cookies.Add(cookie);
-                return RedirectToAction("Index", "Post");
+                return RedirectToAction("Index", "Blog");
             }
 
             return View();
