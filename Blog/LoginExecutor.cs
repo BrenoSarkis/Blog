@@ -34,6 +34,7 @@ namespace Blog
             else
             {
                 var hashDaSenha = geradorDeHashComSalt.Gerar(requisicao.Senha);
+
                 resultado.UsuarioExiste = this.usuarioRepositorio.UsuarioExiste(requisicao.Email, hashDaSenha);
             }
 

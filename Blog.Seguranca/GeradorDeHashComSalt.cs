@@ -12,12 +12,10 @@ namespace Blog.Seguranca
     {
         public string Gerar(string texto)
         {
-            Rfc2898DeriveBytes hasher = new Rfc2898DeriveBytes(texto,
-    System.Text.Encoding.Default.GetBytes("sarkisbreno@gmail.com"), 10000);
+            Rfc2898DeriveBytes hasher = new Rfc2898DeriveBytes(texto, Encoding.Default.GetBytes("sarkisbreno@gmail.com"), 10000);
             var salt = Convert.ToBase64String(hasher.GetBytes(50));
 
-            hasher = new Rfc2898DeriveBytes(texto,
-                System.Text.Encoding.Default.GetBytes(salt), 10000);
+            hasher = new Rfc2898DeriveBytes(texto, Encoding.Default.GetBytes(salt), 10000);
             return Convert.ToBase64String(hasher.GetBytes(50));
         }
     }
