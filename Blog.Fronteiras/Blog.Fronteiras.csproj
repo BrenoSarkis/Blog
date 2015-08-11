@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email\IEnviadorDeEmail.cs" />
     <Compile Include="Executores\CriarTag\CriarTagRequisicao.cs" />
     <Compile Include="Executores\CriarTag\CriarTagResultado.cs" />
     <Compile Include="Executores\CriarTag\ICriarTagApresentador.cs" />
     <Compile Include="Executores\CriarTag\ICriarTagExecutor.cs" />
+    <Compile Include="Executores\EnviarEmail\EnviarEmailRequisicao.cs" />
+    <Compile Include="Executores\EnviarEmail\EnviarEmailResultado.cs" />
+    <Compile Include="Executores\EnviarEmail\IEnviarEmailApresentador.cs" />
+    <Compile Include="Executores\EnviarEmail\IEnviarEmailExecutor.cs" />
     <Compile Include="Executores\IApresentador.cs" />
     <Compile Include="Executores\IExecutor.cs" />
     <Compile Include="Executores\ListarPosts\IListarPostsApresentador.cs" />
@@ -80,6 +85,7 @@
       <Name>Blog.Entidades</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

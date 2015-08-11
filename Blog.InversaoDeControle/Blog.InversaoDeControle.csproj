@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blog.Email\Blog.Email.csproj">
+      <Project>{b102f2f4-d0fb-4c2f-bc23-11cf82f2b679}</Project>
+      <Name>Blog.Email</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blog.Entidades\Blog.Entidades.csproj">
       <Project>{0931a3fc-589b-4045-be7f-ace7a5a5f192}</Project>
       <Name>Blog.Entidades</Name>

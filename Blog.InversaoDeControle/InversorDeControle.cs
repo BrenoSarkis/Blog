@@ -16,6 +16,9 @@ using Blog.Fronteiras.Executores.ObterPost;
 using Blog.Fronteiras.Executores.Login;
 using Blog.Fronteiras.Seguranca;
 using Blog.Seguranca;
+using Blog.Fronteiras.Email;
+using Blog.Email;
+using Blog.Fronteiras.Executores.EnviarEmail;
 
 namespace Blog.InversaoDeControle
 {
@@ -36,6 +39,8 @@ namespace Blog.InversaoDeControle
             kernel.Bind<IUsuarioRepositorio>().To<UsuarioRepositorio>();
             kernel.Bind<ILoginExecutor>().To<LoginExecutor>();
             kernel.Bind<IGeradorDeHashComSalt>().To<GeradorDeHashComSalt>();
+            kernel.Bind<IEnviadorDeEmail>().To<EnviadorDeEmail>();
+            kernel.Bind<IEnviarEmailExecutor>().To<EnviarEmailExecutor>();
         }
     }
 }

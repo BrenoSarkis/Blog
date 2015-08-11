@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.InversaoDeControle", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Seguranca", "Blog.Seguranca\Blog.Seguranca.csproj", "{62333E6B-CC0B-49EB-B454-CDD079427FF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog.Email", "Blog.Email\Blog.Email.csproj", "{B102F2F4-D0FB-4C2F-BC23-11CF82F2B679}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{62333E6B-CC0B-49EB-B454-CDD079427FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62333E6B-CC0B-49EB-B454-CDD079427FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62333E6B-CC0B-49EB-B454-CDD079427FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B102F2F4-D0FB-4C2F-BC23-11CF82F2B679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B102F2F4-D0FB-4C2F-BC23-11CF82F2B679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B102F2F4-D0FB-4C2F-BC23-11CF82F2B679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B102F2F4-D0FB-4C2F-BC23-11CF82F2B679}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

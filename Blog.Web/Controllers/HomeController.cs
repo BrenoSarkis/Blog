@@ -1,5 +1,7 @@
 ﻿using Blog.Fronteiras.Executores;
+using Blog.Fronteiras.Executores.EnviarEmail;
 using Blog.Fronteiras.Executores.ObterCitacao;
+using Blog.Web.Apresentadores;
 using Blog.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,13 @@ namespace Blog.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IEnviarEmailExecutor enviarEmailExecutor;
+
+        public HomeController(IEnviarEmailExecutor enviarEmailExecutor)
+        {
+            this.enviarEmailExecutor = enviarEmailExecutor;
+        }
+
         public ActionResult Index()
         {
             //var apresentador = new ObterCitacaoApresentador();
@@ -31,9 +40,22 @@ namespace Blog.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Contato(ContatoViewModel viewModel)
+        public ActionResult Contato(ContatoViewModel viewModel)
         {
-            return null;
+            var requisicao = new EnviarEmailRequisicao();
+            requisicao.Nome = viewModel.Nome;
+            requisicao.Email = viewModel.Email;
+            requisicao.Assunto = viewModel.Assunto;
+            requisicao.Mensagem = viewModel.Mensagem;
+
+            var apresentador = new EnviarEmailApresentador();
+
+            this.enviarEmailExecutor.Apresentador = apresentador;
+            this.enviarEmailExecutor.Executar(requisicao);
+
+            viewModel.MensagemDeErro.Texto = apresentador.Mensagem.Texto;
+
+            return View(viewModel);
         }
     }
 
