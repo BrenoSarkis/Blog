@@ -98,19 +98,13 @@
                         <ul class="nav navbar-nav">
                             <!-- Home -->
                             <li class="dropdown home active">
-                                <a href="@Url.Action("Index", "Blog")" class="dropdown-toggle">
-                                    Blog
-                                </a>
+                                @Ajax.ActionLink("Blog", "Index", "Blog", new AjaxOptions{ UpdateTargetId="divConteudo" })
                             </li>
                             <li class="dropdown mega-menu-fullwidth">
-                                <a href="@Url.Action("Sobre", "Home")">
-                                    Sobre
-                                </a>
+                                @Ajax.ActionLink("Sobre", "Sobre", "Home", new AjaxOptions { UpdateTargetId = "divConteudo" })
                             </li>
                             <li class="dropdown">
-                                <a href="@Url.Action("Contato", "Home")">
-                                    Contato
-                                </a>
+                                @Ajax.ActionLink("Contato", "Contato", "Home", new AjaxOptions { UpdateTargetId = "divConteudo" })
                             </li>
                             <!-- End Home -->
                         </ul>
@@ -127,7 +121,7 @@
     </div>
     @*@(Request.RawUrl.Contains("Detalhar") ? " bg-color-light" : " container")"*@
     <div class="content-md container">
-        <div class="row">
+        <div class="row" id="divConteudo">
             @RenderBody()
         </div>
     </div>
@@ -136,18 +130,21 @@
             <div class="container">
                 <div class="row">
                     <!-- About -->
-                    <div class="col-md-3 md-margin-bottom-40">
-                        <a href="index.html"><img id="logo-footer" class="footer-logo" src="assets/img/logo1-default.png" alt=""></a>
-                        <p class="margin-bottom-20">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>
-
-                        <form class="footer-subsribe">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Email Address">
-                                <span class="input-group-btn">
-                                    <button class="btn-u" type="button">Go</button>
-                                </span>
-                            </div>
-                        </form>
+                    <div class="col-md-3  md-margin-bottom-40">
+                        <div class="headline-left margin-bottom-30">
+                            <div class="headline"><h2 class="heading-sm">Quem sou eu</h2></div>
+                            @*<h2 class="headline-brd heading-sm">Sobre <span class="color-green">Mim</span></h2>*@
+                        </div>
+                        <p>Aspirante a <a href="http://manifesto.softwarecraftsmanship.org/#/pt-br" target="_blank">Artesão de Software</a>, apaixonado pela profissão, fazendo seu melhor para influenciar aqueles à seu redor.</p>
+                        <p>Gostaria de falar comigo? entre em <a>Contato</a>.</p>
+                        <br>
+                        <ul class="list-inline social-icons-v1">
+                            <li><a href="https://twitter.com/BrenoSarkis" target="_blank"><i class="rounded-x fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.facebook.com/breno.sarkis.9" target="_blank"><i class="rounded-x fa fa-facebook"></i></a></li>
+                            <li><a href="https://plus.google.com/u/0/117134359141519578592/about/p/pub" target="_blank"><i class="rounded-x fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="rounded-x fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="rounded-x fa fa-instagram"></i></a></li>
+                        </ul>
                     </div>
                     <!-- End About -->
                     <!-- Link List -->
