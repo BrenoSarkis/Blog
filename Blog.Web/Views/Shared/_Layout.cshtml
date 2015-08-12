@@ -116,7 +116,7 @@
     </div>
     <div class="breadcrumbs">
         <div class="container">
-            <em class="pull-left">@ViewBag.Citacao</em>
+            <em class="pull-left">@HttpContext.Current.Session["Citacao"]</em>
         </div>
     </div>
     @*@(Request.RawUrl.Contains("Detalhar") ? " bg-color-light" : " container")"*@
@@ -132,18 +132,18 @@
                     <!-- About -->
                     <div class="col-md-3  md-margin-bottom-40">
                         <div class="headline-left margin-bottom-30">
-                            <div class="headline"><h2 class="heading-sm">Quem sou eu</h2></div>
+                            <div class="headline"><h2 class="heading-sm">Sobre</h2></div>
                             @*<h2 class="headline-brd heading-sm">Sobre <span class="color-green">Mim</span></h2>*@
                         </div>
                         <p>Aspirante a <a href="http://manifesto.softwarecraftsmanship.org/#/pt-br" target="_blank">Artesão de Software</a>, apaixonado pela profissão, fazendo seu melhor para influenciar aqueles à seu redor.</p>
-                        <p>Gostaria de falar comigo? entre em <a>Contato</a>.</p>
+                        <p>Gostaria de falar comigo? entre em @Ajax.ActionLink("Contato", "Contato", "Home", new AjaxOptions { UpdateTargetId = "divConteudo" }).</p>
                         <br>
                         <ul class="list-inline social-icons-v1">
+                            <li><a href="https://github.com/BrenoSarkis" target="_blank"><i class="rounded-x fa fa-github"></i></a></li>
                             <li><a href="https://twitter.com/BrenoSarkis" target="_blank"><i class="rounded-x fa fa-twitter"></i></a></li>
                             <li><a href="https://www.facebook.com/breno.sarkis.9" target="_blank"><i class="rounded-x fa fa-facebook"></i></a></li>
                             <li><a href="https://plus.google.com/u/0/117134359141519578592/about/p/pub" target="_blank"><i class="rounded-x fa fa-google-plus"></i></a></li>
                             <li><a href="#"><i class="rounded-x fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="rounded-x fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                     <!-- End About -->

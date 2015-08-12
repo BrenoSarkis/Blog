@@ -8,6 +8,6 @@ namespace Blog.Fronteiras.Executores.ObterCitacao
 {
     public interface IObterCitacaoExecutor : IExecutor
     {
-
+        IObterCitacaoApresentador Apresentador { get; set; }
     }
 }

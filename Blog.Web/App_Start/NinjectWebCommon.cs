@@ -20,6 +20,7 @@ namespace Blog.Web.App_Start
     using Ninject.Parameters;
     using System.Linq;
     using System.Web.Http;
+    using Controllers;
 
     public static class NinjectWebCommon 
     {

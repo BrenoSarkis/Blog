@@ -13,20 +13,20 @@ namespace Blog
     public class ObterCitacaoExecutor : IObterCitacaoExecutor
     {
         private readonly ICitacaoRepositorio citacaoRepositorio;
-        private readonly IApresentador<ObterCitacaoResultado> apresentador;
 
-        public ObterCitacaoExecutor(ICitacaoRepositorio citacaoRepositorio, IApresentador<ObterCitacaoResultado> apresentador)
+        public ObterCitacaoExecutor(ICitacaoRepositorio citacaoRepositorio)
         {
             this.citacaoRepositorio = citacaoRepositorio;
-            this.apresentador = apresentador;
         }
+
+        public IObterCitacaoApresentador Apresentador { get; set; }
 
         public void Executar()
         {
             var todasAsCitacoes = this.citacaoRepositorio.Todos();
             var r = new Random();
             Citacao citacaoEscolhida = todasAsCitacoes.OrderBy(c => r.Next()).FirstOrDefault();
-            this.apresentador.Apresentar(new ObterCitacaoResultado
+            this.Apresentador.Apresentar(new ObterCitacaoResultado
             { 
                 Autor = citacaoEscolhida.Autor,
                 Texto = citacaoEscolhida.Texto

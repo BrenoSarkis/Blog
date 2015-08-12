@@ -59,7 +59,7 @@ namespace Blog.Web.Controllers
         }
     }
 
-    public class ObterCitacaoApresentador : IApresentador<ObterCitacaoResultado>
+    public class ObterCitacaoApresentador : IObterCitacaoApresentador
     {
         public string Citacao { get; private set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Fronteiras.Executores.ObterCitacao
 {
-    interface IObterCitacaoApresentador
+    public interface IObterCitacaoApresentador : IApresentador<ObterCitacaoResultado>
     {
     }
 }
