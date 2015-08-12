@@ -149,13 +149,11 @@
                     <!-- End About -->
                     <!-- Link List -->
                     <div class="col-md-3 md-margin-bottom-40">
-                        <div class="headline"><h2 class="heading-sm">Useful Links</h2></div>
+                        <div class="headline"><h2 class="heading-sm">Links</h2></div>
                         <ul class="list-unstyled link-list">
-                            <li><a href="#">About us</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Portfolio</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Latest jobs</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Community</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="#">Contact us</a><i class="fa fa-angle-right"></i></li>
+                            <li>@Ajax.ActionLink("Blog", "Index", "Blog", new AjaxOptions { UpdateTargetId = "divConteudo" })<i class="fa fa-angle-right"></i></li>
+                            <li>@Ajax.ActionLink("Sobre", "Sobre", "Home", new AjaxOptions { UpdateTargetId = "divConteudo" })</a><i class="fa fa-angle-right"></i></li>
+                            <li>@Ajax.ActionLink("Contato", "Contato", "Home", new AjaxOptions { UpdateTargetId = "divConteudo" })<i class="fa fa-angle-right"></i></li>
                         </ul>
                     </div>
                     <!-- End Link List -->
