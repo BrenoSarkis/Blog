@@ -17,7 +17,7 @@ namespace Blog.Web.Apresentadores
         public void Apresentar(ListarPostsResultado resultado)
         {
             var postsDoMes = (from p in resultado.Posts
-                              group p by new 
+                              group p by new
                               {
                                   Mes = p.Data.Month,
                                   Ano = p.Data.Year,
@@ -29,7 +29,7 @@ namespace Blog.Web.Apresentadores
                                   Mes = pdm.Key.Mes,
                                   QuantidadeDePosts = posts.Count(),
                                   Posts = posts.Select(p => new Post { Titulo = p.Titulo, UrlParaDetalhar = p.Url }).ToList()
-                              });
+                              }).OrderByDescending(p => p.Ano).ThenByDescending(p => p.Mes);
 
             Arvore.PostsAgrupadosPorMesEAno = postsDoMes.ToList();
         }
