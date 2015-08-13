@@ -14,17 +14,31 @@ namespace Blog.Repositorios
 {
     public class PostRepositorio : IPostRepositorio
     {
-        public IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts)
+        public IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts, string termoDePesquisa)
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
-                var posts = conexao.Query<PostBD>(String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
+                string filtro = !String.IsNullOrWhiteSpace(termoDePesquisa) ? @"WHERE Titulo LIKE '%@TermoDePesquisa%' OR Conteudo LIKE '%@TermoDePesquisa%'" : String.Empty;
+
+                string consulta = String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
                                                                 SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
                                                                 FROM Post
+                                                                {2}
                                                                 ORDER BY Codigo DESC
                                                                 OFFSET(@Pagina - 1) * @QuantidadeDePosts ROWS
-                                                                FETCH NEXT @QuantidadeDePosts ROWS ONLY", quantidadeDePosts, pagina));
+                                                                FETCH NEXT @QuantidadeDePosts ROWS ONLY", quantidadeDePosts, pagina, filtro);
 
+                var posts = Enumerable.Empty<PostBD>();
+
+                if (String.IsNullOrWhiteSpace(filtro))
+                {
+                    posts = conexao.Query<PostBD>(consulta);
+                }
+                else
+                {
+                    posts = conexao.Query<PostBD>(consulta, new { TermoDePesquisa = termoDePesquisa });
+                }
+                
                 foreach (var post in posts)
                 {
                     post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();

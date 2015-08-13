@@ -4,9 +4,9 @@
     <!-- Search Bar -->
     <div class="headline headline-md"><h2>Pesquisar</h2></div>
     <div class="input-group margin-bottom-40">
-        <input type="text" class="form-control" placeholder="pesquisar">
+        <input type="text" id="textBoxTermoDePesquisa" class="form-control" placeholder="pesquisar">
         <span class="input-group-btn">
-            <button class="btn-u" type="button">Go</button>
+            <button class="btn-u" id="botaoPesquisar" type="button">Go</button>
         </span>
     </div>
     <!-- End Search Bar -->
@@ -44,7 +44,7 @@
     <ul class="list-unstyled blog-tags margin-bottom-30">
         @foreach (var tag in Model.Tags)
         {
-            <li>@Ajax.ActionLink(tag, "ListarPostsPorTag", "Blog", new { tag = tag }, new AjaxOptions { UpdateTargetId = "divConteudo" }) <i class="fa fa-tags"></i></li>
+            <li>@Ajax.ActionLink(tag, "ListarPostsPorTag", "Blog", new { tag = tag }, new AjaxOptions { UpdateTargetId = "divConteudo" })<i class="fa fa-tags"></i></li>
         }
     </ul>
     <!-- End Tags v2 -->
@@ -61,3 +61,19 @@
     </div>
     <!-- End Blog Newsletter -->
 </div>
+
+<script>
+
+    $("#botaoPesquisar").click(function () {
+        var termoDePesquisa = $("#textBoxTermoDePesquisa").val();
+        $.ajax({
+            url: '/blog/pesquisar',
+            type: 'POST',
+            data: "{ termoDePesquisa: "+ JSON.stringify(termoDePesquisa) +" }", 
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $("divConteudo").html(data);
+            }
+        });
+    });
+</script>

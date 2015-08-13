@@ -36,7 +36,7 @@ namespace Blog
 
             if (listarComPaginacao)
             {
-                posts = ListarComPaginacao(requisicao.PaginaAtual.Value, requisicao.QuantidadeDePosts.Value);
+                posts = ListarComPaginacao(requisicao.PaginaAtual.Value, requisicao.QuantidadeDePosts.Value, requisicao.TermoDePesquisa);
             }
             
             if(listarTodos)
@@ -63,9 +63,9 @@ namespace Blog
             return this.postRepositorio.ListarPorTag(tag);
         }
 
-        private IEnumerable<Post> ListarComPaginacao(int paginaAtual, int quantidadeDePosts)
+        private IEnumerable<Post> ListarComPaginacao(int paginaAtual, int quantidadeDePosts, string termoDePesquisa)
         {
-            return this.postRepositorio.ListarComPaginacao(paginaAtual, quantidadeDePosts);
+            return this.postRepositorio.ListarComPaginacao(paginaAtual, quantidadeDePosts, termoDePesquisa);
         }
 
         private IEnumerable<Post> ListarTodos()

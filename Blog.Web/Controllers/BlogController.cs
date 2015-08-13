@@ -67,10 +67,18 @@ namespace Blog.Web.Controllers
             return View("PostDetalhado", apresentador.Post);
         }
 
-
         public ActionResult ListarPostsPorTag(string tag)
         {
             var requisicao = new ListarPostsRequisicao { Tag = tag };
+            var apresentador = new ListarPostsApresentador();
+            listarPostsExecutor.Apresentador = apresentador;
+            listarPostsExecutor.Executar(requisicao);
+            return View("Index", apresentador.PostsResumidos);
+        }
+
+        public ActionResult Pesquisar(string termoDePesquisa)
+        {
+            var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10, TermoDePesquisa = termoDePesquisa };
             var apresentador = new ListarPostsApresentador();
             listarPostsExecutor.Apresentador = apresentador;
             listarPostsExecutor.Executar(requisicao);

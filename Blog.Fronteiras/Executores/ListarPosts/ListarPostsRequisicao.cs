@@ -11,5 +11,6 @@ namespace Blog.Fronteiras.Executores.ListarPosts
         public int? QuantidadeDePosts { get; set; }
         public int? PaginaAtual { get; set; }
         public string Tag { get; set; }
+        public string TermoDePesquisa { get; set; }
     }
 }
