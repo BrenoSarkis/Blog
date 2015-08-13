@@ -44,7 +44,7 @@
     <ul class="list-unstyled blog-tags margin-bottom-30">
         @foreach (var tag in Model.Tags)
         {
-            <li><a href="#"><i class="fa fa-tags"></i> @tag</a></li>
+            <li>@Ajax.ActionLink(tag, "ListarPostsPorTag", "Blog", new { tag = tag }, new AjaxOptions { UpdateTargetId = "divConteudo" }) <i class="fa fa-tags"></i></li>
         }
     </ul>
     <!-- End Tags v2 -->

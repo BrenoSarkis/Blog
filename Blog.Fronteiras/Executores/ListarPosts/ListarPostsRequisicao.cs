@@ -8,7 +8,8 @@ namespace Blog.Fronteiras.Executores.ListarPosts
 {
     public class ListarPostsRequisicao
     {
-        public int QuantidadeDePosts { get; set; }
-        public int PaginaAtual { get; set; }
+        public int? QuantidadeDePosts { get; set; }
+        public int? PaginaAtual { get; set; }
+        public string Tag { get; set; }
     }
 }

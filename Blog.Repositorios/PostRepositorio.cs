@@ -21,7 +21,7 @@ namespace Blog.Repositorios
                 var posts = conexao.Query<PostBD>(String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
                                                                 SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
                                                                 FROM Post
-                                                                ORDER BY Codigo
+                                                                ORDER BY Codigo DESC
                                                                 OFFSET(@Pagina - 1) * @QuantidadeDePosts ROWS
                                                                 FETCH NEXT @QuantidadeDePosts ROWS ONLY", quantidadeDePosts, pagina));
 
@@ -34,11 +34,48 @@ namespace Blog.Repositorios
             }
         }
 
+        public IEnumerable<Post> ListarPorTag(string tag)
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                var codigosDosPostsComATag = conexao.Query<string>("SELECT DISTINCT CodigoDoPost FROM TagsDoPost WHERE Tag = @Tag", new { Tag = tag });
+
+                foreach (var codigo in codigosDosPostsComATag)
+                {
+                    var post = conexao.Query<Post>(@"SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
+                                                       FROM Post
+                                                       WHERE Codigo = @Codigo
+                                                       ORDER BY Codigo DESC", new { Codigo = codigo }).FirstOrDefault();
+
+                    post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+
+                    yield return post;                 
+                }
+            }
+        }
+
         public IEnumerable<string> ListarTodasAsTagsUnicas()
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
                 return conexao.Query<string>("SELECT DISTINCT TAG FROM TagsDoPost");
+            }
+        }
+
+        public IEnumerable<Post> ListarTodos()
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                var posts = conexao.Query<Post>(@"SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
+                                                       FROM Post
+                                                       ORDER BY Codigo DESC");
+
+                foreach (var post in posts)
+                {
+                    post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+                }
+
+                return posts;
             }
         }
 

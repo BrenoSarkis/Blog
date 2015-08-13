@@ -27,7 +27,7 @@ namespace Blog
             {
                 this.enviadorDeEmail.Enviar(requisicao.Nome, requisicao.Email, requisicao.Assunto, requisicao.Mensagem);
             }
-            catch (Exception ex) 
+            catch (Exception) 
             {
                 resultado.Mensagem = "Erro ao enviar o e-mail.";
             }

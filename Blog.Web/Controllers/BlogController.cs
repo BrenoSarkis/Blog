@@ -19,7 +19,7 @@ namespace Blog.Web.Controllers
         private readonly IObterPostExecutor obterPostExecutor;
         private readonly IListarTagsExecutor listarTagsExecutor;
 
-        public BlogController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor, 
+        public BlogController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor,
                               IObterPostExecutor obterPostExecutor, IListarTagsExecutor listarTagsExecutor)
         {
             this.listarPostsExecutor = listarPostsExecutor;
@@ -67,12 +67,14 @@ namespace Blog.Web.Controllers
             return View("PostDetalhado", apresentador.Post);
         }
 
-        private void Arquivo()
+
+        public ActionResult ListarPostsPorTag(string tag)
         {
-            var apresentador = new ArvoreDePostsApresentador();
-            this.listarPostsExecutor.Apresentador = apresentador;
-            this.listarPostsExecutor.Executar(new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 200 });
-            var x = apresentador.Arvore;
+            var requisicao = new ListarPostsRequisicao { Tag = tag };
+            var apresentador = new ListarPostsApresentador();
+            listarPostsExecutor.Apresentador = apresentador;
+            listarPostsExecutor.Executar(requisicao);
+            return View("Index", apresentador.PostsResumidos);
         }
 
         [ChildActionOnly]
@@ -93,7 +95,7 @@ namespace Blog.Web.Controllers
             var listarTagsApresentador = new ListarTagsApresentador();
             this.listarTagsExecutor.Apresentador = listarTagsApresentador;
             this.listarTagsExecutor.Executar();
-            ferramentasDoBlog.Tags =  listarTagsApresentador.Tags;
+            ferramentasDoBlog.Tags = listarTagsApresentador.Tags;
 
             return PartialView("BarraLateral", ferramentasDoBlog);
         }
