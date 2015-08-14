@@ -18,6 +18,7 @@ namespace Blog.Web.Apresentadores
                 Conteudo = resultado.Conteudo,
                 Titulo = resultado.Titulo,
                 DataPorExtenso = resultado.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
+                Tags = String.Join(", ", resultado.Tags)
             };
         }
 

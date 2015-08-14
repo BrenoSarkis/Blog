@@ -1,4 +1,5 @@
-﻿@model Blog.Web.Models.PostDetalhadoViewModel
+﻿@using GravatarHelper.Extensions
+@model Blog.Web.Models.PostDetalhadoViewModel
 
 <!--=== Blog Posts ===-->
 
@@ -13,19 +14,7 @@
                     <li><i class="fa fa-calendar"></i> @Model.DataPorExtenso</li>
                     <li><i class="fa fa-pencil"></i> Breno Sarkis</li>
                     <li><i class="fa fa-comments"></i> <a href="#">@Model.ContagemDeComentarios Comentários</a></li>
-                </ul>
-                <ul class="list-unstyled list-inline blog-tags">
-                    <li>
-                        <i class="fa fa-tags"></i>
-
-                        <a href="#">teste</a>
-                    </li>
-                    @*@foreach (var tag in Model.Tags)
-                        {
-                            <li>
-                                <a href="#">@tag</a>
-                            </li>
-                        }*@
+                    <li><i class="fa fa-tags"> @Model.Tags</i></li>
                 </ul>
             </div>
             <div class="blog-img">
@@ -68,7 +57,7 @@
         </div><!--/media-->
         <div class="media">
             <a class="pull-left" href="#">
-                <img class="media-object" src="assets/img/testimonials/img4.jpg" alt="" />
+                @Html.Gravatar("brenosarkis@outlook.com", 80, new { Title = "My Gravatar", Alt = "Gravatar" })
             </a>
             <div class="media-body">
                 <h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
@@ -79,9 +68,9 @@
         <hr>
         <!-- Comment Form -->
         <div class="post-comment">
-            <h3>Leave a Comment</h3>
+            <h3>Deixar um comentário</h3>
             <form>
-                <label>Name</label>
+                <label>Nome</label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-7 col-md-offset-0">
                         <input type="text" class="form-control">
@@ -93,13 +82,13 @@
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <label>Message</label>
+                <label>Comentário</label>
                 <div class="row margin-bottom-20">
                     <div class="col-md-11 col-md-offset-0">
                         <textarea class="form-control" rows="8"></textarea>
                     </div>
                 </div>
-                <p><button class="btn-u" type="submit">Send Message</button></p>
+                <p><button class="btn-u" type="submit">Enviar Comentário</button></p>
             </form>
         </div>
         <!-- End Comment Form -->

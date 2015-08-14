@@ -17,7 +17,7 @@ namespace Blog.Web.Apresentadores
                                          {
                                              CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
                                              Conteudo = p.Conteudo.Substring(0, Math.Min(150, p.Conteudo.Length)) + "...",
-                                             Tags = String.Join(",", p.Tags),
+                                             Tags = String.Join(", ", p.Tags),
                                              DataPorExtenso = p.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
                                              Titulo = p.Titulo,
                                              Url = p.Url
