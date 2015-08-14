@@ -76,9 +76,9 @@ namespace Blog.Web.Controllers
             return View("Index", apresentador.PostsResumidos);
         }
 
-        public ActionResult Pesquisar(string termoDePesquisa)
+        public ActionResult Pesquisar(FerramentasDoBlogViewModel viewModel)
         {
-            var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10, TermoDePesquisa = termoDePesquisa };
+            var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10, TermoDePesquisa = viewModel.TermoDePesquisa };
             var apresentador = new ListarPostsApresentador();
             listarPostsExecutor.Apresentador = apresentador;
             listarPostsExecutor.Executar(requisicao);

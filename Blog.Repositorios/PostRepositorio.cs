@@ -18,7 +18,7 @@ namespace Blog.Repositorios
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
-                string filtro = !String.IsNullOrWhiteSpace(termoDePesquisa) ? @"WHERE Titulo LIKE '%@TermoDePesquisa%' OR Conteudo LIKE '%@TermoDePesquisa%'" : String.Empty;
+                string filtro = !String.IsNullOrWhiteSpace(termoDePesquisa) ? @"WHERE Titulo LIKE @TermoDePesquisa OR Conteudo LIKE @TermoDePesquisa" : String.Empty;
 
                 string consulta = String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
                                                                 SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
@@ -36,7 +36,7 @@ namespace Blog.Repositorios
                 }
                 else
                 {
-                    posts = conexao.Query<PostBD>(consulta, new { TermoDePesquisa = termoDePesquisa });
+                    posts = conexao.Query<PostBD>(consulta, new { TermoDePesquisa = "%" + termoDePesquisa + "%" });
                 }
                 
                 foreach (var post in posts)
