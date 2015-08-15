@@ -15,5 +15,6 @@ namespace Blog.Fronteiras.Repositorios
         IEnumerable<Post> ListarTodos();
         IEnumerable<string> ListarTodasAsTagsUnicas();
         Post ObterPorUrl(string url);
+        void SalvarComentario(Comentario comentario);
     }
 }

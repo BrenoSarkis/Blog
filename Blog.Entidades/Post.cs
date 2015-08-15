@@ -19,5 +19,6 @@ namespace Blog.Entidades
                                                                              Data.Day.ToString().PadLeft(2, '0'),
                                                                              Titulo.Replace(" ", "-")).RemoverAcentos(); } }
         public string[] Tags { get; set; }
+        public IEnumerable<Comentario> Comentarios { get; set; }
     }
 }

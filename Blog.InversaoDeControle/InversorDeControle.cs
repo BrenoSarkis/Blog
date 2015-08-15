@@ -20,6 +20,7 @@ using Blog.Fronteiras.Email;
 using Blog.Email;
 using Blog.Fronteiras.Executores.EnviarEmail;
 using Blog.Fronteiras.Executores.ObterCitacao;
+using Blog.Fronteiras.Executores.CriarComentario;
 
 namespace Blog.InversaoDeControle
 {
@@ -48,6 +49,7 @@ namespace Blog.InversaoDeControle
             k.Bind<IEnviarEmailExecutor>().To<EnviarEmailExecutor>();
             k.Bind<IObterCitacaoExecutor>().To<ObterCitacaoExecutor>();
             k.Bind<ICitacaoRepositorio>().To<CitacaoRepositorio>();
+            k.Bind<ICriarComentarioExecutor>().To<CriarComentarioExecutor>();
         }
 
         public static T Resolver<T>()

@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Email\IEnviadorDeEmail.cs" />
+    <Compile Include="Executores\CriarComentario\CriarComentarioRequisicao.cs" />
+    <Compile Include="Executores\CriarComentario\CriarComentarioResultado.cs" />
+    <Compile Include="Executores\CriarComentario\ICriarComentarioApresentador.cs" />
+    <Compile Include="Executores\CriarComentario\ICriarComentarioExecutor.cs" />
     <Compile Include="Executores\CriarTag\CriarTagRequisicao.cs" />
     <Compile Include="Executores\CriarTag\CriarTagResultado.cs" />
     <Compile Include="Executores\CriarTag\ICriarTagApresentador.cs" />

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Citacao.cs" />
+    <Compile Include="Comentario.cs" />
     <Compile Include="Extensoes\ExtensoesDeString.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

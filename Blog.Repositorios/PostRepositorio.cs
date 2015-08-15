@@ -98,11 +98,12 @@ namespace Blog.Repositorios
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
                 var post = conexao.Query<PostBD>(@"SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
-                                                             FROM Post
-                                                             WHERE Url = @Url", new { url }).FirstOrDefault();
+                                                     FROM Post
+                                                    WHERE Url = @Url", new { url }).FirstOrDefault();
                 if (post == null) return null;
 
                 post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+                post.Comentarios = conexao.Query<ComentarioBD>("SELECT Codigo, CodigoDoPost, Nome, Email, Mensagem, Data FROM Comentario WHERE CodigoDoPost = @Codigo", new { post.Codigo});
 
                 return post;
             }
@@ -119,6 +120,16 @@ namespace Blog.Repositorios
                 {
                     conexao.Execute("INSERT INTO [TagsDoPost] (CodigoDoPost, Tag) values(@CodigoDoPost, @Tag)", new { @CodigoDoPost = codigo, @Tag = tag });
                 }
+            }
+        }
+
+        public void SalvarComentario(Comentario comentario)
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                int codigo = conexao.Query<int>(@"INSERT INTO [Comentario] (CodigoDoPost, Nome, Email, Mensagem, Data) values (@CodigoDoPost, @Nome, @Email, @Mensagem, @Data);
+                                                  SELECT CAST(SCOPE_IDENTITY() as int)", new { comentario.CodigoDoPost, comentario.Nome, comentario.Email, comentario.Mensagem, comentario.Data }).Single();
+
             }
         }
     }

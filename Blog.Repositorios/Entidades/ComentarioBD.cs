@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Repositorios.Entidades
 {
-    public class PostBD : Post
+    public class ComentarioBD : Comentario
     {
-
     }
 }

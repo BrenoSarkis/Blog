@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Apresentadores\ArvoreDePostsApresentador.cs" />
+    <Compile Include="Apresentadores\CriarComentarioApresentador.cs" />
     <Compile Include="Apresentadores\EnviarEmailApresentador.cs" />
     <Compile Include="Apresentadores\ListarPostsApresentador.cs" />
     <Compile Include="Apresentadores\ListarTagsApresentador.cs" />
@@ -170,6 +171,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArvoreDePosts.cs" />
+    <Compile Include="Models\ComentarioViewModel.cs" />
     <Compile Include="Models\ContatoViewModel.cs" />
     <Compile Include="Models\FerramentasDoBlogViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />

@@ -44,10 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dublês\Apresentadores\CriarComentarioApresentadorSpy.cs" />
     <Compile Include="Dublês\Apresentadores\LoginApresentadorSpy.cs" />
+    <Compile Include="Dublês\Repositorios\PostRepositorioMock.cs" />
     <Compile Include="Dublês\Repositorios\UsuarioRepositorioMock.cs" />
     <Compile Include="Dublês\Seguranca\GeradorDeHashComSaltMock.cs" />
     <Compile Include="Entidades\PostTestes.cs" />
+    <Compile Include="Executores\CriarComentarioExecutorTestes.cs" />
     <Compile Include="Executores\LoginExecutorTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validadores\PostValidadorTestes.cs" />
