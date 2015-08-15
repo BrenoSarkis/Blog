@@ -16,6 +16,7 @@ namespace Blog.Web.Models
         [AllowHtml]
         public string Conteudo { get; set; }
         public string Titulo { get; set; }
+        public string Url { get; set; }
         public string CaminhoDaImagemDaCapa { get; set; }
         public int ContagemDeComentarios { get { return Comentarios.Count(); } }
         public string DataPorExtenso { get; set; }

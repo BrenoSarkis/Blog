@@ -1,0 +1,31 @@
+﻿@model Blog.Web.Models.ComentarioViewModel
+
+<!-- Comment Form -->
+@using (Html.BeginForm("Comentario", "Blog", FormMethod.Post))
+{
+    <div class="post-comment">
+        <h3>Deixar um comentário</h3>
+        <form>
+            <label>Nome</label>
+            <div class="row margin-bottom-20">
+                <div class="col-md-7 col-md-offset-0">
+                    @Html.TextBoxFor(model => model.Nome, new { @class="form-control" })
+                </div>
+            </div>
+            <label>Email <span class="color-red">*</span></label>
+            <div class="row margin-bottom-20">
+                <div class="col-md-7 col-md-offset-0">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <label>Comentário</label>
+            <div class="row margin-bottom-20">
+                <div class="col-md-11 col-md-offset-0">
+                   @Html.TextAreaFor(model => model.Mensagem, new { @rows = "8" })
+                </div>
+            </div>
+            <p><button class="btn-u" type="submit">Enviar Comentário</button></p>
+        </form>
+    </div>
+}
+<!-- End Comment Form -->

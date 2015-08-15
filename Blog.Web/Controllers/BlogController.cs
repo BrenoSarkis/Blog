@@ -1,4 +1,5 @@
-﻿using Blog.Fronteiras.Executores.ListarPosts;
+﻿using Blog.Fronteiras.Executores.CriarComentario;
+using Blog.Fronteiras.Executores.ListarPosts;
 using Blog.Fronteiras.Executores.ListarTags;
 using Blog.Fronteiras.Executores.ObterPost;
 using Blog.Fronteiras.Executores.SalvarPost;
@@ -18,14 +19,17 @@ namespace Blog.Web.Controllers
         private readonly ISalvarPostExecutor salvarPostExecutor;
         private readonly IObterPostExecutor obterPostExecutor;
         private readonly IListarTagsExecutor listarTagsExecutor;
+        private readonly ICriarComentarioExecutor criarComentarioExecutor;
 
         public BlogController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor,
-                              IObterPostExecutor obterPostExecutor, IListarTagsExecutor listarTagsExecutor)
+                              IObterPostExecutor obterPostExecutor, IListarTagsExecutor listarTagsExecutor,
+                              ICriarComentarioExecutor criarComentarioExecutor)
         {
             this.listarPostsExecutor = listarPostsExecutor;
             this.salvarPostExecutor = salvarPostExecutor;
             this.obterPostExecutor = obterPostExecutor;
             this.listarTagsExecutor = listarTagsExecutor;
+            this.criarComentarioExecutor = criarComentarioExecutor;
         }
 
         public ActionResult Index()
@@ -83,6 +87,28 @@ namespace Blog.Web.Controllers
             listarPostsExecutor.Apresentador = apresentador;
             listarPostsExecutor.Executar(requisicao);
             return View("Index", apresentador.PostsResumidos);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        [ActionName("Comentario")]
+        public PartialViewResult Teste(ComentarioViewModel viewModel)
+        {
+            return PartialView("Comentario", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Comentario(ComentarioViewModel viewModel)
+        {
+            var requisicao = new CriarComentarioRequisicao();
+            requisicao.Nome = viewModel.Nome;
+            requisicao.Email = viewModel.Email;
+            requisicao.Mensagem = viewModel.Mensagem;
+            requisicao.UrlDoPost = viewModel.UrlDoPost;
+            var apresentador = new CriarComentarioApresentador();
+            this.criarComentarioExecutor.Apresentador = apresentador;
+            this.criarComentarioExecutor.Executar(requisicao);
+            return PartialView("Comentario");
         }
 
         [ChildActionOnly]
