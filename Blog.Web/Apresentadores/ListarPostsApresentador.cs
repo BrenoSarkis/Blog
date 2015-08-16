@@ -12,7 +12,8 @@ namespace Blog.Web.Apresentadores
     {
         public void Apresentar(ListarPostsResultado resultado)
         {
-            PostsResumidos = from p in resultado.Posts
+            Principal.QuantidadeDePaginas = resultado.Posts.Count();
+            Principal.Posts = from p in resultado.Posts
                              select new PostResumidoViewModel
                              {
                                  CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
@@ -24,6 +25,6 @@ namespace Blog.Web.Apresentadores
                              };
         }
 
-        public IEnumerable<PostResumidoViewModel> PostsResumidos { get; set; }
+        public PrincipalViewModel Principal { get; set; }
     }
 }

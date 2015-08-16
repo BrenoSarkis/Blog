@@ -179,6 +179,7 @@
     <Compile Include="Models\PostDetalhadoViewModel.cs" />
     <Compile Include="Models\PostResumidoViewModel.cs" />
     <Compile Include="Models\NovoPostViewModel.cs" />
+    <Compile Include="Models\PrincipalViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

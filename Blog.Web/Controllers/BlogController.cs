@@ -32,9 +32,9 @@ namespace Blog.Web.Controllers
             this.criarComentarioExecutor = criarComentarioExecutor;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? paginaAtual)
         {
-            var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10 };
+            var requisicao = new ListarPostsRequisicao { PaginaAtual = paginaAtual.HasValue? paginaAtual.Value : 1, QuantidadeDePosts = 5 };
             var apresentador = new ListarPostsApresentador();
             listarPostsExecutor.Apresentador = apresentador;
             listarPostsExecutor.Executar(requisicao);
