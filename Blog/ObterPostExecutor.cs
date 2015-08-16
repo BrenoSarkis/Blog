@@ -31,7 +31,13 @@ namespace Blog
             resultado.Tags = post.Tags;
             resultado.Titulo = post.Titulo;
             resultado.Url = post.Url;
-
+            resultado.Comentarios = post.Comentarios.Select(c => new ObterPostResultado.Comentario
+            {
+                Nome = c.Nome,
+                Email = c.Email,
+                Data = c.Data,
+                Mensagem = c.Mensagem
+            });
             Apresentador.Apresentar(resultado);
         }
     }

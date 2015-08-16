@@ -11,6 +11,6 @@ namespace Blog.Web.Models
         public string Email { get; set; }
         public string Mensagem { get; set; }
         public string UrlDoPost { get; set; }
-        public DateTime Data { get; set; }
+        public string Data { get; set; }
     }
 }

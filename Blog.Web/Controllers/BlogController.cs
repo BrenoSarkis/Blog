@@ -61,7 +61,7 @@ namespace Blog.Web.Controllers
             salvarPostExecutor.Executar(requisicao);
         }
 
-        public ActionResult Detalhar(int ano, int mes, int dia, string titulo)
+        public ActionResult Detalhar(string ano, string mes, string dia, string titulo)
         {
             var requisicao = new ObterPostRequisicao();
             requisicao.Url = String.Format("{0}/{1}/{2}/{3}", ano, mes.ToString().PadLeft(2, '0'), dia.ToString().PadLeft(2, '0'), titulo);
@@ -90,15 +90,13 @@ namespace Blog.Web.Controllers
         }
 
         [HttpGet]
-        [ChildActionOnly]
-        [ActionName("Comentario")]
-        public PartialViewResult Teste(ComentarioViewModel viewModel)
+        public PartialViewResult Comentario(ComentarioViewModel viewModel)
         {
             return PartialView("Comentario", viewModel);
         }
 
         [HttpPost]
-        public ActionResult Comentario(ComentarioViewModel viewModel)
+        public ActionResult Comentar(ComentarioViewModel viewModel)
         {
             var requisicao = new CriarComentarioRequisicao();
             requisicao.Nome = viewModel.Nome;
@@ -108,7 +106,12 @@ namespace Blog.Web.Controllers
             var apresentador = new CriarComentarioApresentador();
             this.criarComentarioExecutor.Apresentador = apresentador;
             this.criarComentarioExecutor.Executar(requisicao);
-            return PartialView("Comentario");
+            var urlDividida = viewModel.UrlDoPost.Split('/');
+            string dia = urlDividida[2];
+            string mes = urlDividida[1];
+            string ano = urlDividida[0];
+            string titulo = urlDividida[3];
+            return RedirectToAction("Detalhar", new { ano = ano, mes = mes, dia = dia, titulo = titulo });
         }
 
         [ChildActionOnly]

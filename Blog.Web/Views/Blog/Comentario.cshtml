@@ -1,8 +1,9 @@
 ﻿@model Blog.Web.Models.ComentarioViewModel
 
 <!-- Comment Form -->
-@using (Html.BeginForm("Comentario", "Blog", FormMethod.Post))
+@using (Html.BeginForm("Comentar", "Blog", FormMethod.Post))
 {
+    @Html.HiddenFor(model => model.UrlDoPost);
     <div class="post-comment">
         <h3>Deixar um comentário</h3>
         <form>

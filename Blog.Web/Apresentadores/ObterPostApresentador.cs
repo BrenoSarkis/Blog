@@ -19,7 +19,14 @@ namespace Blog.Web.Apresentadores
                 Titulo = resultado.Titulo,
                 DataPorExtenso = resultado.Data.ToString("MMMM dd, yyyy", CultureInfo.CurrentCulture),
                 Tags = String.Join(", ", resultado.Tags),
-                Url = resultado.Url
+                Url = resultado.Url,
+                Comentarios = resultado.Comentarios.Select(c => new ComentarioViewModel
+                {
+                    Nome = c.Nome,
+                    Email = c.Email,
+                    Mensagem = c.Mensagem,
+                    Data = c.Data.ToString("dd/MM/yyyy hh:mm:ss")
+                }).OrderByDescending(c => c.Data)
             };
         }
 

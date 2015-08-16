@@ -26,47 +26,22 @@
         <hr>
         <!-- Recent Comments -->
         <div class="media">
-            <h3>Comments</h3>
-            <a class="pull-left" href="#">
-                <img class="media-object" src="assets/img/testimonials/img1.jpg" alt="" />
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Media heading <span>5 hours ago / <a href="#">Reply</a></span></h4>
-                <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
-                <hr>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="assets/img/testimonials/img2.jpg" alt="" />
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Media heading <span>17 hours ago / <a href="#">Reply</a></span></h4>
-                        <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum anibhut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
-                    </div>
+            <h3>Comentários</h3>
+            @foreach (var comentario in Model.Comentarios)
+            {
+                <a class="pull-left" href="#">
+                   @Html.Gravatar(comentario.Email, 80, GravatarHelper.DefaultImageMonsterId, new { Title = "Gravatar", Alt = "Gravatar", @class = "media-object" })
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@comentario.Nome <span>@comentario.Data</span></h4>
+                    <p>@comentario.Mensagem</p>
+                    <hr>
                 </div>
-                <hr>
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="assets/img/testimonials/img3.jpg" alt="" />
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Media heading <span>2 days ago / <a href="#">Reply</a></span></h4>
-                        <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum anibhut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
-                    </div>
-                </div>
-            </div>
-        </div><!--/media-->
-        <div class="media">
-            <a class="pull-left" href="#">
-                @Html.Gravatar("brenosarkis@outlook.com", 80, new { Title = "My Gravatar", Alt = "Gravatar" })
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Media heading <span>July 5,2013 / <a href="#">Reply</a></span></h4>
-                <p>Donec id elit non mi portas sats eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna..</p>
-            </div>
-        </div><!--/media-->
+            }
+        </div>
         <!-- End Recent Comments -->
         <hr>
-        @{ Html.RenderPartial("Comentario", new Blog.Web.Models.ComentarioViewModel { UrlDoPost = Model.Url }); }
+        @{ @Html.Action("Comentario", new Blog.Web.Models.ComentarioViewModel { UrlDoPost = Model.Url }); }
     </div>
     <!-- End Left Sidebar -->
     <!-- Right Sidebar -->

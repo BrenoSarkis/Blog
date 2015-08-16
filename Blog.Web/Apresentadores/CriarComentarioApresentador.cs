@@ -14,7 +14,7 @@ namespace Blog.Web.Apresentadores
             Comentario = new ComentarioViewModel
             {
                 Nome = resultado.Nome,
-                Data = resultado.Data,
+                Data = resultado.Data.ToString("dd/MM/yyyy hh:mm:ss"),
                 Email = resultado.Email,
                 Mensagem = resultado.Mensagem
             };
