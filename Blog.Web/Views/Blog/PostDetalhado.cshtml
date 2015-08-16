@@ -30,7 +30,7 @@
             @foreach (var comentario in Model.Comentarios)
             {
                 <a class="pull-left" href="#">
-                   @Html.Gravatar(comentario.Email, 80, GravatarHelper.DefaultImageMonsterId, new { Title = "Gravatar", Alt = "Gravatar", @class = "media-object" })
+                   @Html.Gravatar(comentario.Email, 80, GravatarHelper.DefaultImageRetro, new { Title = "Gravatar", Alt = "Gravatar", @class = "media-object" })
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">@comentario.Nome <span>@comentario.Data</span></h4>
