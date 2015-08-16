@@ -3,46 +3,126 @@
 
 <!--=== Blog Posts ===-->
 
-<div class="row blog-page blog-item">
-    <!-- Left Sidebar -->
-    <div class="col-md-9 md-margin-bottom-60">
-        <!--Blog Post-->
-        <div class="blog margin-bottom-40">
-            <h2><a href="">@Model.Titulo</a></h2>
-            <div class="blog-post-tags">
-                <ul class="list-unstyled list-inline blog-info">
-                    <li><i class="fa fa-calendar"></i> @Model.DataPorExtenso</li>
-                    <li><i class="fa fa-pencil"></i> Breno Sarkis</li>
-                    <li><i class="fa fa-comments"></i> <a href="#">@Model.ContagemDeComentarios Comentários</a></li>
-                    <li><i class="fa fa-tags"> @Model.Tags</i></li>
+<div class="row">
+    <div class="col-md-9">
+        <!-- News v3 -->
+        <div class="news-v3 bg-color-white margin-bottom-30">
+            <img class="img-responsive full-width" src="@Model.CaminhoDaImagemDaCapa" alt="">
+            <div class="news-v3-in">
+                <ul class="list-inline posted-info">
+                    <li>Por <a href="#">Breno Sarkis</a></li>
+                    <li>Em <a href="#">@Model.Tags</a></li>
+                    <li>Publicado em @Model.DataPorExtenso</li>
+                </ul>
+                <h2><a href="#">@Model.Titulo</a></h2>
+                @Html.Raw(Model.Conteudo)
+                <ul class="post-shares post-shares-lg">
+                    <li>
+                        <a href="#">
+                            <i class="rounded-x icon-speech"></i>
+                            <span>@Model.Comentarios.Count()</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="rounded-x icon-share"></i>
+                            <span>355</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="rounded-x icon-heart"></i>
+                            <span>107</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="blog-img">
-                <img class="img-responsive full-width" src="@Model.CaminhoDaImagemDaCapa" alt="">
-            </div>
-            @Html.Raw(Model.Conteudo)
         </div>
-        <!--End Blog Post-->
-        <hr>
-        <!-- Recent Comments -->
-        <div class="media">
-            <h3>Comentários</h3>
-            @foreach (var comentario in Model.Comentarios)
-            {
-                <a class="pull-left" href="#">
-                   @Html.Gravatar(comentario.Email, 80, GravatarHelper.DefaultImageRetro, new { Title = "Gravatar", Alt = "Gravatar", @class = "media-object" })
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">@comentario.Nome <span>@comentario.Data</span></h4>
-                    <p>@comentario.Mensagem</p>
-                    <hr>
+        <!-- End News v3 -->
+        <!-- Blog Post Author -->
+        <div class="blog-author margin-bottom-30">
+            <img src="assets/img/team/img1-md.jpg" alt="">
+            <div class="blog-author-desc">
+                <div class="overflow-h">
+                    <h4>Alexander Jenni</h4>
+                    <ul class="list-inline">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
                 </div>
-            }
+                <p>In auctor fringilla turpis eu rhoncus. Vivamus quis nisi vel dui ultrices lacinia ac eu massa. Quis que vitae consequat sapien. Vivamus sit amet tincidunt ipsum, nec blandit ipsum. Lorem ipsu m dolor sit amet, consectetur adipiscing elit...</p>
+            </div>
         </div>
-        <!-- End Recent Comments -->
+        <!-- End Blog Post Author -->
+        <!-- News v2 -->
+        <div class="row news-v2 margin-bottom-50">
+            <div class="col-sm-6 sm-margin-bottom-30">
+                <div class="news-v2-badge">
+                    <img class="img-responsive" src="assets/img/main/img18.jpg" alt="">
+                    <p>
+                        <span>23</span>
+                        <small>Jan</small>
+                    </p>
+                </div>
+                <div class="news-v2-desc">
+                    <h3><a href="#">Reading Some Books</a></h3>
+                    <small>By Admin | California, US | In <a href="#">Art</a></small>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="news-v2-badge">
+                    <img class="img-responsive" src="assets/img/main/img16.jpg" alt="">
+                    <p>
+                        <span>22</span>
+                        <small>Jan</small>
+                    </p>
+                </div>
+                <div class="news-v2-desc">
+                    <h3><a href="#">Interior Design</a></h3>
+                    <small>By Admin | California, US | In <a href="#">Art</a></small>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
+                </div>
+            </div>
+        </div>
+        <!-- End News v2 -->
+
         <hr>
+
+        <h2 class="margin-bottom-20">Comentários</h2>
+        <!-- Blog Comments -->
+
+        @foreach (var comentario in Model.Comentarios)
+            {
+            <div class="row blog-comments margin-bottom-30">
+                <div class="col-sm-2 sm-margin-bottom-40">
+                    @Html.Gravatar(comentario.Email, 80, GravatarHelper.DefaultImageRetro, new { Title = "Gravatar", Alt = "Gravatar", @class = "media-object" })
+                </div>
+                <div class="col-sm-10">
+                    <div class="comments-itself">
+                        <h4>
+                            @comentario.Nome
+                            <span>@comentario.Data</span>
+                        </h4>
+                        <p style="word-wrap:break-word">@comentario.Mensagem</p>
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- End Blog Comments -->
+
+        <hr>
+
         @{ @Html.Action("Comentario", new Blog.Web.Models.ComentarioViewModel { UrlDoPost = Model.Url }); }
+
     </div>
+
+
+
+
+
+
     <!-- End Left Sidebar -->
     <!-- Right Sidebar -->
     @{ Html.RenderAction("BarraLateral"); }

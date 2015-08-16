@@ -1,32 +1,31 @@
 ﻿@model Blog.Web.Models.ComentarioViewModel
 
 <!-- Comment Form -->
-@using (Html.BeginForm("Comentar", "Blog", FormMethod.Post))
+@using (Html.BeginForm("Comentar", "Blog", FormMethod.Post, new { @class = "sky-form comment-style" }))
 {
     @Html.HiddenFor(model => model.UrlDoPost);
-    <div class="post-comment">
-        <h3>Deixar um comentário</h3>
-        <form>
-            <label>Nome</label>
-            <div class="row margin-bottom-20">
-                <div class="col-md-7 col-md-offset-0">
-                    @Html.TextBoxFor(model => model.Nome, new { @class="form-control" })
+    <h2 class="margin-bottom-20">Envie um comentário</h2>
+    <fieldset>
+        <div class="row sky-space-30">
+            <div class="col-md-6">
+                <div>
+                    @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", @placeholder = "Nome" })
                 </div>
             </div>
-            <label>Email <span class="color-red">*</span></label>
-            <div class="row margin-bottom-20">
-                <div class="col-md-7 col-md-offset-0">
-                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            <div class="col-md-6">
+                <div>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email" })
                 </div>
             </div>
-            <label>Comentário</label>
-            <div class="row margin-bottom-20">
-                <div class="col-md-11 col-md-offset-0">
-                   @Html.TextAreaFor(model => model.Mensagem, new { @rows = "8" })
-                </div>
+        </div>
+
+        <div class="sky-space-30">
+            <div>
+                @Html.TextAreaFor(model => model.Mensagem, new { @class = "form-control", @placeholder = "Mensagem...",  @rows = "8" })
             </div>
-            <p><button class="btn-u" type="submit">Enviar Comentário</button></p>
-        </form>
-    </div>
+        </div>
+
+        <p><button type="submit" class="btn-u">Enviar Comentário</button></p>
+    </fieldset>
 }
 <!-- End Comment Form -->

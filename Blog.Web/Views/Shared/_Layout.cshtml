@@ -120,9 +120,11 @@
         </div>
     </div>
     @*@(Request.RawUrl.Contains("Detalhar") ? " bg-color-light" : " container")"*@
-    <div class="content-md container">
-        <div class="row" id="divConteudo">
-            @RenderBody()
+    <div class="bg-color-light">
+        <div class="content-sm container">
+            <div class="row" id="divConteudo">
+                @RenderBody()
+            </div>
         </div>
     </div>
     <div id="footer-v2" class="footer-v2">
