@@ -43,6 +43,7 @@ namespace Blog
             {
                 posts = ListarTodos();
             }
+             
 
             resultado.Posts = from p in posts
                               select new ListarPostsResultado.Post
