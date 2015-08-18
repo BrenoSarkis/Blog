@@ -2,13 +2,13 @@
 
 @model PrincipalViewModel
 
-@using (Html.BeginForm("Index", "Blog", FormMethod.Get, new { paginaAtual = Model.PaginaAtual }))
-{
-    <div class="row">
-        <!-- Blog All Posts -->
-        <div class="col-md-9">
+<div class="row">
+    <!-- Blog All Posts -->
+    <div class="col-md-9">
+        @using (Html.BeginForm("Index", "Blog", FormMethod.Get, new { paginaAtual = Model.PaginaAtual }))
+        {
             @Html.HiddenFor(model => model.PaginaAtual)
-            @foreach (var post in Model.Posts)
+            foreach (var post in Model.Posts)
             {
                 if (post.CaminhoDaImagemDaCapa != null)
                 {
@@ -58,10 +58,10 @@
                 <li class="previous"><input type="submit" name="botao" value="← Antigos" /></li>
             </ul>
             <!-- End Pager v3 -->
-        </div>
         <!-- End Blog All Posts -->
-        <!-- Blog Sidebar -->
-        @{ Html.RenderAction("BarraLateral"); }
-        <!-- End Blog Sidebar -->
+        }
     </div>
- }
+    <!-- Blog Sidebar -->
+    @{ Html.RenderAction("BarraLateral"); }
+    <!-- End Blog Sidebar -->
+</div>
