@@ -38,7 +38,7 @@ namespace Blog.Web.Controllers
             var apresentador = new ListarPostsApresentador();
             listarPostsExecutor.Apresentador = apresentador;
             listarPostsExecutor.Executar(requisicao);
-            return View(apresentador.PostsResumidos);
+            return View(apresentador.Principal);
         }
 
         [Authorize]
@@ -77,16 +77,17 @@ namespace Blog.Web.Controllers
             var apresentador = new ListarPostsApresentador();
             listarPostsExecutor.Apresentador = apresentador;
             listarPostsExecutor.Executar(requisicao);
-            return View("Index", apresentador.PostsResumidos);
+            return View("Index", apresentador.Principal);
         }
 
+        [HttpPost]
         public ActionResult Pesquisar(FerramentasDoBlogViewModel viewModel)
         {
             var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10, TermoDePesquisa = viewModel.TermoDePesquisa };
             var apresentador = new ListarPostsApresentador();
             listarPostsExecutor.Apresentador = apresentador;
             listarPostsExecutor.Executar(requisicao);
-            return View("Index", apresentador.PostsResumidos);
+            return View("Index", apresentador.Principal);
         }
 
         [HttpGet]
