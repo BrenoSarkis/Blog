@@ -46,6 +46,7 @@
     <Compile Include="ListarPostsExecutor.cs" />
     <Compile Include="ListarTagsExecutor.cs" />
     <Compile Include="ObterCitacaoExecutor.cs" />
+    <Compile Include="ObterNumeroDePaginasDePostExecutor.cs" />
     <Compile Include="ObterPostExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SalvarPostExecutor.cs" />

@@ -9,12 +9,13 @@ namespace Blog.Fronteiras.Repositorios
 {
     public interface IPostRepositorio
     {
-        void Salvar(Post post);
+        Post ObterPorUrl(string url);
         IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts, string termoDePesquisa);
         IEnumerable<Post> ListarPorTag(string tag);
         IEnumerable<Post> ListarTodos();
         IEnumerable<string> ListarTodasAsTagsUnicas();
-        Post ObterPorUrl(string url);
+        int ContagemDePosts();
+        void Salvar(Post post);
         void SalvarComentario(Comentario comentario);
     }
 }

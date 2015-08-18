@@ -14,6 +14,14 @@ namespace Blog.Repositorios
 {
     public class PostRepositorio : IPostRepositorio
     {
+        public int ContagemDePosts()
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                return conexao.Query<int>(@"SELECT Count(*) FROM Post").FirstOrDefault();
+            }
+        }
+
         public IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts, string termoDePesquisa)
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
@@ -38,7 +46,7 @@ namespace Blog.Repositorios
                 {
                     posts = conexao.Query<PostBD>(consulta, new { TermoDePesquisa = "%" + termoDePesquisa + "%" });
                 }
-                
+
                 foreach (var post in posts)
                 {
                     post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
@@ -63,7 +71,7 @@ namespace Blog.Repositorios
 
                     post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
 
-                    yield return post;                 
+                    yield return post;
                 }
             }
         }
@@ -103,7 +111,7 @@ namespace Blog.Repositorios
                 if (post == null) return null;
 
                 post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
-                post.Comentarios = conexao.Query<ComentarioBD>("SELECT Codigo, CodigoDoPost, Nome, Email, Mensagem, Data FROM Comentario WHERE CodigoDoPost = @Codigo", new { post.Codigo});
+                post.Comentarios = conexao.Query<ComentarioBD>("SELECT Codigo, CodigoDoPost, Nome, Email, Mensagem, Data FROM Comentario WHERE CodigoDoPost = @Codigo", new { post.Codigo });
 
                 return post;
             }
