@@ -10,6 +10,11 @@ namespace Blog.Testes.Dublês.Repositorios
 {
     public class PostRepositorioMock : IPostRepositorio
     {
+        public int ContagemDePosts()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts, string termoDePesquisa)
         {
             throw new NotImplementedException();

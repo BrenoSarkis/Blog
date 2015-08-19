@@ -10,15 +10,10 @@ namespace Blog.Web.Apresentadores
 {
     public class ListarPostsApresentador : IListarPostsApresentador
     {
-        public ListarPostsApresentador()
-        {
-            Principal = new PrincipalViewModel();
-            Principal.Posts = Enumerable.Empty<PostResumidoViewModel>();
-        }
 
         public void Apresentar(ListarPostsResultado resultado)
         {
-            Principal.Posts = from p in resultado.Posts
+            Posts = from p in resultado.Posts
                              select new PostResumidoViewModel
                              {
                                  CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
@@ -28,9 +23,8 @@ namespace Blog.Web.Apresentadores
                                  Titulo = p.Titulo,
                                  Url = p.Url
                              };
-            Principal.QuantidadeDePaginas = resultado.Posts.Count();
         }
 
-        public PrincipalViewModel Principal { get; set; }
+        public IEnumerable<PostResumidoViewModel> Posts { get; set; }
     }
 }

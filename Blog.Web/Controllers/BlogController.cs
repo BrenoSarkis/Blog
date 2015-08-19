@@ -1,6 +1,7 @@
 ﻿using Blog.Fronteiras.Executores.CriarComentario;
 using Blog.Fronteiras.Executores.ListarPosts;
 using Blog.Fronteiras.Executores.ListarTags;
+using Blog.Fronteiras.Executores.ObterNumeroDePaginasDePost;
 using Blog.Fronteiras.Executores.ObterPost;
 using Blog.Fronteiras.Executores.SalvarPost;
 using Blog.Web.Apresentadores;
@@ -20,25 +21,33 @@ namespace Blog.Web.Controllers
         private readonly IObterPostExecutor obterPostExecutor;
         private readonly IListarTagsExecutor listarTagsExecutor;
         private readonly ICriarComentarioExecutor criarComentarioExecutor;
+        private readonly IObterNumeroDePaginasDePostExecutor obterNumeroDePaginasDePostExecutor;
 
         public BlogController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor,
                               IObterPostExecutor obterPostExecutor, IListarTagsExecutor listarTagsExecutor,
-                              ICriarComentarioExecutor criarComentarioExecutor)
+                              ICriarComentarioExecutor criarComentarioExecutor, IObterNumeroDePaginasDePostExecutor obterNumeroDePaginasDePostExecutor)
         {
             this.listarPostsExecutor = listarPostsExecutor;
             this.salvarPostExecutor = salvarPostExecutor;
             this.obterPostExecutor = obterPostExecutor;
             this.listarTagsExecutor = listarTagsExecutor;
             this.criarComentarioExecutor = criarComentarioExecutor;
+            this.obterNumeroDePaginasDePostExecutor = obterNumeroDePaginasDePostExecutor;
         }
 
         public ActionResult Index(int? paginaAtual)
         {
             var requisicao = new ListarPostsRequisicao { PaginaAtual = paginaAtual.HasValue? paginaAtual.Value : 1, QuantidadeDePosts = 5 };
-            var apresentador = new ListarPostsApresentador();
-            listarPostsExecutor.Apresentador = apresentador;
+            var listarPostsApresentador = new ListarPostsApresentador();
+            listarPostsExecutor.Apresentador = listarPostsApresentador;
             listarPostsExecutor.Executar(requisicao);
-            return View(apresentador.Principal);
+            var obterNumeroDePaginasDePostApresentador = new ObterNumeroDePaginasDePostApresentador();
+            this.obterNumeroDePaginasDePostExecutor.Apresentador = obterNumeroDePaginasDePostApresentador;
+            this.obterNumeroDePaginasDePostExecutor.Executar();
+            var blogViewModel = new BlogViewModel();
+            blogViewModel.Posts = listarPostsApresentador.Posts;
+            blogViewModel.QuantidadeDePaginas = obterNumeroDePaginasDePostApresentador.NumeroDePaginas;
+            return View("Index", blogViewModel);
         }
 
         [Authorize]
@@ -74,20 +83,32 @@ namespace Blog.Web.Controllers
         public ActionResult ListarPostsPorTag(string tag)
         {
             var requisicao = new ListarPostsRequisicao { Tag = tag };
-            var apresentador = new ListarPostsApresentador();
-            listarPostsExecutor.Apresentador = apresentador;
+            var listarPostsApresentador = new ListarPostsApresentador();
+            listarPostsExecutor.Apresentador = listarPostsApresentador;
             listarPostsExecutor.Executar(requisicao);
-            return View("Index", apresentador.Principal);
+            var obterNumeroDePaginasDePostApresentador = new ObterNumeroDePaginasDePostApresentador();
+            this.obterNumeroDePaginasDePostExecutor.Apresentador = obterNumeroDePaginasDePostApresentador;
+            this.obterNumeroDePaginasDePostExecutor.Executar();
+            var blogViewModel = new BlogViewModel();
+            blogViewModel.Posts = listarPostsApresentador.Posts;
+            blogViewModel.QuantidadeDePaginas = obterNumeroDePaginasDePostApresentador.NumeroDePaginas;
+            return View("Index", blogViewModel);
         }
 
         [HttpPost]
         public ActionResult Pesquisar(FerramentasDoBlogViewModel viewModel)
         {
             var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 10, TermoDePesquisa = viewModel.TermoDePesquisa };
-            var apresentador = new ListarPostsApresentador();
-            listarPostsExecutor.Apresentador = apresentador;
+            var listarPostsApresentador = new ListarPostsApresentador();
+            listarPostsExecutor.Apresentador = listarPostsApresentador;
             listarPostsExecutor.Executar(requisicao);
-            return View("Index", apresentador.Principal);
+            var obterNumeroDePaginasDePostApresentador = new ObterNumeroDePaginasDePostApresentador();
+            this.obterNumeroDePaginasDePostExecutor.Apresentador = obterNumeroDePaginasDePostApresentador;
+            this.obterNumeroDePaginasDePostExecutor.Executar();
+            var blogViewModel = new BlogViewModel();
+            blogViewModel.Posts = listarPostsApresentador.Posts;
+            blogViewModel.QuantidadeDePaginas = obterNumeroDePaginasDePostApresentador.NumeroDePaginas;
+            return View("Index", blogViewModel);
         }
 
         [HttpGet]

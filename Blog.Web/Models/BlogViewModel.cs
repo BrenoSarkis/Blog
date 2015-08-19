@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Blog.Web.Models
 {
-    public class PrincipalViewModel
+    public class BlogViewModel
     {
-        public PrincipalViewModel()
+        public BlogViewModel()
         {
             Posts = Enumerable.Empty<PostResumidoViewModel>();        
         }

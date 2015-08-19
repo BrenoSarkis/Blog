@@ -163,6 +163,7 @@
     <Compile Include="Apresentadores\ListarTagsApresentador.cs" />
     <Compile Include="Apresentadores\ListarUltimosCincoPostsApresentador.cs" />
     <Compile Include="Apresentadores\LoginApresentador.cs" />
+    <Compile Include="Apresentadores\ObterNumeroDePaginasDePostApresentador.cs" />
     <Compile Include="Apresentadores\ObterPostApresentador.cs" />
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -179,7 +180,7 @@
     <Compile Include="Models\PostDetalhadoViewModel.cs" />
     <Compile Include="Models\PostResumidoViewModel.cs" />
     <Compile Include="Models\NovoPostViewModel.cs" />
-    <Compile Include="Models\PrincipalViewModel.cs" />
+    <Compile Include="Models\BlogViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
