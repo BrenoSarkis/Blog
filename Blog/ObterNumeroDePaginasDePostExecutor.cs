@@ -1,5 +1,6 @@
 ﻿using Blog.Fronteiras.Executores.ObterNumeroDePaginasDePost;
 using Blog.Fronteiras.Repositorios;
+using System;
 
 namespace Blog
 {
@@ -17,7 +18,7 @@ namespace Blog
         public void Executar()
         {
             var resultado = new ObterNumeroDePaginasDePostResultado();
-            resultado.Numero = this.postRepositorio.ContagemDePosts();
+            resultado.Numero = Math.Abs(this.postRepositorio.ContagemDePosts() / 5);
             this.Apresentador.Apresentar(resultado);
         }
     }

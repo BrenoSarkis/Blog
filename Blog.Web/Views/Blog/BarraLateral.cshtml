@@ -3,6 +3,12 @@
 @using (Html.BeginForm("Pesquisar", "Blog", FormMethod.Post))
 {
     <div class="col-md-3">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div>
+                contador de visitas
+            </div>
+        }
         <!-- Search Bar -->
         <div class="headline headline-md"><h2>Pesquisar</h2></div>
         <div class="input-group margin-bottom-40">
