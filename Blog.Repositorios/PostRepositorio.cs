@@ -28,13 +28,13 @@ namespace Blog.Repositorios
             {
                 string filtro = !String.IsNullOrWhiteSpace(termoDePesquisa) ? @"WHERE Titulo LIKE @TermoDePesquisa OR Conteudo LIKE @TermoDePesquisa" : String.Empty;
 
-                string consulta = String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
-                                                                SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
-                                                                FROM Post
-                                                                {2}
-                                                                ORDER BY Codigo DESC
-                                                                OFFSET(@Pagina - 1) * @QuantidadeDePosts ROWS
-                                                                FETCH NEXT @QuantidadeDePosts ROWS ONLY", quantidadeDePosts, pagina, filtro);
+                    string consulta = String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
+                                                                    SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
+                                                                    FROM Post
+                                                                    {2}
+                                                                    ORDER BY Codigo DESC
+                                                                    OFFSET(@Pagina - 1) * @QuantidadeDePosts ROWS
+                                                                    FETCH NEXT @QuantidadeDePosts ROWS ONLY", quantidadeDePosts, pagina, filtro);
 
                 var posts = Enumerable.Empty<PostBD>();
 
