@@ -1,0 +1,48 @@
+﻿@model  IEnumerable<Blog.Web.Models.PostResumidoViewModel>
+
+
+@foreach (var post in Model)
+{
+    if (post.CaminhoDaImagemDaCapa != null)
+    {
+        <div class="row blog blog-medium margin-bottom-40">
+            <div class="col-md-5">
+                <img class="img-responsive" src="@post.CaminhoDaImagemDaCapa">
+            </div>
+            <div class="col-md-7">
+                <h3><a href="~/@post.Url">@post.Titulo</a></h3>
+                <ul class="list-unstyled list-inline blog-info">
+                    <li><i class="fa fa-calendar"></i> @post.DataPorExtenso</li>
+                    <li><i class="fa fa-comments"></i> <a href="#">@post.ContagemDeComentarios Comentários</a></li>
+                    <li><i class="fa fa-tags"></i> @post.Tags</li>
+                </ul>
+                <div>
+                    @Html.Raw(post.Conteudo)
+                </div>
+                <p><a class="btn-u btn-u-sm" href="~/@post.Url">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+            </div>
+        </div>
+            <div class="clearfix margin-bottom-20"><hr></div>
+    }
+    else
+    {
+        <div class="row blog blog-medium margin-bottom-40">
+            <div class="col-md-12">
+                <h3><a href="~/@post.Url">@post.Titulo</a></h3>
+                <ul class="list-unstyled list-inline blog-info">
+                    <li><i class="fa fa-calendar"></i> @post.DataPorExtenso</li>
+                    <li><i class="fa fa-comments"></i> <a href="#">@post.ContagemDeComentarios Comentários</a></li>
+                    <li><i class="fa fa-tags"></i> @post.Tags</li>
+                </ul>
+                <div>
+                    @Html.Raw(post.Conteudo)
+                </div>
+                <p><a class="btn-u btn-u-sm" href="~/@post.Url">Continuar<i class="fa fa-angle-double-right margin-left-5"></i></a></p>
+            </div>
+
+        </div>
+            <div class="clearfix margin-bottom-20"><hr></div>
+    }
+}
+<!-- End Blog All Posts -->
+    

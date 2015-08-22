@@ -35,9 +35,9 @@ namespace Blog.Web.Controllers
             this.obterNumeroDePaginasDePostExecutor = obterNumeroDePaginasDePostExecutor;
         }
 
-        public ActionResult Index(int? paginaAtual)
+        public ActionResult Index()
         {
-            var requisicao = new ListarPostsRequisicao { PaginaAtual = paginaAtual.HasValue? paginaAtual.Value : 1, QuantidadeDePosts = 5 };
+            var requisicao = new ListarPostsRequisicao { PaginaAtual = 1, QuantidadeDePosts = 5 };
             var listarPostsApresentador = new ListarPostsApresentador();
             listarPostsExecutor.Apresentador = listarPostsApresentador;
             listarPostsExecutor.Executar(requisicao);
@@ -47,7 +47,17 @@ namespace Blog.Web.Controllers
             var blogViewModel = new BlogViewModel();
             blogViewModel.Posts = listarPostsApresentador.Posts;
             blogViewModel.QuantidadeDePaginas = obterNumeroDePaginasDePostApresentador.NumeroDePaginas;
+            blogViewModel.PaginaAtual = 1;
             return View("Index", blogViewModel);
+        }
+
+        public PartialViewResult Posts(int paginaAtual)
+        {
+            var requisicao = new ListarPostsRequisicao { PaginaAtual = paginaAtual, QuantidadeDePosts = 5 };
+            var listarPostsApresentador = new ListarPostsApresentador();
+            listarPostsExecutor.Apresentador = listarPostsApresentador;
+            listarPostsExecutor.Executar(requisicao);
+            return PartialView("Posts", listarPostsApresentador.Posts);
         }
 
         [Authorize]
