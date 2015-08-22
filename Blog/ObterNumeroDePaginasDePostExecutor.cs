@@ -18,7 +18,7 @@ namespace Blog
         public void Executar()
         {
             var resultado = new ObterNumeroDePaginasDePostResultado();
-            resultado.Numero = Math.Abs(this.postRepositorio.ContagemDePosts() / 5);
+            resultado.Numero =  (int)Math.Ceiling((double)this.postRepositorio.ContagemDePosts() / 5);
             this.Apresentador.Apresentar(resultado);
         }
     }

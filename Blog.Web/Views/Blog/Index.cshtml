@@ -12,7 +12,7 @@
         <!-- Pager v3 -->
         <ul class="pager pager-v3 pager-sm no-margin-bottom">
             <li class="previous"><a id="linkAntigos">← Antigos</a></li>
-            <li class="page-amount">1 de @Model.QuantidadeDePaginas</li>
+            <li class="page-amount"><label id="divPaginaAtual">1</label> de @Model.QuantidadeDePaginas</li>
             <li class="next"><a id="linkNovos">Novos →</a></li>
         </ul>
     </div>
@@ -23,15 +23,36 @@
 </div>
 
 <script>
-
     $("#linkAntigos").click(function () {
-        alert(@Model.PaginaAtual)
+        var paginaAtual = $("#PaginaAtual").val();
+        var paginaDeDestino = parseInt(paginaAtual) + 1;
+        paginaDeDestino = paginaDeDestino <= @Model.QuantidadeDePaginas ? paginaDeDestino :  @Model.QuantidadeDePaginas;
         $.ajax({
-            type:"GET",
+            type: "GET",
             url: "@Url.Action("Posts", "Blog")",
             contentType: 'application/html; charset=utf-8',
-            data:{ paginaAtual: @Model.PaginaAtual + 1 },
-            success: function(html){
+            data: { paginaAtual: paginaDeDestino },
+            success: function (html) {
+                $("#PaginaAtual").val(paginaDeDestino);
+                $("#divPaginaAtual").val(paginaDeDestino);
+                $("#divPosts").html(html);
+            }
+        });
+    });
+
+    $("#linkNovos").click(function () {
+        var paginaAtual = $("#PaginaAtual").val();
+        var paginaDeDestino = parseInt(paginaAtual) - 1;
+        paginaDeDestino = paginaDeDestino > 0 ? paginaDeDestino : paginaAtual
+        paginaAtual = paginaDeDestino;
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("Posts", "Blog")",
+            contentType: 'application/html; charset=utf-8',
+            data: { paginaAtual: paginaAtual },
+            success: function (html) {
+                $("#PaginaAtual").val(paginaDeDestino);
+                $("#divPaginaAtual").val(paginaDeDestino);
                 $("#divPosts").html(html);
             }
         });
