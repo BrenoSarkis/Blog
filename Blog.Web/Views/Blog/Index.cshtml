@@ -23,10 +23,22 @@
 </div>
 
 <script>
-    $("#linkAntigos").click(function () {
+
+    function listarPostsMaisAntigos(){
         var paginaAtual = $("#PaginaAtual").val();
         var paginaDeDestino = parseInt(paginaAtual) + 1;
         paginaDeDestino = paginaDeDestino <= @Model.QuantidadeDePaginas ? paginaDeDestino :  @Model.QuantidadeDePaginas;
+        listarPosts(paginaDeDestino);
+    }
+
+    function listarPostsMaisNovos(){
+        var paginaAtual = $("#PaginaAtual").val();
+        var paginaDeDestino = parseInt(paginaAtual) - 1;
+        paginaDeDestino = paginaDeDestino > 0 ? paginaDeDestino : paginaAtual;
+        listarPosts(paginaDeDestino);
+    }
+
+    function listarPosts(paginaDeDestino){
         $.ajax({
             type: "GET",
             url: "@Url.Action("Posts", "Blog")",
@@ -39,24 +51,13 @@
                 document.getElementById('divCabecalho').scrollIntoView();
             }
         });
+    }
+
+    $("#linkAntigos").click(function () {
+        listarPostsMaisAntigos();
     });
 
     $("#linkNovos").click(function () {
-        var paginaAtual = $("#PaginaAtual").val();
-        var paginaDeDestino = parseInt(paginaAtual) - 1;
-        paginaDeDestino = paginaDeDestino > 0 ? paginaDeDestino : paginaAtual
-        paginaAtual = paginaDeDestino;
-        $.ajax({
-            type: "GET",
-            url: "@Url.Action("Posts", "Blog")",
-            contentType: 'application/html; charset=utf-8',
-            data: { paginaAtual: paginaAtual },
-            success: function (html) {
-                $("#PaginaAtual").val(paginaDeDestino);
-                $("#divPaginaAtual").html(paginaDeDestino);
-                $("#divPosts").html(html);
-                document.getElementById('divCabecalho').scrollIntoView();
-            }
-        });
+        listarPostsMaisNovos();
     });
 </script>
