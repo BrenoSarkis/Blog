@@ -8,6 +8,11 @@ namespace Blog.Web.Models
 {
     public class NovoPostViewModel
     {
+        public NovoPostViewModel()
+        {
+            Tags = Enumerable.Empty<string>().ToArray();
+        }
+
         [AllowHtml]
         public string Conteudo { get; set; }
         public string Titulo { get; set; }
