@@ -120,7 +120,7 @@
         </div>
     </div>
     @*@(Request.RawUrl.Contains("Detalhar") ? " bg-color-light" : " container")"*@
-    <div class="bg-color-light">
+    <div class="@(Request.RawUrl.Contains("Post/") ? " bg-color-light" : "")">
         <div class="content-sm container">
             <div class="row" id="divConteudo">
                 @RenderBody()

@@ -6,14 +6,14 @@
     @Html.HiddenFor(model => model.PaginaAtual)
     <div class="col-md-9">
         <!-- Blog All Posts -->
-        <div id="divPosts">
+        <div id="divPosts" class="bg-color-white">
             @{ Html.RenderPartial("Posts", Model.Posts); }
         </div>
         <!-- Pager v3 -->
         <ul class="pager pager-v3 pager-sm no-margin-bottom">
-            <li class="previous"><a id="linkAntigos">← Antigos</a></li>
+            <li class="previous"><a id="linkAntigos" style="cursor:pointer">← Antigos</a></li>
             <li class="page-amount"><label id="divPaginaAtual">1</label> de @Model.QuantidadeDePaginas</li>
-            <li class="next"><a id="linkNovos">Novos →</a></li>
+            <li class="next"><a id="linkNovos" style="cursor:pointer">Novos →</a></li>
         </ul>
     </div>
     <!-- End Pager v3 -->
@@ -34,7 +34,7 @@
             data: { paginaAtual: paginaDeDestino },
             success: function (html) {
                 $("#PaginaAtual").val(paginaDeDestino);
-                $("#divPaginaAtual").val(paginaDeDestino);
+                $("#divPaginaAtual").html(paginaDeDestino);
                 $("#divPosts").html(html);
             }
         });
@@ -52,7 +52,7 @@
             data: { paginaAtual: paginaAtual },
             success: function (html) {
                 $("#PaginaAtual").val(paginaDeDestino);
-                $("#divPaginaAtual").val(paginaDeDestino);
+                $("#divPaginaAtual").html(paginaDeDestino);
                 $("#divPosts").html(html);
             }
         });

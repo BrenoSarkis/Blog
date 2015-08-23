@@ -15,7 +15,7 @@ namespace Blog.Web
 
             routes.MapRoute(
                     "PostDetalhado",
-                    "{ano}/{mes}/{dia}/{titulo}",
+                    "Post/{ano}/{mes}/{dia}/{titulo}",
                     new { controller = "Blog", action = "Detalhar" });
 
             routes.MapRoute(
