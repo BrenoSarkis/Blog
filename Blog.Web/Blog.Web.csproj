@@ -1962,6 +1962,7 @@
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <None Include="Properties\PublishProfiles\brenosarkis1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
