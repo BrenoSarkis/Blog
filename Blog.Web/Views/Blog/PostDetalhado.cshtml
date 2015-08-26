@@ -110,6 +110,8 @@
                 </div>
             </div>
         }
+         
+
         <!-- End Blog Comments -->
 
         <hr>
@@ -117,12 +119,6 @@
         @{ @Html.Action("Comentario", new Blog.Web.Models.ComentarioViewModel { UrlDoPost = Model.Url }); }
 
     </div>
-
-
-
-
-
-
     <!-- End Left Sidebar -->
     <!-- Right Sidebar -->
     @{ Html.RenderAction("BarraLateral"); }
