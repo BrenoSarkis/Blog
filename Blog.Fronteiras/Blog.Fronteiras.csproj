@@ -55,6 +55,7 @@
     <Compile Include="Executores\EnviarEmail\IEnviarEmailExecutor.cs" />
     <Compile Include="Executores\IApresentador.cs" />
     <Compile Include="Executores\IExecutor.cs" />
+    <Compile Include="Executores\IResultadoComNotificacao.cs" />
     <Compile Include="Executores\ListarPosts\IListarPostsApresentador.cs" />
     <Compile Include="Executores\ListarPosts\IListarPostsExecutor.cs" />
     <Compile Include="Executores\ListarPosts\ListarPostsRequisicao.cs" />
@@ -76,8 +77,10 @@
     <Compile Include="Executores\ObterPost\IObterPostExecutor.cs" />
     <Compile Include="Executores\ObterPost\ObterPostRequisicao.cs" />
     <Compile Include="Executores\ObterPost\ObterPostResultado.cs" />
+    <Compile Include="Executores\SalvarPost\ISalvarPostApresentador.cs" />
     <Compile Include="Executores\SalvarPost\ISalvarPostExecutor.cs" />
     <Compile Include="Executores\SalvarPost\SalvarPostRequisicao.cs" />
+    <Compile Include="Executores\SalvarPost\SalvarPostResultado.cs" />
     <Compile Include="IMapeadorDeObjetos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ICitacaoRepositorio.cs" />

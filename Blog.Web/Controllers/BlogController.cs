@@ -69,6 +69,7 @@ namespace Blog.Web.Controllers
         [Authorize]
         public void Salvar(NovoPostViewModel novoPost)
         {
+            var apresentador = new SalvarPostApresentador();
             var requisicao = new SalvarPostRequisicao
             {
                 Titulo = novoPost.Titulo,
@@ -76,7 +77,7 @@ namespace Blog.Web.Controllers
                 CaminhoDaImagemDaCapa = novoPost.CaminhoDaImagemDaCapa,
                 Tags = novoPost.Tags
             };
-
+            salvarPostExecutor.Apresentador = apresentador;
             salvarPostExecutor.Executar(requisicao);
         }
 

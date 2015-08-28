@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Blog.Fronteiras.Executores.SalvarPost
 {
-    public interface ISalvarPostExecutor : IExecutor<SalvarPostRequisicao>
+    public class SalvarPostResultado : IResultadoComNotificacao
     {
-        ISalvarPostApresentador Apresentador { get; set; }
+        public List<string> NotificacoesDeErro { get; set; }
+        public string NotificacaoDeSucesso { get; set; }
     }
 }
