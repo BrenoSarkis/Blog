@@ -43,6 +43,7 @@
     <Compile Include="CriarComentarioExecutor.cs" />
     <Compile Include="CriarTagExecutor.cs" />
     <Compile Include="EnviarEmailExecutor.cs" />
+    <Compile Include="Extensoes\ExtensoesDeString.cs" />
     <Compile Include="ListarPostsExecutor.cs" />
     <Compile Include="ListarTagsExecutor.cs" />
     <Compile Include="ObterCitacaoExecutor.cs" />

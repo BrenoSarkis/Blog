@@ -16,6 +16,7 @@ namespace Blog.Fronteiras.Repositorios
         IEnumerable<string> ListarTodasAsTagsUnicas();
         int ContagemDePosts();
         void Salvar(Post post);
+        void Atualizar(Post post);
         void SalvarComentario(Comentario comentario);
     }
 }

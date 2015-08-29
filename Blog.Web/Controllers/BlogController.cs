@@ -69,11 +69,12 @@ namespace Blog.Web.Controllers
         [Authorize]
         [HttpPost]
         [ValidateInput(false)]
-        public void Salvar(NovoPostViewModel novoPost)
+        public ActionResult Salvar(NovoPostViewModel novoPost)
         {
             var apresentador = new SalvarPostApresentador();
             var requisicao = new SalvarPostRequisicao
             {
+                Url = novoPost.Url,
                 Titulo = novoPost.Titulo,
                 Conteudo = novoPost.Conteudo,
                 CaminhoDaImagemDaCapa = novoPost.CaminhoDaImagemDaCapa,
@@ -81,6 +82,7 @@ namespace Blog.Web.Controllers
             };
             salvarPostExecutor.Apresentador = apresentador;
             salvarPostExecutor.Executar(requisicao);
+            return View("NovoPost", novoPost);
         }
 
         public ActionResult Detalhar(string ano, string mes, string dia, string titulo)
@@ -147,6 +149,21 @@ namespace Blog.Web.Controllers
             string ano = urlDividida[0];
             string titulo = urlDividida[3];
             return RedirectToAction("Detalhar", new { ano = ano, mes = mes, dia = dia, titulo = titulo });
+        }
+
+        public ActionResult Editar(string url)
+        {
+            var requisicao = new ObterPostRequisicao();
+            requisicao.Url = url;
+            var apresentador = new ObterPostApresentador();
+            this.obterPostExecutor.Apresentador = apresentador;
+            this.obterPostExecutor.Executar(requisicao);
+            var viewModel = new NovoPostViewModel();
+            viewModel.CaminhoDaImagemDaCapa = apresentador.Post.CaminhoDaImagemDaCapa;
+            viewModel.Conteudo = apresentador.Post.Conteudo;
+            //viewModel.Tags = apresentador.Post.Tags;
+            viewModel.Titulo = apresentador.Post.Titulo;
+            return View("NovoPost", viewModel);
         }
 
         [ChildActionOnly]

@@ -14,6 +14,14 @@ namespace Blog.Repositorios
 {
     public class PostRepositorio : IPostRepositorio
     {
+        public void Atualizar(Post post)
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                conexao.Execute(@"UPDATE Post SET Titulo = @Titulo, Conteudo = @Conteudo, Data = @Data, CaminhoDaImagemDaCapa = @CaminhoDaImagemDaCapa WHERE Url = @Url", new { post.Titulo, post.Conteudo, post.Data, post.Url, post.CaminhoDaImagemDaCapa });
+            }
+        }
+
         public int ContagemDePosts()
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
@@ -28,7 +36,7 @@ namespace Blog.Repositorios
             {
                 string filtro = !String.IsNullOrWhiteSpace(termoDePesquisa) ? @"WHERE Titulo LIKE @TermoDePesquisa OR Conteudo LIKE @TermoDePesquisa" : String.Empty;
 
-                    string consulta = String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
+                string consulta = String.Format(@"DECLARE @QuantidadeDePosts INT = {0}, @Pagina INT = {1}
                                                                     SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
                                                                     FROM Post
                                                                     {2}

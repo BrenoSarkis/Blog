@@ -10,6 +10,11 @@ namespace Blog.Testes.Dublês.Repositorios
 {
     public class PostRepositorioMock : IPostRepositorio
     {
+        public void Atualizar(Post post)
+        {
+            throw new NotImplementedException();
+        }
+
         public int ContagemDePosts()
         {
             throw new NotImplementedException();

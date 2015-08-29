@@ -18,5 +18,6 @@ namespace Blog.Web.Models
         public string Titulo { get; set; }
         public string CaminhoDaImagemDaCapa { get; set; }
         public string[] Tags { get; set; }
+        public string Url { get; set; }
     }
 }

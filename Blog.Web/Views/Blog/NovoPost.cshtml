@@ -1,8 +1,9 @@
 ﻿@model Blog.Web.Models.NovoPostViewModel
 
 <div>
- @using (Html.BeginForm("Salvar", "Blog", FormMethod.Post))
+ @using (Html.BeginForm("Salvar", "Blog", FormMethod.Post, new { @class= "sky-form" }))
  {
+     @Html.HiddenFor(model => model.Url)
         <header>Novo Post</header>
         <fieldset>
             <section class="col col-8" style="padding:0px;">
