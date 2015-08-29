@@ -1,27 +1,28 @@
 ﻿@model Blog.Web.Models.NovoPostViewModel
 
 <div>
-    <form id="formularioNovoPost" action="#" class="sky-form">
+ @using (Html.BeginForm("Salvar", "Blog", FormMethod.Post))
+ {
         <header>Novo Post</header>
         <fieldset>
-                <section class="col col-8" style="padding:0px;">
-                    <label class="label">Título</label>
-                    <label class="input">
-                        @Html.TextBoxFor(model => model.Titulo)
-                    </label>
-                </section>
-                <section class="col col-2">
-                    <label class="label">Tags</label>
-                    <label class="input">
-                        <input type="text" name="textBoxTag"/>
-                    </label>
-                </section>
-                <section class="col col-2">
-                    <label></label>
-                    <div class="">
-                        <input id="botaoDeAdicionarTag" type="button" value="Adicionar" class="btn-u btn-u-blue"  />
-                    </div>
-                </section>
+            <section class="col col-8" style="padding:0px;">
+                <label class="label">Título</label>
+                <label class="input">
+                    @Html.TextBoxFor(model => model.Titulo)
+                </label>
+            </section>
+            <section class="col col-2">
+                <label class="label">Tags</label>
+                <label class="input">
+                    @*<input type="text" name="textBoxTag" />*@
+                </label>
+            </section>
+            <section class="col col-2">
+                <label></label>
+                <div class="">
+                    <input id="botaoDeAdicionarTag" type="button" value="Adicionar" class="btn-u btn-u-blue" />
+                </div>
+            </section>
             <section>
                 <table>
                     <tr>
@@ -40,16 +41,31 @@
             </section>
             <div class="row">
                 <section>
-                    @Html.TextAreaFor(model => model.Conteudo, new { @class= "ckeditor" })
-                    @*<textarea id="textAreaConteudoPost" ck-editor ng-model="post.Conteudo"></textarea>*@
+                    @Html.TextAreaFor(model => model.Conteudo, new { @class = "ckeditor" })
                 </section>
             </div>
         </fieldset>
 
         <footer>
-            <button type="button" class="btn-u">Salvar</button>
+            <button id="btnSalvarNovoPost" type="submit" class="btn-u">Salvar</button>
             <button type="button" class="btn-u btn-u-default" onclick="window.history.back();">Voltar</button>
         </footer>
-    </form>
+ }
 </div>
 
+@*<script>
+    $("#btnSalvarNovoPost").click(function () {
+        alert(JSON.stringify($("#formularioNovoPost").serialize()));
+        var viewModel =$("#formularioNovoPost").serialize();
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Salvar", "Blog")",
+            traditional: true,
+            contentType: 'application/json; charset=utf-8',
+            data: { novoPost: viewModel },
+            success: function (data) {
+                alert(data.NotificacaoDeSucesso);
+            }
+        });
+    });
+</script>*@

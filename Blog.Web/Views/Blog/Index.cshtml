@@ -39,7 +39,7 @@
 
     function listarPosts(paginaDeDestino){
         $.ajax({
-            type: "GET",
+            //type: "GET",
             url: "@Url.Action("Posts", "Blog")",
             contentType: 'application/html; charset=utf-8',
             data: { paginaAtual: paginaDeDestino },

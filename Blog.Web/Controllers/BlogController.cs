@@ -67,6 +67,8 @@ namespace Blog.Web.Controllers
         }
 
         [Authorize]
+        [HttpPost]
+        [ValidateInput(false)]
         public void Salvar(NovoPostViewModel novoPost)
         {
             var apresentador = new SalvarPostApresentador();
