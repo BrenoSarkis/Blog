@@ -23,21 +23,30 @@ namespace Blog
         public void Executar(CriarComentarioRequisicao requisicao)
         {
             var resultado = new CriarComentarioResultado();
-            var post = postRepositorio.ObterPorUrl(requisicao.UrlDoPost);
 
-            var comentario = new Comentario();
-            comentario.CodigoDoPost = post.Codigo;
-            comentario.Nome = requisicao.Nome;
-            comentario.Email = requisicao.Email;
-            comentario.Mensagem = requisicao.Mensagem;
-            comentario.Data = DateTime.Now;
+            try
+            {
+                var post = postRepositorio.ObterPorUrl(requisicao.UrlDoPost);
 
-            postRepositorio.SalvarComentario(comentario);
+                var comentario = new Comentario();
+                comentario.CodigoDoPost = post.Codigo;
+                comentario.Nome = requisicao.Nome;
+                comentario.Email = requisicao.Email;
+                comentario.Mensagem = requisicao.Mensagem;
+                comentario.Data = DateTime.Now;
 
-            resultado.Nome = comentario.Nome;
-            resultado.Email = comentario.Email;
-            resultado.Mensagem = comentario.Mensagem;
-            resultado.Data = comentario.Data;
+                postRepositorio.SalvarComentario(comentario);
+
+                resultado.Nome = comentario.Nome;
+                resultado.Email = comentario.Email;
+                resultado.Mensagem = comentario.Mensagem;
+                resultado.Data = comentario.Data;
+
+            }
+            catch (Exception ex)
+            {
+                resultado.NotificacoesDeErro.Add("Erro ao criar comentário.");
+            }
 
             this.Apresentador.Apresentar(resultado);
         }

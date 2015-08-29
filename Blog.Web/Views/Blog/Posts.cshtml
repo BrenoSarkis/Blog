@@ -12,9 +12,11 @@
             <div class="col-md-7">
                 <h3><a href="~/Post/@post.Url">@post.Titulo</a></h3>
                 <ul class="list-unstyled list-inline blog-info">
+                    <li><i class="fa fa-edit"></i> Editar</li>
                     <li><i class="fa fa-calendar"></i> @post.DataPorExtenso</li>
                     <li><i class="fa fa-comments"></i> <a href="#">@post.ContagemDeComentarios Comentários</a></li>
                     <li><i class="fa fa-tags"></i> @post.Tags</li>
+                    
                 </ul>
                 <div>
                     @Html.Raw(post.Conteudo)

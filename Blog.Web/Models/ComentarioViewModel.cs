@@ -12,5 +12,6 @@ namespace Blog.Web.Models
         public string Mensagem { get; set; }
         public string UrlDoPost { get; set; }
         public string Data { get; set; }
+        public NotificacaoViewModel Notificacao { get; set; }
     }
 }
