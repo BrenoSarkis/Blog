@@ -1,9 +1,9 @@
 ﻿@model Blog.Web.Models.NovoPostViewModel
 
 <div>
- @using (Html.BeginForm("Salvar", "Blog", FormMethod.Post, new { @class= "sky-form" }))
- {
-     @Html.HiddenFor(model => model.Url)
+    @using (Html.BeginForm("Salvar", "Blog", FormMethod.Post, new { @id = "formularioNovoPost", @class = "sky-form" }))
+    {
+
         <header>Novo Post</header>
         <fieldset>
             <section class="col col-8" style="padding:0px;">
@@ -15,7 +15,7 @@
             <section class="col col-2">
                 <label class="label">Tags</label>
                 <label class="input">
-                    @*<input type="text" name="textBoxTag" />*@
+                    @Html.TextBoxFor(model => model.Tag)
                 </label>
             </section>
             <section class="col col-2">
@@ -26,7 +26,7 @@
             </section>
             <section>
                 <table>
-                    <tr>
+                    <tr id="linhaDeTags">
                         @foreach (var tag in Model.Tags)
                         {
                             <td style="padding-right:15px;"><a class="glyphicon glyphicon-tag" style="text-decoration:none;"></a> @tag</td>
@@ -48,25 +48,30 @@
         </fieldset>
 
         <footer>
-            <button id="btnSalvarNovoPost" type="submit" class="btn-u">Salvar</button>
+            <button id="btnSalvarNovoPost" type="button" class="btn-u">Salvar</button>
             <button type="button" class="btn-u btn-u-default" onclick="window.history.back();">Voltar</button>
-        </footer>
- }
+        </footer>    
+        @Html.HiddenFor(model => model.Url)
+    }
 </div>
+<script>
+    $("#botaoDeAdicionarTag").click(function () {
+        $("#linhaDeTags").append('<td style="padding-right:15px;"><a class="glyphicon glyphicon-tag" style="text-decoration:none;"></a> <span>' +$("#Tag").val() + '</span></td>');
+    });
 
-@*<script>
     $("#btnSalvarNovoPost").click(function () {
-        alert(JSON.stringify($("#formularioNovoPost").serialize()));
-        var viewModel =$("#formularioNovoPost").serialize();
+        var tags = [];
+        $("#linhaDeTags").find('td').each(function () {
+            tags.push($(this).children("span").text());
+        });
         $.ajax({
             type: "POST",
             url: "@Url.Action("Salvar", "Blog")",
             traditional: true,
-            contentType: 'application/json; charset=utf-8',
-            data: { novoPost: viewModel },
+            data: { Titulo: $("#Titulo").val(), Tags: tags, Url: $("#Url").val(), Conteudo: $("#Conteudo").val(), CaminhoDaImagemDaCapa: $("#CaminhoDaImagemDaCapa").val() },
             success: function (data) {
-                alert(data.NotificacaoDeSucesso);
+               //alert(data.NotificacaoDeSucesso);
             }
         });
     });
-</script>*@
+</script>

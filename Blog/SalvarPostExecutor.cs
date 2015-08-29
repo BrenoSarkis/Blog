@@ -36,7 +36,7 @@ namespace Blog
                     post.Tags = requisicao.Tags;
                     post.Data = DateTime.Now;
                     post.Url = String.Format(@"{0}/{1}/{2}/{3}", post.Data.Year, post.Data.Month.ToString().PadLeft(2, '0'),
-                                                                             post.Data.Day.ToString().PadLeft(2, '0').Replace(" ", "-")).RemoverAcentos();
+                                                                             post.Data.Day.ToString().PadLeft(2, '0')).Replace(" ", "-").RemoverAcentos();
                     post.CaminhoDaImagemDaCapa = requisicao.CaminhoDaImagemDaCapa;
                     this.postRepositorio.Salvar(post);
                     resultado.NotificacaoDeSucesso = "Post salvo com sucesso.";

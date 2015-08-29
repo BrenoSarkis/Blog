@@ -68,8 +68,7 @@ namespace Blog.Web.Controllers
 
         [Authorize]
         [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Salvar(NovoPostViewModel novoPost)
+        public void Salvar(NovoPostViewModel novoPost)
         {
             var apresentador = new SalvarPostApresentador();
             var requisicao = new SalvarPostRequisicao
@@ -78,12 +77,20 @@ namespace Blog.Web.Controllers
                 Titulo = novoPost.Titulo,
                 Conteudo = novoPost.Conteudo,
                 CaminhoDaImagemDaCapa = novoPost.CaminhoDaImagemDaCapa,
-                Tags = novoPost.Tags
+                Tags = novoPost.Tags.ToArray()
             };
             salvarPostExecutor.Apresentador = apresentador;
             salvarPostExecutor.Executar(requisicao);
-            return View("NovoPost", novoPost);
+            //return View("NovoPost", novoPost);
         }
+
+        //[HttpPost]
+        //public ActionResult AdicionarTag(NovoPostViewModel post)
+        //{
+
+        //    post.Tags.Add(post.Tag);
+        //    return View("NovoPost", post);
+        //}
 
         public ActionResult Detalhar(string ano, string mes, string dia, string titulo)
         {
@@ -161,8 +168,9 @@ namespace Blog.Web.Controllers
             var viewModel = new NovoPostViewModel();
             viewModel.CaminhoDaImagemDaCapa = apresentador.Post.CaminhoDaImagemDaCapa;
             viewModel.Conteudo = apresentador.Post.Conteudo;
-            //viewModel.Tags = apresentador.Post.Tags;
+            viewModel.Tags = apresentador.Post.Tags.Split(',');
             viewModel.Titulo = apresentador.Post.Titulo;
+            viewModel.Url = apresentador.Post.Url;
             return View("NovoPost", viewModel);
         }
 

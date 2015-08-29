@@ -10,6 +10,10 @@
             <img class="img-responsive full-width" src="@Model.CaminhoDaImagemDaCapa" alt="">
             <div class="news-v3-in">
                 <ul class="list-inline posted-info">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><i class="fa fa-edit"></i> @Html.ActionLink("Editar", "Editar", new { url = @Model.Url })</li>
+                    }
                     <li>Por <a href="#">Breno Sarkis</a></li>
                     <li>Em <a href="#">@Model.Tags</a></li>
                     <li>Publicado em @Model.DataPorExtenso</li>

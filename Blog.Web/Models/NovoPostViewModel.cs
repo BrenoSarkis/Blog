@@ -10,14 +10,15 @@ namespace Blog.Web.Models
     {
         public NovoPostViewModel()
         {
-            Tags = Enumerable.Empty<string>().ToArray();
+            Tags = new List<string>();
         }
 
         [AllowHtml]
         public string Conteudo { get; set; }
         public string Titulo { get; set; }
         public string CaminhoDaImagemDaCapa { get; set; }
-        public string[] Tags { get; set; }
+        public IList<string> Tags { get; set; }
         public string Url { get; set; }
+        public string Tag { get; set; }
     }
 }
