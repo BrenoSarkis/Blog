@@ -49,11 +49,15 @@
     <Compile Include="Executores\CriarTag\CriarTagResultado.cs" />
     <Compile Include="Executores\CriarTag\ICriarTagApresentador.cs" />
     <Compile Include="Executores\CriarTag\ICriarTagExecutor.cs" />
+    <Compile Include="Executores\DeletarTag\DeletarTagRequisicao.cs" />
+    <Compile Include="Executores\DeletarTag\DeletarTagResultado.cs" />
+    <Compile Include="Executores\DeletarTag\IDeletarTagApresentador.cs" />
     <Compile Include="Executores\EnviarEmail\EnviarEmailRequisicao.cs" />
     <Compile Include="Executores\EnviarEmail\EnviarEmailResultado.cs" />
     <Compile Include="Executores\EnviarEmail\IEnviarEmailApresentador.cs" />
     <Compile Include="Executores\EnviarEmail\IEnviarEmailExecutor.cs" />
     <Compile Include="Executores\IApresentador.cs" />
+    <Compile Include="Executores\DeletarTag\IDeletarTagExecutor.cs" />
     <Compile Include="Executores\IExecutor.cs" />
     <Compile Include="Executores\IResultadoComNotificacao.cs" />
     <Compile Include="Executores\ListarPosts\IListarPostsApresentador.cs" />
@@ -77,6 +81,7 @@
     <Compile Include="Executores\ObterPost\IObterPostExecutor.cs" />
     <Compile Include="Executores\ObterPost\ObterPostRequisicao.cs" />
     <Compile Include="Executores\ObterPost\ObterPostResultado.cs" />
+    <Compile Include="Executores\ResultadoComNotificacao.cs" />
     <Compile Include="Executores\SalvarPost\ISalvarPostApresentador.cs" />
     <Compile Include="Executores\SalvarPost\ISalvarPostExecutor.cs" />
     <Compile Include="Executores\SalvarPost\SalvarPostRequisicao.cs" />

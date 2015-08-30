@@ -30,7 +30,7 @@
                     <tr id="linhaDeTags">
                         @foreach (var tag in Model.Tags)
                         {
-                            <td style="padding-right:15px;"><a class="glyphicon glyphicon-tag" style="text-decoration:none;"></a> @tag</td>
+                            <td style="padding-right:15px;"><a id="linkTag" data-tag="@tag" class="glyphicon glyphicon-tag" style="text-decoration:none;"></a> @tag</td>
                         }
                     </tr>
                 </table>
@@ -57,7 +57,9 @@
 </div>
 <script>
     $("#botaoDeAdicionarTag").click(function () {
-        $("#linhaDeTags").append('<td style="padding-right:15px;"><a class="glyphicon glyphicon-tag" style="text-decoration:none;"></a> <span>' +$("#Tag").val() + '</span></td>');
+        if ($("#Tag").val() != "") {
+            $("#linhaDeTags").append('<td style="padding-right:15px;"><a class="glyphicon glyphicon-tag" href="@Url.Action("DeletarTag", "Blog", new { tag = Model.Codigo })" style="text-decoration:none;"></a> <span>' +$("#Tag").val() + '</span></td>');
+        }
     });
 
     $("#btnSalvarNovoPost").click(function () {
@@ -73,6 +75,19 @@
             success: function (data) {
                //alert(data.NotificacaoDeSucesso);
             }
+        });
+    });
+    $("#linkTag").click(function () {
+        debugger;
+        var td = $(this).parent();
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("DeletarTag", "Blog")",
+            traditional: true,
+             data: { tag : $(this).attr("data-tag"), codigoDoPost : @Model.Codigo },
+             success: function (data) {
+                 td.remove("");
+             }
         });
     });
 </script>

@@ -22,10 +22,10 @@ namespace Blog.Repositorios
 
                 foreach (var tag in post.Tags)
                 {
-                    bool ehUmaNovaTag = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo and Tag = @Tag", new { post.Codigo, tag }).FirstOrDefault() == null;
+                    bool ehUmaNovaTag = conexao.Query<string>("SELECT Tag as Nome from TagsDoPost WHERE CodigoDoPost = @Codigo and Tag = @Tag", new { post.Codigo, tag }).FirstOrDefault() == null;
                     if (ehUmaNovaTag)
                     {
-                        conexao.Execute(@"INSERT INTO [TagsDoPost] (CodigoDoPost, Tag) values(@CodigoDoPost, @Tag)", new { @CodigoDoPost = post.Codigo, @Tag = tag });
+                        conexao.Execute(@"INSERT INTO [TagsDoPost] (CodigoDoPost, Tag) values(@CodigoDoPost, @Tag)", new { @CodigoDoPost = post.Codigo, Tag = tag });
                     }
                 }
             }
@@ -66,7 +66,7 @@ namespace Blog.Repositorios
 
                 foreach (var post in posts)
                 {
-                    post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+                    post.Tags = conexao.Query<string>("SELECT Tag as Nome from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
                 }
 
                 return posts;
@@ -97,7 +97,7 @@ namespace Blog.Repositorios
         {
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
-                return conexao.Query<string>("SELECT DISTINCT TAG FROM TagsDoPost");
+                return conexao.Query<string>("SELECT DISTINCT Tag as Nome FROM TagsDoPost");
             }
         }
 
@@ -127,7 +127,7 @@ namespace Blog.Repositorios
                                                     WHERE Codigo = @Codigo", new { codigo }).FirstOrDefault();
                 if (post == null) return null;
 
-                post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+                post.Tags = conexao.Query<string>("SELECT Tag as Nome from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
                 post.Comentarios = conexao.Query<ComentarioBD>("SELECT Codigo, CodigoDoPost, Nome, Email, Mensagem, Data FROM Comentario WHERE CodigoDoPost = @Codigo", new { post.Codigo });
 
                 return post;
@@ -143,7 +143,7 @@ namespace Blog.Repositorios
                                                     WHERE Url = @Url", new { url }).FirstOrDefault();
                 if (post == null) return null;
 
-                post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+                post.Tags = conexao.Query<string>("SELECT Tag as Nome from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
                 post.Comentarios = conexao.Query<ComentarioBD>("SELECT Codigo, CodigoDoPost, Nome, Email, Mensagem, Data FROM Comentario WHERE CodigoDoPost = @Codigo", new { post.Codigo });
 
                 return post;
@@ -171,6 +171,22 @@ namespace Blog.Repositorios
                 int codigo = conexao.Query<int>(@"INSERT INTO [Comentario] (CodigoDoPost, Nome, Email, Mensagem, Data) values (@CodigoDoPost, @Nome, @Email, @Mensagem, @Data);
                                                   SELECT CAST(SCOPE_IDENTITY() as int)", new { comentario.CodigoDoPost, comentario.Nome, comentario.Email, comentario.Mensagem, comentario.Data }).Single();
 
+            }
+        }
+
+        public void DeletarTag(Tag tag)
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                conexao.Execute("DELETE FROM TagsDoPost WHERE Tag = @Tag and CodigoDoPost = @Codigo ", new { @Tag = tag.Nome, @Codigo = tag.CodigoDoPost });
+            }
+        }
+
+        public Tag ObterTag(string tag, int codigoDoPost)
+        {
+            using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                return conexao.Query<Tag>("SELECT Codigo, Tag as Nome, CodigoDoPost FROM TagsDoPost WHERE Tag = @Tag and CodigoDoPost = @CodigoDoPost ", new { tag, codigoDoPost }).FirstOrDefault();
             }
         }
     }

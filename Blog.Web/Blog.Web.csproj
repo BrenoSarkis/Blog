@@ -158,11 +158,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Apresentadores\ArvoreDePostsApresentador.cs" />
     <Compile Include="Apresentadores\CriarComentarioApresentador.cs" />
+    <Compile Include="Apresentadores\DeletarTagApresentador.cs" />
     <Compile Include="Apresentadores\EnviarEmailApresentador.cs" />
     <Compile Include="Apresentadores\ListarPostsApresentador.cs" />
     <Compile Include="Apresentadores\ListarTagsApresentador.cs" />
     <Compile Include="Apresentadores\ListarUltimosCincoPostsApresentador.cs" />
     <Compile Include="Apresentadores\LoginApresentador.cs" />
+    <Compile Include="Apresentadores\NotificacaoApresentador.cs" />
     <Compile Include="Apresentadores\ObterNumeroDePaginasDePostApresentador.cs" />
     <Compile Include="Apresentadores\ObterPostApresentador.cs" />
     <Compile Include="Apresentadores\SalvarPostApresentador.cs" />

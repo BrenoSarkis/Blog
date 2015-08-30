@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CriarComentarioExecutor.cs" />
     <Compile Include="CriarTagExecutor.cs" />
+    <Compile Include="DeletarTagExecutor.cs" />
     <Compile Include="EnviarEmailExecutor.cs" />
     <Compile Include="Extensoes\ExtensoesDeString.cs" />
     <Compile Include="ListarPostsExecutor.cs" />

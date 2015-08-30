@@ -22,6 +22,7 @@ using Blog.Fronteiras.Executores.EnviarEmail;
 using Blog.Fronteiras.Executores.ObterCitacao;
 using Blog.Fronteiras.Executores.CriarComentario;
 using Blog.Fronteiras.Executores.ObterNumeroDePaginasDePost;
+using Blog.Fronteiras.Executores.DeletarTag;
 
 namespace Blog.InversaoDeControle
 {
@@ -52,6 +53,7 @@ namespace Blog.InversaoDeControle
             k.Bind<ICitacaoRepositorio>().To<CitacaoRepositorio>();
             k.Bind<ICriarComentarioExecutor>().To<CriarComentarioExecutor>();
             k.Bind<IObterNumeroDePaginasDePostExecutor>().To<ObterNumeroDePaginasDePostExecutor>();
+            k.Bind<IDeletarTagExecutor>().To<DeletarTagExecutor>();
         }
 
         public static T Resolver<T>()

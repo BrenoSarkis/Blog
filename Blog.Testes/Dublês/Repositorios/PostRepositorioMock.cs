@@ -20,6 +20,11 @@ namespace Blog.Testes.Dublês.Repositorios
             throw new NotImplementedException();
         }
 
+        public void DeletarTag(Tag tag)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts, string termoDePesquisa)
         {
             throw new NotImplementedException();
@@ -46,6 +51,11 @@ namespace Blog.Testes.Dublês.Repositorios
         }
 
         public Post ObterPorUrl(string url)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Tag ObterTag(string tag, int codigoDoPost)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
 ﻿using Blog.Fronteiras.Executores.CriarComentario;
+using Blog.Fronteiras.Executores.DeletarTag;
 using Blog.Fronteiras.Executores.ListarPosts;
 using Blog.Fronteiras.Executores.ListarTags;
 using Blog.Fronteiras.Executores.ObterNumeroDePaginasDePost;
@@ -22,10 +23,12 @@ namespace Blog.Web.Controllers
         private readonly IListarTagsExecutor listarTagsExecutor;
         private readonly ICriarComentarioExecutor criarComentarioExecutor;
         private readonly IObterNumeroDePaginasDePostExecutor obterNumeroDePaginasDePostExecutor;
+        private readonly IDeletarTagExecutor deletarTagExecutor;
 
         public BlogController(IListarPostsExecutor listarPostsExecutor, ISalvarPostExecutor salvarPostExecutor,
                               IObterPostExecutor obterPostExecutor, IListarTagsExecutor listarTagsExecutor,
-                              ICriarComentarioExecutor criarComentarioExecutor, IObterNumeroDePaginasDePostExecutor obterNumeroDePaginasDePostExecutor)
+                              ICriarComentarioExecutor criarComentarioExecutor, IObterNumeroDePaginasDePostExecutor obterNumeroDePaginasDePostExecutor,
+                              IDeletarTagExecutor deletarTagExecutor)
         {
             this.listarPostsExecutor = listarPostsExecutor;
             this.salvarPostExecutor = salvarPostExecutor;
@@ -33,6 +36,7 @@ namespace Blog.Web.Controllers
             this.listarTagsExecutor = listarTagsExecutor;
             this.criarComentarioExecutor = criarComentarioExecutor;
             this.obterNumeroDePaginasDePostExecutor = obterNumeroDePaginasDePostExecutor;
+            this.deletarTagExecutor = deletarTagExecutor;
         }
 
         public ActionResult Index()
@@ -91,6 +95,15 @@ namespace Blog.Web.Controllers
             this.obterPostExecutor.Apresentador = apresentador;
             this.obterPostExecutor.Executar(requisicao);
             return View("PostDetalhado", apresentador.Post);
+        }
+
+        [HttpPost]
+        public void DeletarTag(string tag, int codigoDoPost)
+        {
+            var requisicao = new DeletarTagRequisicao { Tag = tag, CodigoDoPost = codigoDoPost };
+            var apresentador = new DeletarTagApresentador();
+            this.deletarTagExecutor.Apresentador = apresentador;
+            this.deletarTagExecutor.Executar(requisicao);
         }
 
         public ActionResult ListarPostsPorTag(string tag)

@@ -11,6 +11,7 @@ namespace Blog.Fronteiras.Repositorios
     {
         Post ObterCodigo(int codigo);
         Post ObterPorUrl(string url);
+        Tag ObterTag(string tag, int codigoDoPost);
         IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts, string termoDePesquisa);
         IEnumerable<Post> ListarPorTag(string tag);
         IEnumerable<Post> ListarTodos();
@@ -19,5 +20,6 @@ namespace Blog.Fronteiras.Repositorios
         void Salvar(Post post);
         void Atualizar(Post post);
         void SalvarComentario(Comentario comentario);
+        void DeletarTag(Tag tag);
     }
 }

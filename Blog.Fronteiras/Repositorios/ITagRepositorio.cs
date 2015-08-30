@@ -9,6 +9,8 @@ namespace Blog.Fronteiras.Repositorios
 {
     public interface ITagRepositorio
     {
-        void Salvar(Tag tag);
+        Tag Obter(string tag, int codigoDoPost);
+        //void Salvar(Tag tag);
+        void Deletar(Tag tag);
     }
 }
