@@ -19,6 +19,15 @@ namespace Blog.Repositorios
             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
             {
                 conexao.Execute(@"UPDATE Post SET Titulo = @Titulo, Conteudo = @Conteudo, Data = @Data, CaminhoDaImagemDaCapa = @CaminhoDaImagemDaCapa WHERE Url = @Url", new { post.Titulo, post.Conteudo, post.Data, post.Url, post.CaminhoDaImagemDaCapa });
+
+                foreach (var tag in post.Tags)
+                {
+                    bool ehUmaNovaTag = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo and Tag = @Tag", new { post.Codigo, tag }).FirstOrDefault() == null;
+                    if (ehUmaNovaTag)
+                    {
+                        conexao.Execute(@"INSERT INTO [TagsDoPost] (CodigoDoPost, Tag) values(@CodigoDoPost, @Tag)", new { @CodigoDoPost = post.Codigo, @Tag = tag });
+                    }
+                }
             }
         }
 
@@ -106,6 +115,22 @@ namespace Blog.Repositorios
                 }
 
                 return posts;
+            }
+        }
+
+        public Post ObterCodigo(int codigo)
+        {
+             using (var conexao = new SqlConnection(StringsDeConexao.SqlServer))
+            {
+                var post = conexao.Query<PostBD>(@"SELECT Codigo, Titulo, Conteudo, Url, Data, CaminhoDaImagemDaCapa
+                                                     FROM Post
+                                                    WHERE Codigo = @Codigo", new { codigo }).FirstOrDefault();
+                if (post == null) return null;
+
+                post.Tags = conexao.Query<string>("SELECT Tag from TagsDoPost WHERE CodigoDoPost = @Codigo", new { post.Codigo }).ToArray();
+                post.Comentarios = conexao.Query<ComentarioBD>("SELECT Codigo, CodigoDoPost, Nome, Email, Mensagem, Data FROM Comentario WHERE CodigoDoPost = @Codigo", new { post.Codigo });
+
+                return post;
             }
         }
 

@@ -14,6 +14,7 @@ namespace Blog.Web.Apresentadores
         {
             Post = new PostDetalhadoViewModel
             {
+                Codigo = resultado.Codigo,
                 CaminhoDaImagemDaCapa = resultado.CaminhoDaImagemDaCapa,
                 Conteudo = resultado.Conteudo,
                 Titulo = resultado.Titulo,

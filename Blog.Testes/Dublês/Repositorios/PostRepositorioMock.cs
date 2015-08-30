@@ -40,6 +40,11 @@ namespace Blog.Testes.Dublês.Repositorios
             throw new NotImplementedException();
         }
 
+        public Post ObterCodigo(int codigo)
+        {
+            throw new NotImplementedException();
+        }
+
         public Post ObterPorUrl(string url)
         {
             throw new NotImplementedException();

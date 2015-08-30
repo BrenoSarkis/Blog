@@ -17,6 +17,7 @@ namespace Blog.Fronteiras.Executores.ListarPosts
 
         public class Post
         {
+            public int Codigo { get; set; }
             public string Conteudo { get; set; }
             public string Titulo { get; set; }
             public string CaminhoDaImagemDaCapa { get; set; }

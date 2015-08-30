@@ -47,6 +47,7 @@ namespace Blog
             resultado.Posts = from p in posts
                               select new ListarPostsResultado.Post
                               {
+                                  Codigo = p.Codigo,
                                   CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
                                   Conteudo = p.Conteudo,
                                   Tags = p.Tags,

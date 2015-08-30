@@ -8,6 +8,7 @@ namespace Blog.Web.Models
 {
     public class PostResumidoViewModel
     {
+        public int Codigo { get; set; }
         [AllowHtml]
         public string Conteudo { get; set; }
         public string Titulo { get; set; }

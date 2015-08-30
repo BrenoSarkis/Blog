@@ -3,7 +3,8 @@
 <div>
     @using (Html.BeginForm("Salvar", "Blog", FormMethod.Post, new { @id = "formularioNovoPost", @class = "sky-form" }))
     {
-
+        @*@Html.HiddenFor(model => model.Url)*@
+        @Html.HiddenFor(model => model.Codigo)
         <header>Novo Post</header>
         <fieldset>
             <section class="col col-8" style="padding:0px;">
@@ -51,7 +52,7 @@
             <button id="btnSalvarNovoPost" type="button" class="btn-u">Salvar</button>
             <button type="button" class="btn-u btn-u-default" onclick="window.history.back();">Voltar</button>
         </footer>    
-        @Html.HiddenFor(model => model.Url)
+
     }
 </div>
 <script>
@@ -68,7 +69,7 @@
             type: "POST",
             url: "@Url.Action("Salvar", "Blog")",
             traditional: true,
-            data: { Titulo: $("#Titulo").val(), Tags: tags, Url: $("#Url").val(), Conteudo: $("#Conteudo").val(), CaminhoDaImagemDaCapa: $("#CaminhoDaImagemDaCapa").val() },
+            data: { Codigo: $("#Codigo").val(), Titulo: $("#Titulo").val(), Tags: tags, Url: $("#Url").val(), Conteudo: $("#Conteudo").val(), CaminhoDaImagemDaCapa: $("#CaminhoDaImagemDaCapa").val() },
             success: function (data) {
                //alert(data.NotificacaoDeSucesso);
             }

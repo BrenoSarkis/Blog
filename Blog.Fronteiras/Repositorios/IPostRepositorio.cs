@@ -9,6 +9,7 @@ namespace Blog.Fronteiras.Repositorios
 {
     public interface IPostRepositorio
     {
+        Post ObterCodigo(int codigo);
         Post ObterPorUrl(string url);
         IEnumerable<Post> ListarComPaginacao(int pagina, int quantidadeDePosts, string termoDePesquisa);
         IEnumerable<Post> ListarPorTag(string tag);

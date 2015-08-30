@@ -13,6 +13,7 @@ namespace Blog.Web.Models
             Comentarios = Enumerable.Empty<ComentarioViewModel>();
         }
 
+        public int Codigo { get; set; }
         [AllowHtml]
         public string Conteudo { get; set; }
         public string Titulo { get; set; }

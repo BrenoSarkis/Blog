@@ -8,7 +8,7 @@ namespace Blog.Fronteiras.Executores.SalvarPost
 {
     public class SalvarPostRequisicao
     {
-        public string Url { get; set; }
+        public int Codigo { get; set; }
         public string Titulo { get; set; }
         public string Conteudo { get; set; }
         public string CaminhoDaImagemDaCapa { get; set; }

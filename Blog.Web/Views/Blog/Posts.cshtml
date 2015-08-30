@@ -14,7 +14,7 @@
                 <ul class="list-unstyled list-inline blog-info">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><i class="fa fa-edit"></i> @Html.ActionLink("Editar", "Editar", new { url = @post.Url })</li>
+                        <li><i class="fa fa-edit"></i> @Html.ActionLink("Editar", "Editar", new { codigo = @post.Codigo })</li>
                     }
                     <li><i class="fa fa-calendar"></i> @post.DataPorExtenso</li>
                     <li><i class="fa fa-comments"></i> <a href="#">@post.ContagemDeComentarios Comentários</a></li>
@@ -38,7 +38,7 @@
                 <ul class="list-unstyled list-inline blog-info">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><i class="fa fa-edit"></i> @Html.ActionLink("Editar", "Editar", new { url = @post.Url })</li>
+                        <li><i class="fa fa-edit"></i> @Html.ActionLink("Editar", "Editar", new { codigo = @post.Codigo })</li>
                     }
                     <li><i class="fa fa-calendar"></i> @post.DataPorExtenso</li>
                     <li><i class="fa fa-comments"></i> <a href="#">@post.ContagemDeComentarios Comentários</a></li>

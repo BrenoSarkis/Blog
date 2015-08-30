@@ -1,4 +1,5 @@
-﻿using Blog.Fronteiras.Executores.ObterPost;
+﻿using Blog.Entidades;
+using Blog.Fronteiras.Executores.ObterPost;
 using Blog.Fronteiras.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,19 @@ namespace Blog
         public void Executar(ObterPostRequisicao requisicao)
         {
             var resultado = new ObterPostResultado();
+            var post = new Post();
 
-            var post = this.postRepositorio.ObterPorUrl(requisicao.Url);
+            if (String.IsNullOrWhiteSpace(requisicao.Url))
+            {
+                post = this.postRepositorio.ObterCodigo(requisicao.Codigo);
+            }
+            else
+            {
+                post = this.postRepositorio.ObterPorUrl(requisicao.Url);
+            }
+         
 
+            resultado.Codigo = post.Codigo;
             resultado.CaminhoDaImagemDaCapa = post.CaminhoDaImagemDaCapa;
             resultado.Conteudo = post.Conteudo;
             resultado.Data = post.Data;

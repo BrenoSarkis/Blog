@@ -20,5 +20,6 @@ namespace Blog.Web.Models
         public IList<string> Tags { get; set; }
         public string Url { get; set; }
         public string Tag { get; set; }
+        public int Codigo { get; set; }
     }
 }

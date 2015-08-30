@@ -28,7 +28,8 @@ namespace Blog
 
             try
             {
-                if (String.IsNullOrWhiteSpace(requisicao.Url))
+                bool ehUmNovoPost = requisicao.Codigo == 0;
+                if (ehUmNovoPost)
                 {
                     var post = new Post();
                     post.Titulo = requisicao.Titulo;
@@ -43,7 +44,7 @@ namespace Blog
                 }
                 else
                 {
-                    var post = this.postRepositorio.ObterPorUrl(requisicao.Url);
+                    var post = this.postRepositorio.ObterCodigo(requisicao.Codigo);
                     post.Titulo = requisicao.Titulo;
                     post.Conteudo = requisicao.Conteudo;
                     post.Tags = requisicao.Tags;

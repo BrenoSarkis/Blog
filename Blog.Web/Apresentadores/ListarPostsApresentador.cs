@@ -16,6 +16,7 @@ namespace Blog.Web.Apresentadores
             Posts = from p in resultado.Posts
                              select new PostResumidoViewModel
                              {
+                                 Codigo = p.Codigo,
                                  CaminhoDaImagemDaCapa = p.CaminhoDaImagemDaCapa,
                                  Conteudo = p.Conteudo.Substring(0, Math.Min(400, p.Conteudo.Length)) + "...",
                                  Tags = String.Join(", ", p.Tags),

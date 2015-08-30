@@ -73,7 +73,7 @@ namespace Blog.Web.Controllers
             var apresentador = new SalvarPostApresentador();
             var requisicao = new SalvarPostRequisicao
             {
-                Url = novoPost.Url,
+                Codigo = novoPost.Codigo,
                 Titulo = novoPost.Titulo,
                 Conteudo = novoPost.Conteudo,
                 CaminhoDaImagemDaCapa = novoPost.CaminhoDaImagemDaCapa,
@@ -81,16 +81,7 @@ namespace Blog.Web.Controllers
             };
             salvarPostExecutor.Apresentador = apresentador;
             salvarPostExecutor.Executar(requisicao);
-            //return View("NovoPost", novoPost);
         }
-
-        //[HttpPost]
-        //public ActionResult AdicionarTag(NovoPostViewModel post)
-        //{
-
-        //    post.Tags.Add(post.Tag);
-        //    return View("NovoPost", post);
-        //}
 
         public ActionResult Detalhar(string ano, string mes, string dia, string titulo)
         {
@@ -158,19 +149,20 @@ namespace Blog.Web.Controllers
             return RedirectToAction("Detalhar", new { ano = ano, mes = mes, dia = dia, titulo = titulo });
         }
 
-        public ActionResult Editar(string url)
+        public ActionResult Editar(int codigo)
         {
             var requisicao = new ObterPostRequisicao();
-            requisicao.Url = url;
+            requisicao.Codigo = codigo;
             var apresentador = new ObterPostApresentador();
             this.obterPostExecutor.Apresentador = apresentador;
             this.obterPostExecutor.Executar(requisicao);
             var viewModel = new NovoPostViewModel();
             viewModel.CaminhoDaImagemDaCapa = apresentador.Post.CaminhoDaImagemDaCapa;
             viewModel.Conteudo = apresentador.Post.Conteudo;
-            viewModel.Tags = apresentador.Post.Tags.Split(',');
+            viewModel.Tags = String.IsNullOrWhiteSpace(apresentador.Post.Tags) ? new List<string>() : apresentador.Post.Tags.Split(',').ToList();
             viewModel.Titulo = apresentador.Post.Titulo;
             viewModel.Url = apresentador.Post.Url;
+            viewModel.Codigo = apresentador.Post.Codigo;
             return View("NovoPost", viewModel);
         }
 

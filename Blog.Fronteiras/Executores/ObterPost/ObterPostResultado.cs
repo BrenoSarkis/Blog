@@ -8,6 +8,7 @@ namespace Blog.Fronteiras.Executores.ObterPost
 {
     public class ObterPostResultado
     {
+        public int Codigo { get; set; }
         public string Titulo { get; set; }
         public string Conteudo { get; set; }
         public DateTime Data { get; set; }
