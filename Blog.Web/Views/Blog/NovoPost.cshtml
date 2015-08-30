@@ -63,6 +63,7 @@
     });
 
     $("#btnSalvarNovoPost").click(function () {
+        var conteudo = CKEDITOR.instances['Conteudo'].getData();
         var tags = [];
         $("#linhaDeTags").find('td').each(function () {
             tags.push($(this).children("span").text());
@@ -71,7 +72,7 @@
             type: "POST",
             url: "@Url.Action("Salvar", "Blog")",
             traditional: true,
-            data: { Codigo: $("#Codigo").val(), Titulo: $("#Titulo").val(), Tags: tags, Url: $("#Url").val(), Conteudo: $("#Conteudo").val(), CaminhoDaImagemDaCapa: $("#CaminhoDaImagemDaCapa").val() },
+            data: { Codigo: $("#Codigo").val(), Titulo: $("#Titulo").val(), Tags: tags, Url: $("#Url").val(), Conteudo: conteudo, CaminhoDaImagemDaCapa: $("#CaminhoDaImagemDaCapa").val() },
             success: function (data) {
                //alert(data.NotificacaoDeSucesso);
             }
