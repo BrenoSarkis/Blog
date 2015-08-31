@@ -30,7 +30,7 @@
                     <tr id="linhaDeTags">
                         @foreach (var tag in Model.Tags)
                         {
-                            <td style="padding-right:15px;"><a id="linkTag" data-tag="@tag" class="glyphicon glyphicon-tag" style="text-decoration:none;"></a> @tag</td>
+                            <td style="padding-right:15px;"><a data-tag="@tag" class="glyphicon glyphicon-tag linkTag" style="text-decoration:none;"></a>@tag</td>
                         }
                     </tr>
                 </table>
@@ -58,7 +58,7 @@
 <script>
     $("#botaoDeAdicionarTag").click(function () {
         if ($("#Tag").val() != "") {
-            $("#linhaDeTags").append('<td style="padding-right:15px;"><a class="glyphicon glyphicon-tag" href="@Url.Action("DeletarTag", "Blog", new { tag = Model.Codigo })" style="text-decoration:none;"></a> <span>' +$("#Tag").val() + '</span></td>');
+            $("#linhaDeTags").append('<td style="padding-right:15px;"><a class="glyphicon glyphicon-tag" href="@Url.Action("DeletarTag", "Blog", new { tag = Model.Codigo })" style="text-decoration:none;"></a><span>'+$("#Tag").val()+'</span></td>');
         }
     });
 
@@ -78,8 +78,8 @@
             }
         });
     });
-    $("#linkTag").click(function () {
-        debugger;
+
+    $(".linkTag").click(function () {
         var td = $(this).parent();
         $.ajax({
             type: "POST",
