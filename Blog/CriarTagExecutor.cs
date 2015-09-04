@@ -21,6 +21,7 @@ namespace Blog
             this.apresentador = apresentador;
         }
 
+
         public void Executar(CriarTagRequisicao requisicao)
         {
             var resultado = new CriarTagResultado();
