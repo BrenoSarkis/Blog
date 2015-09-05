@@ -10,7 +10,6 @@ namespace Blog.Web.Apresentadores
 {
     public class ListarPostsApresentador : IListarPostsApresentador
     {
-
         public void Apresentar(ListarPostsResultado resultado)
         {
             Posts = from p in resultado.Posts
