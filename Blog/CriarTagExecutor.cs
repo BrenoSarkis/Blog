@@ -21,11 +21,11 @@ namespace Blog
             this.apresentador = apresentador;
         }
 
+
         public void Executar(CriarTagRequisicao requisicao)
         {
             var resultado = new CriarTagResultado();
             var novaTag = new Tag { Nome = requisicao.Nome };
-            //this.tagRepositorio.Salvar(novaTag);
             resultado.Nome = novaTag.Nome;
             this.apresentador.Apresentar(resultado);
         }

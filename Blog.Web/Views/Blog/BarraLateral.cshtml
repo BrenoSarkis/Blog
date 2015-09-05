@@ -13,7 +13,6 @@
         <div class="headline headline-md"><h2>Pesquisar</h2></div>
         <div class="input-group margin-bottom-40">
             @Html.TextBoxFor(model => model.TermoDePesquisa, new { @class = "form-control", @placeholder = "pesquisar"})
-            @*<input type="text" id="textBoxTermoDePesquisa" class="form-control" placeholder="pesquisar">*@
             <span class="input-group-btn">
                 <button class="btn-u" id="botaoPesquisar" type="submit">Go</button>
             </span>
@@ -24,7 +23,7 @@
             @foreach (var post in Model.UltimosCincoPosts)
             {
                 <li>
-                    <h3><a href="~/@post.Url">@post.Titulo</a></h3>
+                    <h3><a href="~/@post.Url"><b>@post.Titulo</b></a></h3>
                     <small>@post.DataPorExtenso/ @post.Tags</small>
                     <p>@Html.Raw(post.Conteudo)</p>
                 </li>
