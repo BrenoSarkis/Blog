@@ -32,7 +32,7 @@ namespace Blog.Email
                var pswd = System.Environment.GetEnvironmentVariable("SENDGRID_PASS");
                assuming you named your keys SENDGRID_USER and SENDGRID_PASS */
 
-            var credentials = new NetworkCredential(username, pswd);
+            var credentials = new NetworkCredential(username, pswd); 
             var transportWeb = new Web(credentials);
 
             // Send the email.
