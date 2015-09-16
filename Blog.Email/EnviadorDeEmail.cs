@@ -25,6 +25,7 @@ namespace Blog.Email
             var username = "azure_f3c07672dc65ab85ffa8bdd9d6f40fee@azure.com";
             var pswd = "20LTaus55pBSA3m";
 
+
             /* Alternatively, you may store these credentials via your Azure portal
                by clicking CONFIGURE and adding the key/value pairs under "app settings".
                Then, you may access them as follows: 
